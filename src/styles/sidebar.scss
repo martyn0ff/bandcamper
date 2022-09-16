@@ -1,3 +1,8 @@
 .sidebar {
   width: $sidebar-width;
+  height: calc(100vh - $navbar-height);
+}
+
+.watches {
+  height: 621px;
 }

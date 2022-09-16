@@ -1,0 +1,10 @@
+@import "./variables";
+@import "./bootstrap-override";
+@import "./sidebar.scss";
+@import "./navbar.scss";
+@import "./content.scss";
+@import "./audioplayer.scss";
+
+body {
+  overflow-y: hidden;
+}

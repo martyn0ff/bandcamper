@@ -1,3 +1,7 @@
 $font-family-base: "Radio Canada", sans-serif;
 
+$theme-colors: (
+  "primary": #3f3f3f,
+);
+
 @import "bootstrap/scss/bootstrap";

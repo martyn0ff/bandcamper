@@ -10,7 +10,7 @@ const fakeNetwork = async (key?: string): Promise<void> => {
   if (!key) {
     fakeCache = {};
   } else {
-    if (fakeCache[key] === null) {
+    if (!fakeCache[key]) {
       return new Promise((res) => {
         setTimeout(res, 0);
       });

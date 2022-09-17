@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { FiLogOut, FiInbox, FiUser } from "react-icons/fi";
 import SidebarProps from "../models/sidebar-props";
 import IRelease from "../models/release";
+import { getUniqueReleasedBy } from "../utils/array-utils";
 
 const Sidebar: React.FC<SidebarProps> = ({
   releases = [] as IRelease[],
@@ -15,16 +16,16 @@ const Sidebar: React.FC<SidebarProps> = ({
       className="pt-2 px-0"
     >
       <Nav className="flex-column mt-3 ps-0">
-        <Nav.Link
-          href="/a"
-          className="mb-2 d-flex align-items-center justify-content-start"
-        >
-          <FiUser
-            className="me-2"
-            size="1.5rem"
-          />
-          My Profile
-        </Nav.Link>
+        <LinkContainer to="/me">
+          <Nav.Link className="mb-2 d-flex align-items-center justify-content-start">
+            <FiUser
+              className="me-2"
+              size="1.5rem"
+            />
+            My Profile
+          </Nav.Link>
+        </LinkContainer>
+
         <Nav.Link
           eventKey="link-1"
           className="mb-2 justify-content-start"
@@ -55,13 +56,13 @@ const Sidebar: React.FC<SidebarProps> = ({
         />
       </Form>
       <Nav className="flex-column flex-nowrap mt-3 overflow-auto watches">
-        {releases.map((release) => (
-          <LinkContainer to={`watch/${release.releasedBy}`}>
+        {getUniqueReleasedBy(releases).map((releasedBy) => (
+          <LinkContainer to={`watch/${releasedBy}`}>
             <Nav.Link
               className="mb-2 d-flex align-items-center justify-content-between"
-              eventKey={`${release.artist}`}
+              eventKey={`${releasedBy}`}
             >
-              {release.releasedBy}
+              {releasedBy}
               {/* <BsCircleFill
                 color="red"
                 size="0.5rem"
@@ -69,33 +70,6 @@ const Sidebar: React.FC<SidebarProps> = ({
             </Nav.Link>
           </LinkContainer>
         ))}
-
-        {/* <LinkContainer to="/watches/mord">
-          <Nav.Link
-            className="mb-2 d-flex align-items-center justify-content-between"
-            eventKey="mord"
-          >
-            MORD
-            <BsCircleFill
-              color="red"
-              size="0.5rem"
-            />
-          </Nav.Link>
-        </LinkContainer>
-
-        <LinkContainer to="/watches/pfirter">
-          <Nav.Link
-            className="mb-2 d-flex align-items-center justify-content-between"
-            eventKey="pfirter"
-          >
-            Pfirter
-            <BsCircleFill
-              color="red"
-              size="0.5rem"
-              className="d-none"
-            />
-          </Nav.Link>
-        </LinkContainer> */}
       </Nav>
     </Container>
   </div>

@@ -1,8 +1,8 @@
+import md5 from "md5";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "react-bootstrap/Image";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import md5 from "md5";
 import mp3file from "../assets/music.mp3";
 import IRelease from "../models/release";
 import { ReleaseProps } from "../models/release-props";
@@ -60,27 +60,25 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => (
       </div>
     </Accordion.Header>
     <Accordion.Body>
-      <div className="release-description mb-2">
+      <div className="release-description mb-3">
         <p>{release.releaseDescription}</p>
         <Button className="me-2">Buy Album</Button>
         <Button>Add to Wishlist</Button>
       </div>
-      <ListGroup variant="flush">
+      <ListGroup>
         {release.audioPreviewUrls.map((url, idx) => (
           <ListGroup.Item
-            className={`px-0 ${
-              idx + 1 === release.availableTracks ? "mb-2" : ""
-            }`}
             key={md5(Math.random().toString())}
+            className="py-0"
           >
             <div className="d-flex align-items-center">
               <audio
                 src={url}
                 controls
-                controlsList="nodownload noplaybackspeed"
+                controlsList="nodownload"
                 className="w-100 me-3"
               />
-              <Button className="text-nowrap px-4">Buy</Button>
+              <Button className="text-nowrap px-3 py-1">Buy</Button>
             </div>
           </ListGroup.Item>
         ))}

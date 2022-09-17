@@ -1,8 +1,8 @@
-import Accordion from "react-bootstrap/Accordion";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
+import Accordion from "react-bootstrap/Accordion";
+import Container from "react-bootstrap/Container";
 import Release from "../widgets/release";
 import { getReleases } from "../dao/releases";
-import IRelease from "../models/release";
 import IWatch from "../models/watch";
 
 export const loader = async ({
@@ -22,7 +22,7 @@ const Watch: React.FC = () => {
   const { releases, releasedBy } = useLoaderData() as IWatch;
 
   return (
-    <div className="p-3">
+    <>
       <div>
         <h1 className="fw-bold mb-0">{releasedBy}</h1>
         <p># new items</p>
@@ -32,7 +32,7 @@ const Watch: React.FC = () => {
           <Release release={release} />
         ))}
       </Accordion>
-    </div>
+    </>
   );
 };
 export default Watch;

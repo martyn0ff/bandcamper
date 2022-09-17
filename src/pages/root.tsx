@@ -30,7 +30,12 @@ const Root: React.FC = () => {
             <Sidebar releases={releases} />
           </aside>
           <section className="col overflow-auto border-top border-dark border-opacity-25 px-2">
-            <Outlet />
+            <Container
+              fluid
+              className="p-3"
+            >
+              <Outlet />
+            </Container>
           </section>
         </main>
       </Container>

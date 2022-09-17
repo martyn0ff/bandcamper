@@ -5,7 +5,14 @@ import IRelease from "../models/release";
 
 const resetLocalForage = async () => {
   await localforage.clear();
-  const exampleReleases: IRelease[] = [exampleRelease1, exampleRelease2];
+  const exampleReleases: IRelease[] = [
+    exampleRelease1,
+    exampleRelease2,
+    {
+      ...exampleRelease1,
+      id: 999,
+    },
+  ];
   await localforage.setItem("releases", exampleReleases);
   console.log("LocalForage was initialized");
   const myLocalForage = await localforage.getItem("releases");

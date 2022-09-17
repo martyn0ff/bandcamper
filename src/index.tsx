@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/error-page";
 import Root, { loader as rootLoader } from "./pages/root";
 import Watch, { loader as watchLoader } from "./pages/watch";
-// import Index from "./routes/index";
+import Profile from "./pages/profile";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
         path: "watch/:watchId",
         element: <Watch />,
         loader: watchLoader,
+      },
+      {
+        path: "me",
+        element: <Profile />,
       },
     ],
   },

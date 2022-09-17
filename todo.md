@@ -2,7 +2,7 @@
 
 ## Frontend
 
-:white_large_square: Mock 3 different watches on sidebar
+:white_check_mark: Mock 3 different watches on sidebar
 :white_large_square: Mock Settings page (change username, show email)
 :white_large_square: Mock registration page (username, password, email, bandcamp page to fetch releases from all favorite artists)
 :white_large_square: Mock login page (username, password)

@@ -47,6 +47,13 @@ const Sidebar: React.FC<SidebarProps> = ({
           Inbox
         </Nav.Link>
       </Nav>
+      <Form className="d-flex px-3 my-3">
+        <Form.Control
+          type="search"
+          placeholder="Search watch..."
+          aria-label="Search"
+        />
+      </Form>
       <div className="text-muted small mx-3 mt-2 d-flex flex-row align-items-center mb-2">
         <span className="text-nowrap">42 watches, 18 new</span>
         <div
@@ -54,13 +61,6 @@ const Sidebar: React.FC<SidebarProps> = ({
           className="bg-dark bg-opacity-10 ms-2"
         />
       </div>
-      <Form className="d-flex px-3">
-        <Form.Control
-          type="search"
-          placeholder="Search watch..."
-          aria-label="Search"
-        />
-      </Form>
       <Nav className="flex-column flex-nowrap mt-3 overflow-auto watches">
         {getUniqueReleasedBy(releases).map((releasedBy) => (
           <LinkContainer to={`watch/${releasedBy}`}>

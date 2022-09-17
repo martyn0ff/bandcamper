@@ -1,7 +1,8 @@
 import BsNavbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Dropdown from "react-bootstrap/Dropdown";
+import Image from "react-bootstrap/Image";
 import { FaBandcamp } from "react-icons/fa";
+import logo from "../assets/logo.svg";
 
 const Navbar: React.FC = () => (
   <BsNavbar
@@ -14,8 +15,10 @@ const Navbar: React.FC = () => (
         href="#home"
         className="me-0 d-flex align-items-center"
       >
-        <FaBandcamp size="2rem" />
-        <span className="ms-2 fw-bold">Bandcamper</span>
+        <Image
+          src={logo}
+          height={38}
+        />
       </BsNavbar.Brand>
     </Container>
   </BsNavbar>

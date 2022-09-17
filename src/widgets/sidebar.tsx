@@ -17,9 +17,9 @@ const Sidebar: React.FC<SidebarProps> = ({
     >
       <Nav className="flex-column mt-3 ps-0">
         <LinkContainer to="/me">
-          <Nav.Link className="mb-2 d-flex align-items-center justify-content-start">
+          <Nav.Link className="mb-2 d-flex align-items-center justify-content-start fw-semibold">
             <FiUser
-              className="me-2"
+              className="me-3"
               size="1.5rem"
             />
             My Profile
@@ -28,26 +28,32 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         <Nav.Link
           eventKey="link-1"
-          className="mb-2 justify-content-start"
+          className="mb-2 justify-content-start fw-semibold"
         >
           <FiLogOut
-            className="me-2"
+            className="me-3"
             size="1.5rem"
           />
           Logout
         </Nav.Link>
         <Nav.Link
           eventKey="link-1"
-          className="mb-2 justify-content-start"
+          className="mb-2 justify-content-start fw-semibold"
         >
           <FiInbox
-            className="me-2"
+            className="me-3"
             size="1.5rem"
           />
           Inbox
         </Nav.Link>
       </Nav>
-      <hr className="border-dark border-opacity-25 mt-3 mx-3" />
+      <div className="text-muted small mx-3 mt-2 d-flex flex-row align-items-center mb-2">
+        <span className="text-nowrap">42 watches, 18 new</span>
+        <div
+          style={{ width: "100%", height: "1px" }}
+          className="bg-dark bg-opacity-10 ms-2"
+        />
+      </div>
       <Form className="d-flex px-3">
         <Form.Control
           type="search"

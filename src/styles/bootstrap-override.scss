@@ -1,9 +1,16 @@
 $font-family-base: "Radio Canada", sans-serif;
+$headings-font-weight: 700;
 
 $theme-colors: (
-  "primary": #3f3f3f,
+  "primary": #212529,
 );
 
-$nav-link-color: #3f3f3f;
+$nav-link-color: #212529;
+
+$accordion-button-padding-y: 0.5rem;
+$accordion-button-padding-x: 0.5rem;
+
+// $accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>");
+// $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>");
 
 @import "bootstrap/scss/bootstrap";

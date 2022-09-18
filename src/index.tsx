@@ -4,10 +4,13 @@ import "./styles/index.scss";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./pages/error-page";
+import ErrorPage from "./pages/error";
 import Root, { loader as rootLoader } from "./pages/root";
 import Watch, { loader as watchLoader } from "./pages/watch";
+import Inbox, { loader as inboxLoader } from "./pages/inbox";
 import Profile from "./pages/profile";
+import Registration from "./pages/registration";
+import SignIn from "./pages/sign-in";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -20,13 +23,31 @@ const router = createBrowserRouter([
     loader: rootLoader,
     children: [
       {
-        path: "watch/:watchId",
-        element: <Watch />,
-        loader: watchLoader,
-      },
-      {
-        path: "me",
-        element: <Profile />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: "watch/:watchId",
+            element: <Watch />,
+            loader: watchLoader,
+          },
+          {
+            path: "inbox",
+            element: <Inbox />,
+            loader: inboxLoader,
+          },
+          {
+            path: "me",
+            element: <Profile />,
+          },
+          {
+            path: "sign-up",
+            element: <Registration />,
+          },
+          {
+            path: "sign-in",
+            element: <SignIn />,
+          },
+        ],
       },
     ],
   },

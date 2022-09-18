@@ -5,9 +5,20 @@
 @import "./content.scss";
 @import "./audioplayer.scss";
 @import "./profile.scss";
+@import "./registration.scss";
+@import "./sign-in.scss";
+@import "./releases-sort-search.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&family=Radio+Canada:wght@400;500;600;700&display=swap");
 
 body {
   overflow-y: hidden;
+}
+
+#root {
+  height: 100vh;
+}
+
+.accordion-button::after {
+  display: none;
 }

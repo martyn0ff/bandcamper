@@ -1,10 +1,11 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
+import { Link } from "react-router-dom";
 
 const Profile = () => (
   <div className="profile">
-    <h1 className="fw-bold">mf&apos;s Profile</h1>
+    <h1>mf&apos;s Profile</h1>
     <Form>
       <Form.Group
         className="mb-3"

@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
-import { FiLogOut, FiInbox, FiUser } from "react-icons/fi";
+import { FiLogOut, FiInbox, FiUser, FiUserPlus, FiLogIn } from "react-icons/fi";
 import SidebarProps from "../models/sidebar-props";
 import IRelease from "../models/release";
 import { getUniqueReleasedBy } from "../utils/array-utils";
@@ -17,7 +17,10 @@ const Sidebar: React.FC<SidebarProps> = ({
     >
       <Nav className="flex-column mt-3 ps-0">
         <LinkContainer to="/me">
-          <Nav.Link className="mb-2 d-flex align-items-center justify-content-start fw-semibold">
+          <Nav.Link
+            className="mb-2 d-flex align-items-center justify-content-start fw-semibold"
+            eventKey="myProfile"
+          >
             <FiUser
               className="me-3"
               size="1.5rem"
@@ -27,25 +30,53 @@ const Sidebar: React.FC<SidebarProps> = ({
         </LinkContainer>
 
         <Nav.Link
-          eventKey="link-1"
+          eventKey="logout"
           className="mb-2 justify-content-start fw-semibold"
         >
           <FiLogOut
             className="me-3"
             size="1.5rem"
           />
-          Logout
+          Sign Out
         </Nav.Link>
-        <Nav.Link
-          eventKey="link-1"
-          className="mb-2 justify-content-start fw-semibold"
-        >
-          <FiInbox
-            className="me-3"
-            size="1.5rem"
-          />
-          Inbox
-        </Nav.Link>
+        <LinkContainer to="/sign-in">
+          <Nav.Link
+            eventKey="sign-in"
+            className="mb-2 justify-content-start fw-semibold"
+          >
+            <FiLogIn
+              className="me-3"
+              size="1.5rem"
+            />
+            Sign In
+          </Nav.Link>
+        </LinkContainer>
+
+        <LinkContainer to="inbox">
+          <Nav.Link
+            eventKey="inbox"
+            className="mb-2 justify-content-start fw-semibold"
+          >
+            <FiInbox
+              className="me-3"
+              size="1.5rem"
+            />
+            Inbox
+          </Nav.Link>
+        </LinkContainer>
+
+        <LinkContainer to="/sign-up">
+          <Nav.Link
+            eventKey="sign-up"
+            className="mb-2 justify-content-start fw-semibold"
+          >
+            <FiUserPlus
+              className="me-3"
+              size="1.5rem"
+            />
+            Sign Up
+          </Nav.Link>
+        </LinkContainer>
       </Nav>
       <Form className="d-flex px-3 my-3">
         <Form.Control
@@ -65,7 +96,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         {getUniqueReleasedBy(releases).map((releasedBy) => (
           <LinkContainer to={`watch/${releasedBy}`}>
             <Nav.Link
-              className="mb-2 d-flex align-items-center justify-content-between"
+              className="mb-2 py-0 d-flex align-items-center justify-content-between"
               eventKey={`${releasedBy}`}
             >
               {releasedBy}

@@ -24,15 +24,18 @@ const Root: React.FC = () => {
       <header>
         <Navbar />
       </header>
-      <Container fluid>
+      <Container
+        fluid
+        className="content-wrapper"
+      >
         <main className="row">
           <aside className="sidebar d-none d-sm-block col-2 p-0">
             <Sidebar releases={releases} />
           </aside>
-          <section className="col overflow-auto border-top border-dark border-opacity-25 px-2">
+          <section className="col overflow-auto border-top border-dark border-opacity-25 px-2 content-wrapper h-100">
             <Container
               fluid
-              className="p-3"
+              className="p-3 h-100"
             >
               <Outlet />
             </Container>

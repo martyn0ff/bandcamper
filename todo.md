@@ -1,15 +1,19 @@
-# TODO Bandcamper
+# TODO Soundfiend
 
 ## Frontend
 
 :white_check_mark: Mock 3 different watches on sidebar
 :white_check_mark: Mock Settings page (change username, show email)
-:white_large_square: Mock registration page (username, password, email, bandcamp page to fetch releases from all favorite artists)
-:white_large_square: Mock login page (username, password)
-:white_large_square: Mock Inbox
-:white_large_square: Draw search/sort for watches/inbox
-:white_large_square: Remake accordion with custom collapse / custom accordion => decrease padding
+:white_check_mark: Mock registration page (username, password, email)
+:white_check_mark: Mock login page (username, password)
+:white_check_mark: Mock Inbox
+:white_check_mark: Draw search/sort for watches/inbox
+:white_check_mark: Remake accordion with custom collapse / custom accordion => decrease padding
 :white_large_square: Find out which elements need keys
+:white_large_square: Configure index page (set it to be inbox)
+:white_large_square: Set up form validation (required fields are filled & password/repeat password match)
+:white_large_square: Implement custom validation (https://felixgerschau.com/react-hooks-form-validation-typescript/)
+:white_large_square: Mock registration successful page (after validation went through)
 
 ## Backend
 

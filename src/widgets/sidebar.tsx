@@ -29,16 +29,19 @@ const Sidebar: React.FC<SidebarProps> = ({
           </Nav.Link>
         </LinkContainer>
 
-        <Nav.Link
-          eventKey="logout"
-          className="mb-2 justify-content-start fw-semibold"
-        >
-          <FiLogOut
-            className="me-3"
-            size="1.5rem"
-          />
-          Sign Out
-        </Nav.Link>
+        <LinkContainer to="sign-out">
+          <Nav.Link
+            eventKey="sign-out"
+            className="mb-2 justify-content-start fw-semibold"
+          >
+            <FiLogOut
+              className="me-3"
+              size="1.5rem"
+            />
+            Sign Out
+          </Nav.Link>
+        </LinkContainer>
+
         <LinkContainer to="/sign-in">
           <Nav.Link
             eventKey="sign-in"

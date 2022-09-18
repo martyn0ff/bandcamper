@@ -18,11 +18,11 @@ const ErrorPage: React.FC = () => {
         fluid
         className="d-flex h-100 justify-content-center align-items-center"
       >
-        <div className="w-50">
+        <div className="w-50 mb-5">
           <Image
             src={errorIcon}
             height={100}
-            className="mb-2"
+            className="mb-3"
           />
           <h1>Yikes, that&apos;s an error.</h1>
           <h2 className="mb-3">

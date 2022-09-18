@@ -64,3 +64,6 @@ npm install react-router-bootstrap @types/react-router-bootstrap
 
 # Sorting
 npm install array-sort
+
+# Hashing
+npm install hash.js

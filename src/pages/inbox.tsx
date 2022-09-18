@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router";
 import Accordion from "react-bootstrap/Accordion";
 import Release from "../widgets/release";
+import BottomPlayer from "../widgets/bottom-player";
 import ReleasesSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
 import IRelease from "../models/release";

@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "../widgets/navbar";
 import Sidebar from "../widgets/sidebar";
+import BottomPlayer from "../widgets/bottom-player";
 import resetLocalForage from "../utils/localforage-utils";
 import { getReleases } from "../dao/releases";
 import IRelease from "../models/release";
@@ -32,13 +33,14 @@ const Root: React.FC = () => {
           <aside className="sidebar d-none d-sm-block col-2 p-0">
             <Sidebar releases={releases} />
           </aside>
-          <section className="col overflow-auto border-top border-dark border-opacity-25 px-2 content-wrapper h-100">
+          <section className="col overflow-auto border-top border-dark border-opacity-25 content-wrapper p-0 h-100 d-flex flex-column justify-content-between">
             <Container
               fluid
-              className="p-3 h-100"
+              className="p-3 h-auto"
             >
               <Outlet />
             </Container>
+            <BottomPlayer />
           </section>
         </main>
       </Container>

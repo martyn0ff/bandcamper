@@ -18,6 +18,7 @@ const Navbar: React.FC = () => (
         <Image
           src={logo}
           height={38}
+          className="ps-1"
         />
       </BsNavbar.Brand>
     </Container>

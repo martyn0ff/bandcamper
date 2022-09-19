@@ -3,8 +3,8 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { FiLogOut, FiInbox, FiUser, FiUserPlus, FiLogIn } from "react-icons/fi";
-import SidebarProps from "../models/sidebar-props";
-import IRelease from "../models/release";
+import SidebarProps from "../models/ui/sidebar-props";
+import IRelease from "../models/ui/release";
 import { getUniqueReleasedBy } from "../utils/array-utils";
 
 const Sidebar: React.FC<SidebarProps> = ({

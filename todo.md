@@ -10,10 +10,9 @@
 :white_check_mark: Draw search/sort for watches/inbox
 :white_check_mark: Remake accordion with custom collapse / custom accordion => decrease padding
 :white_large_square: Find out which elements need keys
-:white_large_square: Configure index page (set it to be inbox)
-:white_large_square: Set up form validation (required fields are filled & password/repeat password match)
-:white_large_square: Implement custom validation (https://felixgerschau.com/react-hooks-form-validation-typescript/)
-:white_large_square: Mock registration successful page (after validation went through)
+:white_check_mark: Configure index page (set it to be inbox)
+:white_large_square: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
+:white_check_mark: Mock registration successful page (after validation went through)
 
 ## Backend
 

@@ -3,7 +3,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Release from "../widgets/release";
 import WatchSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
-import IWatch from "../models/watch";
+import IWatch from "../models/ui/watch";
 
 export const loader = async ({
   params,

@@ -4,7 +4,7 @@ import Release from "../widgets/release";
 import BottomPlayer from "../widgets/bottom-player";
 import ReleasesSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
-import IRelease from "../models/release";
+import IRelease from "../models/ui/release";
 
 export const loader = async (): Promise<IRelease[]> => {
   const releases = await getReleases();

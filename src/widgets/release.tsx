@@ -1,11 +1,11 @@
-import md5 from "md5";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "react-bootstrap/Image";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import mp3file from "../assets/music.mp3";
-import IRelease from "../models/release";
-import { ReleaseProps } from "../models/release-props";
+import IRelease from "../models/ui/release";
+import { ReleaseProps } from "../models/ui/release-props";
+import { sha256 } from "../utils/hashing";
 
 export const exampleRelease1: IRelease = {
   id: 1000,
@@ -66,9 +66,9 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => (
         <Button>Add to Wishlist</Button>
       </div>
       <ListGroup>
-        {release.audioPreviewUrls.map((url, idx) => (
+        {release.audioPreviewUrls.map((url) => (
           <ListGroup.Item
-            key={md5(Math.random().toString())}
+            key={sha256(Math.random().toString())}
             className="py-0"
           >
             <div className="d-flex align-items-center">

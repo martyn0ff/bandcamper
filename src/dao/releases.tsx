@@ -1,6 +1,6 @@
 import localforage from "localforage";
 import fakeNetwork from "../utils/fake-network";
-import IRelease from "../models/release";
+import IRelease from "../models/ui/release";
 
 export const getRelease = async (id: number) => {
   await fakeNetwork(`release:${id}`);

@@ -1,4 +1,4 @@
-import IRelease from "../models/release";
+import IRelease from "../models/ui/release";
 
 export const getUniqueReleasedBy = (releases: IRelease[]) => {
   const uniqueReleasedBy: string[] = [];

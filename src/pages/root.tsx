@@ -6,7 +6,7 @@ import Sidebar from "../widgets/sidebar";
 import BottomPlayer from "../widgets/bottom-player";
 import resetLocalForage from "../utils/localforage-utils";
 import { getReleases } from "../dao/releases";
-import IRelease from "../models/release";
+import IRelease from "../models/ui/release";
 
 export const loader = async () => {
   const releases = await getReleases();

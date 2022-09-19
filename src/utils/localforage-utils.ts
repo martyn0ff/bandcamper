@@ -1,7 +1,7 @@
 import localforage from "localforage";
 import fakeNetwork from "./fake-network";
 import { exampleRelease1, exampleRelease2 } from "../widgets/release";
-import IRelease from "../models/release";
+import IRelease from "../models/ui/release";
 
 const resetLocalForage = async () => {
   await localforage.clear();

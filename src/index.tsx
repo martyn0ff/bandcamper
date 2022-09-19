@@ -9,8 +9,10 @@ import Root, { loader as rootLoader } from "./pages/root";
 import Watch, { loader as watchLoader } from "./pages/watch";
 import Inbox, { loader as inboxLoader } from "./pages/inbox";
 import Profile from "./pages/profile";
-import Registration from "./pages/registration";
+import SignUpForm from "./pages/signup";
 import SignIn from "./pages/sign-in";
+import SignUpRoot from "./pages/signup-root";
+import SignUpSuccess from "./pages/signup-success";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -26,9 +28,9 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "watch/:watchId",
-            element: <Watch />,
-            loader: watchLoader,
+            index: true,
+            element: <Inbox />,
+            loader: inboxLoader,
           },
           {
             path: "inbox",
@@ -36,12 +38,27 @@ const router = createBrowserRouter([
             loader: inboxLoader,
           },
           {
+            path: "watch/:watchId",
+            element: <Watch />,
+            loader: watchLoader,
+          },
+          {
             path: "me",
             element: <Profile />,
           },
           {
             path: "sign-up",
-            element: <Registration />,
+            element: <SignUpRoot />,
+            children: [
+              {
+                index: true,
+                element: <SignUpForm />,
+              },
+              {
+                path: "success",
+                element: <SignUpSuccess />,
+              },
+            ],
           },
           {
             path: "sign-in",

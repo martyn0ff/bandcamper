@@ -1,9 +1,8 @@
-@import "./variables";
-@import "./bootstrap-override";
+@import "./variables.scss";
 @import "./sidebar.scss";
+@import "./bootstrap-override.scss";
 @import "./navbar.scss";
 @import "./content.scss";
-@import "./audioplayer.scss";
 @import "./profile.scss";
 @import "./registration.scss";
 @import "./sign-in.scss";

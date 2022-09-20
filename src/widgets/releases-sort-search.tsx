@@ -18,13 +18,13 @@ const WatchSortSearch: React.FC = () => (
           variant="outline-primary"
           className="sort-btn"
         >
-          <TbSortAscending2 size="1.5rem" />
+          <TbSortAscending2 size="1.35rem" />
         </Button>
         <Button
           variant="outline-primary"
           className="sort-btn"
         >
-          <TbSortDescending2 size="1.5rem" />
+          <TbSortDescending2 size="1.35rem" />
         </Button>
       </ButtonGroup>
       <Form.Group>

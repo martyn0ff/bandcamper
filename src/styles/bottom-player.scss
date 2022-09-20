@@ -1,3 +1,17 @@
 .bottom-player {
   height: $sf-bottom-player-height;
 }
+
+audio::-webkit-media-controls-panel {
+  background-color: $sf-audioplayer-bg-color;
+}
+
+.player-seekbar {
+  height: 4px;
+  width: 100%;
+  background-color: $sf-seekbar-color;
+}
+
+.player-volume-bar {
+  background-color: $sf-seekbar-color;
+}

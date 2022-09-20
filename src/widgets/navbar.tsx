@@ -6,7 +6,7 @@ import logo from "../assets/logo.svg";
 
 const Navbar: React.FC = () => (
   <BsNavbar
-    bg="dark"
+    bg="primary"
     variant="dark"
     expand="lg"
   >

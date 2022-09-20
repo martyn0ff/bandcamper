@@ -1,10 +1,6 @@
 $font-family-base: "Radio Canada", sans-serif;
 $headings-font-weight: 700;
 
-$theme-colors: (
-  "primary": $sf-primary-color,
-);
-
 $nav-link-color: $sf-nav-link-color;
 $nav-link-hover-color: $sf-primary-color;
 
@@ -12,9 +8,8 @@ $accordion-button-padding-y: 0.5rem;
 $accordion-button-padding-x: 0.5rem;
 
 $component-active-bg: $sf-primary-color;
-
-
-// $accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>");
-// $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>");
+$link-color: $sf-primary-color;
+$primary: $sf-primary-color;
+// $link-hover-color: $sf-nav-link-color;
 
 @import "bootstrap/scss/bootstrap";

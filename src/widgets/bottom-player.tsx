@@ -17,7 +17,8 @@ const BottomPlayer: React.FC = () => (
       <Image
         src="https://f4.bcbits.com/img/0024816791_10.jpg"
         width={56}
-        // height={52}
+        height={56}
+        style={{ objectFit: "cover" }}
         className="player-album rounded-3 ms-3 shadow shadow-sm me-2"
       />
       <div className="d-flex flex-column">
@@ -37,8 +38,9 @@ const BottomPlayer: React.FC = () => (
     </div>
 
     <div className="player-controls d-flex flex-column flex-grow-1 px-4">
-      <div className="player-controls-buttons d-flex justify-content-between mb-0 pb-0">
+      <div className="player-controls-buttons d-flex justify-content-between align-items-center mb-0 pb-0">
         <div className="empty" />
+
         <div className="d-flex">
           <Button
             variant="link"
@@ -76,7 +78,7 @@ const BottomPlayer: React.FC = () => (
           </Button>
         </div>
         <div className="align-self-center position-relative">
-          <div className="position-absolute bottom-100 end-25 shadow shadow-sm">
+          <div className="position-absolute bottom-100 end-25 shadow shadow-sm mb-1">
             <div
               className="bg-light border d-flex p-2"
               style={{ height: "130px", width: "30px" }}
@@ -97,11 +99,20 @@ const BottomPlayer: React.FC = () => (
         <span>99:99</span>
       </div>
     </div>
-    <Image
-      src={bandcampLogo}
-      height={16}
-      className="align-self-start mt-3 me-3 justify-self-center"
-    />
+    <div className="streaming-service-logo d-flex flex-column pe-3 pt-3 pb-4 justify-content-between h-100 align-items-end">
+      <Image
+        src={bandcampLogo}
+        height={16}
+      />
+      <Button
+        size="sm"
+        variant="outline-primary m-0"
+        className="mt-3"
+      >
+        Get on Bandcamp
+      </Button>
+    </div>
+
     {/* <audio
       src={mp3file}
       controls

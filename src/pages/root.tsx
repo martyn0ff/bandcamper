@@ -30,7 +30,7 @@ const Root: React.FC = () => {
         className="content-wrapper"
       >
         <main className="row">
-          <aside className="sidebar d-none d-sm-block col-2 p-0">
+          <aside className="sidebar d-none d-lg-block col-2 p-0">
             <Sidebar releases={releases} />
           </aside>
           <section className="col overflow-auto border-top border-dark border-opacity-25 content-wrapper p-0 h-100 d-flex flex-column justify-content-between">

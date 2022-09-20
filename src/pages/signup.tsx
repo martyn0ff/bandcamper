@@ -37,7 +37,11 @@ const SignUp: React.FC = () => {
         pattern: {
           value: "^[A-Za-z][A-Za-z0-9-_]*$",
           errorMessage:
-            "Username should start from a letter and can contain only letters, underscores and hyphens",
+            "Username should start with a letter, and can contain only letters, underscores and hyphens",
+        },
+        custom: {
+          isValid: (value: string) => value.length > 3,
+          errorMessage: "Username should be longer than 3 characters",
         },
       },
       email: {

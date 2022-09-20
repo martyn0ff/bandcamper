@@ -1,5 +1,6 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import Accordion from "react-bootstrap/Accordion";
+import Image from "react-bootstrap/Image";
 import Release from "../widgets/release";
 import WatchSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
@@ -30,9 +31,18 @@ const Watch: React.FC = () => {
 
   return (
     <>
-      <div>
-        <h1 className="mb-0">{releasedBy}</h1>
-        <p># items, # new</p>
+      <div className="d-flex">
+        <Image
+          src="https://f4.bcbits.com/img/0024816791_10.jpg"
+          width={100}
+          className="rounded-circle me-3 mb-3"
+        />
+        <div className="watch-info">
+          <h1 className="mb-0">{releasedBy}</h1>
+          <p className="m-0">
+            {releases.length} {releases.length === 1 ? "item" : "items"}, # new
+          </p>
+        </div>
       </div>
       <WatchSortSearch />
       <Accordion alwaysOpen>

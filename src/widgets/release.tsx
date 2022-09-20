@@ -2,10 +2,10 @@ import Accordion from "react-bootstrap/Accordion";
 import Image from "react-bootstrap/Image";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
+import { v4 as uuidv4 } from "uuid";
 import mp3file from "../assets/music.mp3";
 import IRelease from "../models/ui/release";
 import { ReleaseProps } from "../models/ui/release-props";
-import { sha256 } from "../utils/hashing";
 
 export const exampleRelease1: IRelease = {
   id: 1000,
@@ -68,7 +68,7 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => (
       <ListGroup>
         {release.audioPreviewUrls.map((url) => (
           <ListGroup.Item
-            key={sha256(Math.random().toString())}
+            key={uuidv4()}
             className="py-0"
           >
             <div className="d-flex align-items-center">

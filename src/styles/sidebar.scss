@@ -1,8 +1,13 @@
 .sidebar {
-  width: $sidebar-width;
-  height: calc(100vh - $navbar-height);
+  width: $sf-sidebar-width;
+  height: calc(100vh - $sf-navbar-height);
 }
 
 .watches {
   height: 621px;
+}
+
+a.active {
+  color: $sf-primary-color;
+  font-weight: 600 !important;
 }

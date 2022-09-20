@@ -67,3 +67,7 @@ npm install array-sort
 
 # Hashing
 npm install hash.js
+
+# UUID
+npm i uuid
+npm i --save-dev @types/uuid

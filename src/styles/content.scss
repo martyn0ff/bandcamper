@@ -1,7 +1,7 @@
 main {
-  height: calc(100vh - $navbar-height);
+  height: calc(100vh - $sf-navbar-height);
 }
 
 .accordion-button-unseen {
-  background: $color-unseen;
+  background: $sf-color-unseen;
 }

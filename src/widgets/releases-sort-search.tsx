@@ -8,7 +8,7 @@ const WatchSortSearch: React.FC = () => (
     <Form className="d-flex me-3 w-50 flex-grow-0">
       <Form.Control
         type="search"
-        placeholder="Search watch..."
+        placeholder="What release are you looking for?"
         aria-label="Search"
       />
     </Form>

@@ -14,9 +14,6 @@ const resetLocalForage = async () => {
     },
   ];
   await localforage.setItem("releases", exampleReleases);
-  console.log("LocalForage was initialized");
-  const myLocalForage = await localforage.getItem("releases");
-  console.log(myLocalForage);
 };
 
 export default resetLocalForage;

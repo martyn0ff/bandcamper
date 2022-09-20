@@ -11,11 +11,12 @@
 :white_check_mark: Remake accordion with custom collapse / custom accordion => decrease padding
 :white_large_square: Find out which elements need keys
 :white_check_mark: Configure index page (set it to be inbox)
-:white_large_square: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
+:white_check_mark: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
 :white_check_mark: Mock registration successful page (after validation went through)
 
 ## Backend
 
+:white_large_square: Implement back end form validation
 :white_large_square: Install and configure postfix (locally) --> https://docs.gitlab.com/ee/administration/reply_by_email_postfix_setup.html
 :white_large_square: Install and configure PostgreSQL (locally)
 :white_large_square: Configure / create virtual users for Postfix

@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       <Nav
         className="flex-column mt-3 ps-0"
         variant="light"
-        defaultActiveKey="/me"
+        defaultActiveKey="inbox"
       >
         <LinkContainer
           to="/me"

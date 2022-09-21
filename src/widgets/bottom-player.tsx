@@ -25,6 +25,7 @@ const BottomPlayer: React.FC = () => {
   const seekbarRef = useRef<HTMLDivElement>(null);
   const currentTimeRef = useRef<HTMLSpanElement>(null);
   const isMouseDownRef = useRef(false);
+  const volumeBarRef = useRef<HTMLDivElement>(null);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -36,12 +37,14 @@ const BottomPlayer: React.FC = () => {
     }
   };
 
+  // SEEKBAR
+
   const changeSeekbar = (event: MouseEvent) => {
     if (seekbarRef.current && currentTimeRef.current && audioRef.current) {
       const seekbar = seekbarRef.current;
       const audio = audioRef.current;
       const currentTime = currentTimeRef.current;
-      const percentage = (event.offsetX / seekbarRef.current.offsetWidth) * 100;
+      const percentage = (event.offsetX / seekbar.offsetWidth) * 100;
       seekbar.style.backgroundSize = `${percentage}% 100%`;
       currentTime.textContent = secToTimestamp(
         (audio.duration / 100) * percentage,
@@ -49,7 +52,7 @@ const BottomPlayer: React.FC = () => {
     }
   };
 
-  const handleMouseDown = (event: MouseEvent) => {
+  const handleMouseDownSeekbar = (event: MouseEvent) => {
     if (seekbarRef.current) {
       const seekbar = seekbarRef.current;
       const percentage = (event.offsetX / seekbar.offsetWidth) * 100;
@@ -59,7 +62,7 @@ const BottomPlayer: React.FC = () => {
     }
   };
 
-  const handleMouseUp = (event: MouseEvent) => {
+  const handleMouseUpSeekbar = (event: MouseEvent) => {
     if (seekbarRef.current && audioRef.current) {
       const seekbar = seekbarRef.current;
       const audio = audioRef.current;
@@ -93,12 +96,56 @@ const BottomPlayer: React.FC = () => {
     }
   };
 
-  seekbarRef.current?.addEventListener("mousedown", handleMouseDown);
-  seekbarRef.current?.addEventListener("mouseup", handleMouseUp);
-  document.addEventListener("mouseup", () => {
-    if (seekbarRef.current) {
+  seekbarRef.current?.addEventListener("mousedown", handleMouseDownSeekbar);
+  seekbarRef.current?.addEventListener("mouseup", handleMouseUpSeekbar);
+
+  // VOLUME
+  const changeVolume = (event: MouseEvent) => {
+    if (volumeBarRef.current && audioRef.current) {
+      console.log("Changing volume");
+      const volumeBar = volumeBarRef.current;
+      const audio = audioRef.current;
+      const percentage =
+        -((event.offsetY - volumeBar.offsetHeight) / volumeBar.offsetHeight) *
+        100;
+      volumeBar.style.backgroundSize = `100% ${100 - percentage}%`;
+    }
+  };
+
+  const handleMouseDownVolume = (event: MouseEvent) => {
+    if (volumeBarRef.current) {
+      const volumeBar = volumeBarRef.current;
+      const percentage =
+        -((event.offsetY - volumeBar.offsetHeight) / volumeBar.offsetHeight) *
+        100;
+      volumeBar.style.backgroundSize = `100% ${100 - percentage}%`;
+      volumeBar.addEventListener("mousemove", changeVolume);
+      isMouseDownRef.current = true;
+    }
+  };
+
+  const handleMouseUpVolume = (event: MouseEvent) => {
+    if (volumeBarRef.current && audioRef.current) {
+      const volumeBar = volumeBarRef.current;
+      const audio = audioRef.current;
+      const percentage =
+        -((event.offsetY - volumeBar.offsetHeight) / volumeBar.offsetHeight) *
+        100;
+      volumeBar.removeEventListener("mousemove", changeVolume);
       isMouseDownRef.current = false;
-      seekbarRef.current.removeEventListener("mousemove", changeSeekbar, false);
+      // audio.currentTime = (audio.duration / 100) * percentage;
+    }
+  };
+
+  volumeBarRef.current?.addEventListener("mousedown", handleMouseDownVolume);
+  volumeBarRef.current?.addEventListener("mouseup", handleMouseUpVolume);
+
+  // ROOT LISTENER
+  document.addEventListener("mouseup", () => {
+    if (seekbarRef.current && volumeBarRef.current) {
+      isMouseDownRef.current = false;
+      seekbarRef.current.removeEventListener("mousemove", changeSeekbar);
+      volumeBarRef.current.removeEventListener("mousemove", changeVolume);
     }
   });
 
@@ -190,11 +237,10 @@ const BottomPlayer: React.FC = () => {
                   style={{ height: "130px", width: "30px" }}
                 >
                   <div
-                    className="player-volume-bar w-100 h-100 d-flex flex-column-reverse"
+                    className="player-volume-bar w-100 h-100"
                     style={{ cursor: "pointer" }}
-                  >
-                    <div className="player-volume-current-position bg-primary h-50" />
-                  </div>
+                    ref={volumeBarRef}
+                  />
                 </div>
               </div>
               <BsFillVolumeDownFill
@@ -228,7 +274,7 @@ const BottomPlayer: React.FC = () => {
               onEnded={handleOnEnded}
             />
             <div
-              className="player-seekbar mx-2 disable-select"
+              className="player-seekbar mx-2 disable-select w-100"
               ref={seekbarRef}
               style={{ cursor: "pointer" }}
               draggable={false}

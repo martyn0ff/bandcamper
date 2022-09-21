@@ -4,7 +4,6 @@
 
 .player-seekbar {
   height: 6px;
-  width: 100%;
   background-color: $sf-seekbar-color;
   background-image: linear-gradient($sf-primary-color, $sf-primary-color);
   background-size: 0% 100%;
@@ -20,9 +19,16 @@
 }
 
 .disable-select {
-  user-select: none; /* supported by Chrome and Opera */
- -webkit-user-select: none; /* Safari */
- -khtml-user-select: none; /* Konqueror HTML */
- -moz-user-select: none; /* Firefox */
- -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+ -webkit-user-select: none; 
+ -khtml-user-select: none; 
+ -moz-user-select: none; 
+ -ms-user-select: none;
+}
+
+.player-volume-bar {
+  background-color: $sf-primary-color;
+  background-image: linear-gradient($sf-seekbar-color, $sf-seekbar-color);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
 }

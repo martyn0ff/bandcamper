@@ -2,38 +2,56 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import {
   BsPlayFill,
   BsFillSkipStartFill,
   BsFillSkipEndFill,
   BsShuffle,
   BsArrowRepeat,
-  BsFillVolumeDownFill,
   BsFillPauseFill,
 } from "react-icons/bs";
 import mp3file from "../assets/music.mp3";
 import bandcampLogo from "../assets/bandcamp-logo-colored.svg";
 import { secToTimestamp } from "../utils/player-utils";
+import VolumeIcon from "../components/VolumeIcon";
+import {
+  retrieveVolume,
+  retrieveCurrentTime,
+  storeVolume,
+  storeCurrentTime,
+} from "../utils/localforage-utils";
 
 const BottomPlayer: React.FC = () => {
   const [showVolume, setShowVolume] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [currentTime, setCurrentTime] = useState(0);
   const [audioDuration, setAudioDuration] = useState<number | null>(null);
+
+  const seekbarOnMouseMoveEventAttachedRef = useRef(false);
+  const volumeBarOnMouseMoveEventAttachedRef = useRef(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const seekbarRef = useRef<HTMLDivElement>(null);
   const currentTimeRef = useRef<HTMLSpanElement>(null);
   const isMouseDownRef = useRef(false);
   const volumeBarRef = useRef<HTMLDivElement>(null);
+  const volumeOnUnmute = useRef(volume);
+
+  // PLAY
 
   const togglePlay = () => {
-    if (isPlaying) {
-      setIsPlaying(false);
-      audioRef.current?.pause();
-    } else {
-      setIsPlaying(true);
-      audioRef.current?.play();
+    if (audioRef.current) {
+      const audio = audioRef.current;
+      if (isPlaying) {
+        setIsPlaying(false);
+        setCurrentTime(audio.currentTime);
+        audio.pause();
+      } else {
+        setIsPlaying(true);
+        audio.play();
+      }
     }
   };
 
@@ -43,10 +61,11 @@ const BottomPlayer: React.FC = () => {
     if (seekbarRef.current && currentTimeRef.current && audioRef.current) {
       const seekbar = seekbarRef.current;
       const audio = audioRef.current;
-      const currentTime = currentTimeRef.current;
+      const currentTimeSpan = currentTimeRef.current;
+      setCurrentTime(audio.currentTime);
       const percentage = (event.offsetX / seekbar.offsetWidth) * 100;
       seekbar.style.backgroundSize = `${percentage}% 100%`;
-      currentTime.textContent = secToTimestamp(
+      currentTimeSpan.textContent = secToTimestamp(
         (audio.duration / 100) * percentage,
       );
     }
@@ -57,7 +76,10 @@ const BottomPlayer: React.FC = () => {
       const seekbar = seekbarRef.current;
       const percentage = (event.offsetX / seekbar.offsetWidth) * 100;
       seekbar.style.backgroundSize = `${percentage}% 100%`;
-      seekbar.addEventListener("mousemove", changeSeekbar);
+      if (!seekbarOnMouseMoveEventAttachedRef.current) {
+        seekbar.addEventListener("mousemove", changeSeekbar);
+        seekbarOnMouseMoveEventAttachedRef.current = true;
+      }
       isMouseDownRef.current = true;
     }
   };
@@ -67,9 +89,13 @@ const BottomPlayer: React.FC = () => {
       const seekbar = seekbarRef.current;
       const audio = audioRef.current;
       const percentage = (event.offsetX / seekbar.offsetWidth) * 100;
-      seekbar.removeEventListener("mousemove", changeSeekbar, false);
+      if (seekbarOnMouseMoveEventAttachedRef.current) {
+        seekbar.removeEventListener("mousemove", changeSeekbar);
+        seekbarOnMouseMoveEventAttachedRef.current = false;
+      }
       isMouseDownRef.current = false;
       audio.currentTime = (audio.duration / 100) * percentage;
+      setCurrentTime(audio.currentTime);
     }
   };
 
@@ -82,10 +108,10 @@ const BottomPlayer: React.FC = () => {
     ) {
       const seekbar = seekbarRef.current;
       const audio = audioRef.current;
-      const currentTime = currentTimeRef.current;
+      const currentTimeSpan = currentTimeRef.current;
       const percentage = (100 / audio.duration) * audio.currentTime;
       seekbar.style.backgroundSize = `${percentage}% 100%`;
-      currentTime.textContent = secToTimestamp(audio.currentTime);
+      currentTimeSpan.textContent = secToTimestamp(audio.currentTime);
     }
   };
 
@@ -96,30 +122,29 @@ const BottomPlayer: React.FC = () => {
     }
   };
 
-  seekbarRef.current?.addEventListener("mousedown", handleMouseDownSeekbar);
-  seekbarRef.current?.addEventListener("mouseup", handleMouseUpSeekbar);
-
   // VOLUME
   const changeVolume = (event: MouseEvent) => {
     if (volumeBarRef.current && audioRef.current) {
-      console.log("Changing volume");
       const volumeBar = volumeBarRef.current;
-      const audio = audioRef.current;
       const percentage =
-        -((event.offsetY - volumeBar.offsetHeight) / volumeBar.offsetHeight) *
+        ((volumeBar.offsetHeight - event.offsetY) / volumeBar.offsetHeight) *
         100;
       volumeBar.style.backgroundSize = `100% ${100 - percentage}%`;
+      setVolume(percentage / 100);
     }
   };
 
   const handleMouseDownVolume = (event: MouseEvent) => {
-    if (volumeBarRef.current) {
+    if (volumeBarRef.current && audioRef.current) {
       const volumeBar = volumeBarRef.current;
       const percentage =
-        -((event.offsetY - volumeBar.offsetHeight) / volumeBar.offsetHeight) *
+        ((volumeBar.offsetHeight - event.offsetY) / volumeBar.offsetHeight) *
         100;
       volumeBar.style.backgroundSize = `100% ${100 - percentage}%`;
-      volumeBar.addEventListener("mousemove", changeVolume);
+      if (!volumeBarOnMouseMoveEventAttachedRef.current) {
+        volumeBar.addEventListener("mousemove", changeVolume);
+        volumeBarOnMouseMoveEventAttachedRef.current = true;
+      }
       isMouseDownRef.current = true;
     }
   };
@@ -127,27 +152,129 @@ const BottomPlayer: React.FC = () => {
   const handleMouseUpVolume = (event: MouseEvent) => {
     if (volumeBarRef.current && audioRef.current) {
       const volumeBar = volumeBarRef.current;
-      const audio = audioRef.current;
       const percentage =
         -((event.offsetY - volumeBar.offsetHeight) / volumeBar.offsetHeight) *
         100;
-      volumeBar.removeEventListener("mousemove", changeVolume);
+      if (volumeBarOnMouseMoveEventAttachedRef.current) {
+        volumeBar.removeEventListener("mousemove", changeVolume);
+        volumeBarOnMouseMoveEventAttachedRef.current = false;
+      }
       isMouseDownRef.current = false;
-      // audio.currentTime = (audio.duration / 100) * percentage;
+      setVolume(percentage / 100);
     }
   };
 
-  volumeBarRef.current?.addEventListener("mousedown", handleMouseDownVolume);
-  volumeBarRef.current?.addEventListener("mouseup", handleMouseUpVolume);
+  // BODY HANDLERS
 
-  // ROOT LISTENER
-  document.addEventListener("mouseup", () => {
+  const handleMouseMove = () => {
     if (seekbarRef.current && volumeBarRef.current) {
       isMouseDownRef.current = false;
       seekbarRef.current.removeEventListener("mousemove", changeSeekbar);
       volumeBarRef.current.removeEventListener("mousemove", changeVolume);
     }
+  };
+
+  // FX
+
+  // Change volumebar visually with mouse click
+  useEffect(() => {
+    volumeBarRef.current?.addEventListener("mousedown", handleMouseDownVolume);
+    volumeBarRef.current?.addEventListener("mouseup", handleMouseUpVolume);
+
+    const oldCurrent = volumeBarRef.current;
+
+    return () => {
+      oldCurrent?.removeEventListener("mousedown", handleMouseDownVolume);
+      oldCurrent?.removeEventListener("mouseup", handleMouseUpVolume);
+    };
   });
+
+  // Store volume to localforage every time it changes
+  useEffect(() => {
+    storeVolume(volume);
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume]);
+
+  // Store current time to localforage every time it changes
+  useEffect(() => {
+    storeCurrentTime(currentTime);
+  }, [currentTime]);
+
+  // Seekbar visual representation
+  useEffect(() => {
+    seekbarRef.current?.addEventListener("mousedown", handleMouseDownSeekbar);
+    seekbarRef.current?.addEventListener("mouseup", handleMouseUpSeekbar);
+
+    const oldCurrent = seekbarRef.current;
+
+    return () => {
+      oldCurrent?.removeEventListener("mousedown", handleMouseDownSeekbar);
+      oldCurrent?.removeEventListener("mouseup", handleMouseUpSeekbar);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Redraw volume bar after first render and update its state
+  useEffect(() => {
+    if (audioRef.current) {
+      retrieveVolume()
+        .then((vol) => {
+          if (vol && volumeBarRef.current) {
+            const volumeBar = volumeBarRef.current;
+            setVolume(vol);
+            console.log(`Vol set to ${vol}`);
+            volumeBar.style.backgroundSize = `100% ${(1 - vol) * 100}%`;
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }, []);
+
+  // Restore current position on seekbar
+  useEffect(() => {
+    retrieveCurrentTime().then((time) => {
+      if (time && audioRef.current) {
+        const audio = audioRef.current;
+        setCurrentTime(time);
+        audio.currentTime = time;
+        console.log(`Time set to ${time}`);
+      }
+    });
+  }, []);
+
+  // Mute/unmute
+  useEffect(() => {
+    if (volumeBarRef.current && audioRef.current) {
+      const volumeBar = volumeBarRef.current;
+      if (isMuted) {
+        audioRef.current.muted = true;
+        volumeBar.style.backgroundSize = `100% 100%`;
+      } else {
+        audioRef.current.muted = false;
+        console.log("Unmuted");
+        volumeBar.style.backgroundSize = `100% ${
+          (1 - audioRef.current.volume) * 100
+        }%`;
+      }
+    }
+  }, [isMuted]);
+
+  // Don't react on mouse move inside seekbar or volume bar if user clicks and navigates away from either while holding mouse button
+  document.addEventListener("mouseup", handleMouseMove);
+
+  // Persist volume and current time on seekbar on reload
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", () => {
+  //     console.log(`Will store: ${volume} volume`);
+  //     storeVolume(volume);
+  //     storeCurrentTime(currentTime);
+  //     console.log("Persist");
+  //   });
+  // });
 
   const displayVolume = showVolume ? "d-block" : "d-none";
 
@@ -226,7 +353,10 @@ const BottomPlayer: React.FC = () => {
                 <BsArrowRepeat size="1.45rem" />
               </Button>
             </div>
-            <div className="align-self-center position-relative">
+            <div
+              className="align-self-center position-relative"
+              style={{ cursor: "pointer" }}
+            >
               <div
                 className={`player-volume-control position-absolute bottom-100 end-25 shadow shadow-sm ${displayVolume}`}
                 onMouseEnter={() => setShowVolume(true)}
@@ -243,10 +373,11 @@ const BottomPlayer: React.FC = () => {
                   />
                 </div>
               </div>
-              <BsFillVolumeDownFill
-                size="1.8rem"
-                onMouseEnter={() => setShowVolume(true)}
-                onMouseLeave={() => setShowVolume(false)}
+              <VolumeIcon
+                volume={volume}
+                muted={isMuted}
+                setShowVolume={setShowVolume}
+                setMuted={setIsMuted}
               />
             </div>
           </div>
@@ -272,6 +403,7 @@ const BottomPlayer: React.FC = () => {
                 }
               }}
               onEnded={handleOnEnded}
+              onClick={() => alert(1)}
             />
             <div
               className="player-seekbar mx-2 disable-select w-100"

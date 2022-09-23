@@ -13,6 +13,8 @@
 :white_check_mark: Configure index page (set it to be inbox)
 :white_check_mark: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
 :white_check_mark: Mock registration successful page (after validation went through)
+:white_large_square: Implement switching between tracks
+:white_large_square: Listen for arrow left/right key presses to navigate on track (+/- 10 sec back/forth)
 
 ## Backend
 

@@ -37,7 +37,6 @@ const BottomPlayer: React.FC = () => {
   const currentTimeRef = useRef<HTMLSpanElement>(null);
   const isMouseDownRef = useRef(false);
   const volumeBarRef = useRef<HTMLDivElement>(null);
-  const volumeOnUnmute = useRef(volume);
 
   // PLAY
 
@@ -363,13 +362,18 @@ const BottomPlayer: React.FC = () => {
                 onMouseLeave={() => setShowVolume(false)}
               >
                 <div
-                  className="player-volume-control-container bg-light border d-flex p-2 rounded-1"
+                  className="player-volume-control-container bg-light border d-flex justify-content-center p-2 rounded-1"
                   style={{ height: "130px", width: "30px" }}
                 >
-                  <div
+                  {/* <div
                     className="player-volume-bar w-100 h-100"
                     style={{ cursor: "pointer" }}
                     ref={volumeBarRef}
+                  /> */}
+                  <input
+                    type="range"
+                    className="player-volume-bar-real d-flex"
+                    style={{ width: "110px" }}
                   />
                 </div>
               </div>
@@ -403,17 +407,12 @@ const BottomPlayer: React.FC = () => {
                 }
               }}
               onEnded={handleOnEnded}
-              onClick={() => alert(1)}
             />
-            <div
-              className="player-seekbar mx-2 disable-select w-100"
-              ref={seekbarRef}
-              style={{ cursor: "pointer" }}
-              draggable={false}
+            <input
+              type="range"
+              defaultValue="0"
+              className="w-100 mx-2 player-seekbar-real"
             />
-            {/* <div className="player-seekbar mx-2 d-flex">
-              <div className="player-seekbar-current-position bg-primary w-25" />
-            </div> */}
             <span
               className="player-seekbar-total-time disable-select"
               draggable={false}

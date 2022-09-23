@@ -20,10 +20,10 @@
 
 .disable-select {
   user-select: none;
- -webkit-user-select: none; 
- -khtml-user-select: none; 
- -moz-user-select: none; 
- -ms-user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .player-volume-bar {
@@ -31,4 +31,145 @@
   background-image: linear-gradient($sf-seekbar-color, $sf-seekbar-color);
   background-size: 100% 40%;
   background-repeat: no-repeat;
+}
+
+.player-volume-bar-real {
+  transform: rotate(270deg);
+  // transform-origin: top left;
+}
+
+/* Seekbar&Volumebar/Background - general */
+.player-seekbar-real {
+  appearance: none;
+  background: $sf-seekbar-color;
+  border-radius: 10px;
+  position: relative;
+  height: 6px;
+  outline: none;
+}
+
+.player-volume-bar-real {
+  appearance: none;
+  background: $sf-seekbar-color;
+  border-radius: 10px;
+  position: relative;
+  height: 6px;
+  outline: none;
+  margin-top: 54px;
+}
+
+/* Seekbar&Volumebar/Background - Safari */
+.player-seekbar-real::-webkit-slider-runnable-track,
+.player-volume-bar-real::-webkit-slider-runnable-track {
+  background: $sf-seekbar-color;
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 6px;
+  outline: none;
+}
+
+/* Seekbar&Volumebar/Background - Firefox */
+.player-seekbar-real::-moz-range-track,
+.player-volume-bar-real::-moz-range-track {
+  background: $sf-seekbar-color;
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 6px;
+  outline: none;
+}seekbar
+
+.player-seekbar-real::-moz-focus-outer,
+.player-volume-bar-real::-moz-focus-outer {
+  border: 0;
+}
+
+/* Seekbar&Volumebar/Visible Progress - Chrome & Safari */
+.player-seekbar-real::before,
+.player-volume-bar-real::before {
+  content: '';
+  height: 6px;
+  width: 60px;
+  background-color: $sf-primary-color;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Seekbar&Volumebar/Visible Progress - Firefox*/
+.player-seekbar-real::-moz-range-progress {
+  background-color: $sf-seekbar-color;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 6px;
+}
+
+/* Seekbar&Volumebar/Handle - Chrome & Safari */
+.player-seekbar-real::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: $sf-primary-color;
+  cursor: pointer;
+  margin: -2.5px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+  opacity: 0; // only display handle on hover
+}
+
+.player-volume-bar-real::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: $sf-primary-color;
+  cursor: pointer;
+  margin: -3.5px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+  opacity: 0; // only display handle on hover
+}
+
+/* Seekbar&Volumebar/Handle (while dragging) - Chrome & Safari */
+.player-seekbar-real:active::-webkit-slider-thumb,
+.player-volume-bar-real:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.player-seekbar-real:hover::-webkit-slider-thumb,
+.player-volume-bar-real:hover::-webkit-slider-thumb {
+  opacity: 1; // only sidplay handle on hover
+}
+
+/* Seekbar&Volumebar/Handle  - Firefox */
+.player-seekbar-real::-moz-range-thumb,
+.player-volume-bar-real::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: transparent;
+  background-color: $sf-primary-color;
+  cursor: pointer;
+  z-index: 3;
+  box-sizing: border-box;
+  opacity: 0; // only sidplay handle on hover
+}
+
+/* Seekbar&Volumebar/Handle (while dragging) - Firefox */
+.player-seekbar-real:active::-webkit-slider-thumb,
+.player-volume-bar-real:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.player-seekbar-real:hover::-webkit-slider-thumb,
+.player-volume-bar-real:hover::-webkit-slider-thumb {
+  opacity: 1; // only sidplay handle on hover
 }

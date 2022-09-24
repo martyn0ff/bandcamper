@@ -15,6 +15,7 @@ const VolumeIcon = (props: VolumeIconProps) => {
         onMouseEnter={() => setShowVolume(true)}
         onMouseLeave={() => setShowVolume(false)}
         onClick={() => setMuted(!muted)}
+        style={{ cursor: "pointer" }}
       />
     );
   }
@@ -25,6 +26,7 @@ const VolumeIcon = (props: VolumeIconProps) => {
         onMouseEnter={() => setShowVolume(true)}
         onMouseLeave={() => setShowVolume(false)}
         onClick={() => setMuted(!muted)}
+        style={{ cursor: "pointer" }}
       />
     );
   }
@@ -35,6 +37,7 @@ const VolumeIcon = (props: VolumeIconProps) => {
         onMouseEnter={() => setShowVolume(true)}
         onMouseLeave={() => setShowVolume(false)}
         onClick={() => setMuted(!muted)}
+        style={{ cursor: "pointer" }}
       />
     );
   }
@@ -44,6 +47,7 @@ const VolumeIcon = (props: VolumeIconProps) => {
       onMouseEnter={() => setShowVolume(true)}
       onMouseLeave={() => setShowVolume(false)}
       onClick={() => setMuted(!muted)}
+      style={{ cursor: "pointer" }}
     />
   );
 };

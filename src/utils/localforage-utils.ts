@@ -4,7 +4,7 @@ import { exampleRelease1, exampleRelease2 } from "../widgets/release";
 import IRelease from "../models/ui/release";
 
 const resetLocalForage = async () => {
-  await localforage.clear();
+  // await localforage.clear();
   const exampleReleases: IRelease[] = [
     exampleRelease1,
     exampleRelease2,

@@ -2,13 +2,13 @@
   height: $sf-bottom-player-height;
 }
 
-.player-seekbar {
-  height: 6px;
-  background-color: $sf-seekbar-color;
-  background-image: linear-gradient($sf-primary-color, $sf-primary-color);
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-}
+// .player-seekbar {
+//   height: 6px;
+//   background-color: $sf-seekbar-color;
+//   background-image: linear-gradient($sf-primary-color, $sf-primary-color);
+//   background-size: 0% 100%;
+//   background-repeat: no-repeat;
+// }
 
 .player-volume-bar {
   background-color: $sf-seekbar-color;
@@ -18,37 +18,28 @@
   transition: opacity 0.15s;
 }
 
-.disable-select {
-  user-select: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
 .player-volume-bar {
-  background-color: $sf-primary-color;
-  background-image: linear-gradient($sf-seekbar-color, $sf-seekbar-color);
-  background-size: 100% 40%;
-  background-repeat: no-repeat;
-}
-
-.player-volume-bar-real {
+  --volume: 0;
   transform: rotate(270deg);
   // transform-origin: top left;
 }
 
+
 /* Seekbar&Volumebar/Background - general */
-.player-seekbar-real {
+.player-seekbar {
+  --seekbar-progress: 0;
+
   appearance: none;
   background: $sf-seekbar-color;
   border-radius: 10px;
   position: relative;
   height: 6px;
   outline: none;
+  width: 100%;
+  cursor: pointer;
 }
 
-.player-volume-bar-real {
+.player-volume-bar {
   appearance: none;
   background: $sf-seekbar-color;
   border-radius: 10px;
@@ -59,8 +50,8 @@
 }
 
 /* Seekbar&Volumebar/Background - Safari */
-.player-seekbar-real::-webkit-slider-runnable-track,
-.player-volume-bar-real::-webkit-slider-runnable-track {
+.player-seekbar::-webkit-slider-runnable-track,
+.player-volume-bar::-webkit-slider-runnable-track {
   background: $sf-seekbar-color;
   border-radius: 10px;
   position: relative;
@@ -70,27 +61,41 @@
 }
 
 /* Seekbar&Volumebar/Background - Firefox */
-.player-seekbar-real::-moz-range-track,
-.player-volume-bar-real::-moz-range-track {
+.player-seekbar::-moz-range-track,
+.player-volume-bar::-moz-range-track {
   background: $sf-seekbar-color;
   border-radius: 10px;
   position: relative;
   width: 100%;
   height: 6px;
   outline: none;
-}seekbar
+}
 
-.player-seekbar-real::-moz-focus-outer,
-.player-volume-bar-real::-moz-focus-outer {
+.player-seekbar::-moz-focus-outer,
+.player-volume-bar::-moz-focus-outer {
   border: 0;
 }
 
 /* Seekbar&Volumebar/Visible Progress - Chrome & Safari */
-.player-seekbar-real::before,
-.player-volume-bar-real::before {
+.player-seekbar::before,
+.player-volume-bar::before {
   content: '';
   height: 6px;
-  width: 60px;
+  width: var(--seekbar-progress);
+  background-color: $sf-primary-color;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.player-volume-bar::before {
+  content: '';
+  height: 6px;
+  width: var(--volume);
   background-color: $sf-primary-color;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -102,7 +107,7 @@
 }
 
 /* Seekbar&Volumebar/Visible Progress - Firefox*/
-.player-seekbar-real::-moz-range-progress {
+.player-seekbar::-moz-range-progress {
   background-color: $sf-seekbar-color;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -110,7 +115,7 @@
 }
 
 /* Seekbar&Volumebar/Handle - Chrome & Safari */
-.player-seekbar-real::-webkit-slider-thumb {
+.player-seekbar::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 12px;
   width: 12px;
@@ -124,7 +129,7 @@
   opacity: 0; // only display handle on hover
 }
 
-.player-volume-bar-real::-webkit-slider-thumb {
+.player-volume-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 12px;
   width: 12px;
@@ -139,19 +144,19 @@
 }
 
 /* Seekbar&Volumebar/Handle (while dragging) - Chrome & Safari */
-.player-seekbar-real:active::-webkit-slider-thumb,
-.player-volume-bar-real:active::-webkit-slider-thumb {
+.player-seekbar:active::-webkit-slider-thumb,
+.player-volume-bar:active::-webkit-slider-thumb {
   transform: scale(1.2);
 }
 
-.player-seekbar-real:hover::-webkit-slider-thumb,
-.player-volume-bar-real:hover::-webkit-slider-thumb {
+.player-seekbar:hover::-webkit-slider-thumb,
+.player-volume-bar:hover::-webkit-slider-thumb {
   opacity: 1; // only sidplay handle on hover
 }
 
 /* Seekbar&Volumebar/Handle  - Firefox */
-.player-seekbar-real::-moz-range-thumb,
-.player-volume-bar-real::-moz-range-thumb {
+.player-seekbar::-moz-range-thumb,
+.player-volume-bar::-moz-range-thumb {
   height: 12px;
   width: 12px;
   border-radius: 50%;
@@ -164,12 +169,12 @@
 }
 
 /* Seekbar&Volumebar/Handle (while dragging) - Firefox */
-.player-seekbar-real:active::-webkit-slider-thumb,
-.player-volume-bar-real:active::-webkit-slider-thumb {
+.player-seekbar:active::-webkit-slider-thumb,
+.player-volume-bar:active::-webkit-slider-thumb {
   transform: scale(1.2);
 }
 
-.player-seekbar-real:hover::-webkit-slider-thumb,
-.player-volume-bar-real:hover::-webkit-slider-thumb {
+.player-seekbar:hover::-webkit-slider-thumb,
+.player-volume-bar:hover::-webkit-slider-thumb {
   opacity: 1; // only sidplay handle on hover
 }

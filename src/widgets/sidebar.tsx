@@ -6,7 +6,7 @@ import { FiLogOut, FiInbox, FiUser, FiUserPlus, FiLogIn } from "react-icons/fi";
 import { v4 as uuidv4 } from "uuid";
 import SidebarProps from "../models/ui/sidebar-props";
 import IRelease from "../models/ui/release";
-import { getUniqueReleasedBy } from "../utils/array-utils";
+import { getUniqueBandName } from "../utils/array-utils";
 
 const Sidebar: React.FC<SidebarProps> = ({
   releases = [] as IRelease[],
@@ -110,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         </Form>
         <div className="text-muted small mx-3 d-flex flex-row align-items-center">
           <span className="text-nowrap">
-            {getUniqueReleasedBy(releases).length} watches, 18 new
+            {getUniqueBandName(releases).length} watches, 18 new
           </span>
           <div
             style={{ width: "100%", height: "1px" }}
@@ -118,7 +118,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           />
         </div>
         <div className="flex-column flex-nowrap mt-2 overflow-auto watches">
-          {getUniqueReleasedBy(releases).map((releasedBy) => (
+          {getUniqueBandName(releases).map((releasedBy) => (
             <LinkContainer
               to={`watch/${releasedBy}`}
               key={uuidv4()}

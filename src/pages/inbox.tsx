@@ -21,7 +21,11 @@ const Inbox: React.FC = () => {
         <p>{releases.length} items, # new</p>
       </div>
       <ReleasesSortSearch />
-      <Accordion alwaysOpen>
+      <Accordion
+        alwaysOpen
+        className="overflow-auto"
+        style={{ height: "580px" }}
+      >
         {releases.map((release) => (
           <Release
             release={release}

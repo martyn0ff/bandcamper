@@ -12,9 +12,12 @@
 :white_large_square: Find out which elements need keys
 :white_check_mark: Configure index page (set it to be inbox)
 :white_check_mark: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
-:white_check_mark: Mock registration successful page (after validation went through)
+:white_large_square: Mock registration successful page (after validation went through)
 :white_large_square: Implement switching between tracks
-:white_large_square: Listen for arrow left/right key presses to navigate on track (+/- 10 sec back/forth)
+:white_large_square: Implement shuffle/repeat/normal play mode
+:white_check_mark: Listen for arrow left/right key presses to navigate on track (+/- 10 sec back/forth)
+:white_large_square: Add pagination for Inbox/Watches
+:white_large_square: Don't show audio players for each individual track in Inbox/Watch, rather show track/artist name, length, play and buy button/ Play button will play selected track and load it into bottom player.
 
 ## Backend
 
@@ -36,3 +39,12 @@
 # Flows
 
 Click on release => Load data => Show spinner/loading/whatever => Show decsription and music
+
+1. User registers
+2. User logs in
+3. User is offered bandcamper email that they should forward their Bandcamp email to
+4. New email from Bandcamp arrives to bandcamper email
+5. The URL is parsed (e.g. https://bvdub-affin.bandcamp.com/album/decades-on-divided-stars)
+6. URL content has necessary information, it is parsed
+7. Parsed information gets constructed into an object (IRelease containing ITrack's)
+8. This object gets added to an array of all releases for this user

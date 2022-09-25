@@ -1,14 +1,19 @@
+import ITrack from "./track";
+
 export default interface IRelease {
   id: number;
+  bandId: number;
+  bandName: string; // parsed from url
+  isPreorder: boolean;
+  coverArt: string;
+  type: string;
   artist: string;
   title: string;
-  coverArt: string;
   totalTracks: number;
   availableTracks: number;
-  previewUrls: number;
-  audioPreviewUrls: string[];
-  releasedAt: Date;
-  releaseUrl: string;
-  releasedBy: string;
-  releaseDescription: string;
+  releaseDate: Date;
+  about: string | null;
+  credits: string | null;
+  description: string | null;
+  tracks: ITrack[];
 }

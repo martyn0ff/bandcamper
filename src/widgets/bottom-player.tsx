@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
@@ -20,8 +20,12 @@ import {
   storeVolume,
 } from "../utils/localforage-utils";
 import { secToTimestamp } from "../utils/player-utils";
+import { BottomPlayerProps } from "../models/ui/bottom-player-props";
+import ITrack from "../models/ui/track";
 
-const BottomPlayer: React.FC = () => {
+const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
+  const { playlist } = props;
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const seekbarRef = useRef<HTMLInputElement>(null);
   const volumeBarRef = useRef<HTMLInputElement>(null);
@@ -34,6 +38,7 @@ const BottomPlayer: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
 
   const togglePlayPause = () => {
     const prev = isPlaying;
@@ -150,13 +155,15 @@ const BottomPlayer: React.FC = () => {
     e.preventDefault();
     storeCurrentTime(currentTime);
     storeVolume(volume);
-    console.log(`Stored shit`);
   };
 
   const displayVolume = showVolume ? "d-block" : "d-none";
 
   return (
-    <div className="bottom-player border-top shadow shadow-sm">
+    <div
+      className="bottom-player border-top shadow shadow-sm"
+      style={{ minHeight: "99px" }}
+    >
       <Container
         fluid
         className="d-flex align-items-center h-100 justify-content-center px-3"
@@ -265,7 +272,7 @@ const BottomPlayer: React.FC = () => {
           </div>
           <div className="player-seekbar-control d-flex align-items-center">
             <span className="player-seekbar-current-time disable-select">
-              {secToTimestamp(currentTime || 0)}
+              {secToTimestamp(currentTime)}
             </span>
             <audio
               src={mp3file}

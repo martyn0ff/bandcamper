@@ -11,7 +11,7 @@ export const loader = async ({
 }: LoaderFunctionArgs): Promise<IWatch> => {
   const releases = await getReleases();
   const filteredReleases = releases.filter(
-    (release) => release.releasedBy === params.watchId,
+    (release) => String(release.bandName) === (params.watchId as string),
   );
   if (filteredReleases.length === 0) {
     // eslint-disable-next-line @typescript-eslint/no-throw-literal
@@ -22,12 +22,12 @@ export const loader = async ({
   }
   return {
     releases: filteredReleases,
-    releasedBy: params.watchId as string,
+    bandName: params.watchId as string,
   };
 };
 
 const Watch: React.FC = () => {
-  const { releases, releasedBy } = useLoaderData() as IWatch;
+  const { releases, bandName } = useLoaderData() as IWatch;
 
   return (
     <>
@@ -38,14 +38,18 @@ const Watch: React.FC = () => {
           className="rounded-circle me-3 mb-3"
         />
         <div className="watch-info">
-          <h1 className="mb-0">{releasedBy}</h1>
+          <h1 className="mb-0">{bandName}</h1>
           <p className="m-0">
             {releases.length} {releases.length === 1 ? "item" : "items"}, # new
           </p>
         </div>
       </div>
       <WatchSortSearch />
-      <Accordion alwaysOpen>
+      <Accordion
+        alwaysOpen
+        className="overflow-auto"
+        style={{ height: "555px" }}
+      >
         {releases.map((release) => (
           <Release release={release} />
         ))}

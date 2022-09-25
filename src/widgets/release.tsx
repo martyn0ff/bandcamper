@@ -3,41 +3,7 @@ import Image from "react-bootstrap/Image";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { v4 as uuidv4 } from "uuid";
-import mp3file from "../assets/music.mp3";
-import IRelease from "../models/ui/release";
 import { ReleaseProps } from "../models/ui/release-props";
-
-export const exampleRelease1: IRelease = {
-  id: 1000,
-  artist: "Confluencia",
-  title: "Resilencia EP",
-  coverArt: "https://f4.bcbits.com/img/a2018247290_16.jpg",
-  totalTracks: 1,
-  previewUrls: 1,
-  availableTracks: 1,
-  audioPreviewUrls: [mp3file],
-  releasedAt: new Date(),
-  releaseUrl: "https://mord.bandcamp.com/album/resiliencia-ep-2",
-  releasedBy: "mord",
-  releaseDescription:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, quia mollitia, id beatae nemo quibusdam ut illum doloremque itaque quaerat velit ipsum consequuntur omnis ad reiciendis obcaecati atque minus ea accusamus veritatis laborum! Aperiam blanditiis ex nisi vitae facilis corrupti porro sapiente sequi, quod consequatur? Provident dolores in blanditiis voluptatem.",
-};
-
-export const exampleRelease2: IRelease = {
-  id: 1001,
-  artist: "Pfirter",
-  title: "Altered States",
-  coverArt: "https://f4.bcbits.com/img/a2156897531_16.jpg",
-  totalTracks: 2,
-  previewUrls: 2,
-  availableTracks: 2,
-  audioPreviewUrls: [mp3file, mp3file],
-  releasedAt: new Date(),
-  releaseUrl: "https://pfirter.bandcamp.com/album/altered-states",
-  releasedBy: "pfirter",
-  releaseDescription:
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit dolores omnis quod delectus dolorum dolore animi pariatur quibusdam? Possimus expedita repellendus aperiam. Reiciendis sunt laudantium quibusdam voluptates inventore saepe quasi quidem aliquam, a autem, nam repudiandae, debitis velit soluta.",
-};
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => (
   <Accordion.Item eventKey={release.id.toString()}>
@@ -54,26 +20,28 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => (
             <div>{release.title}</div>
           </div>
           <span className="text-muted">
-            {release.releasedAt.toDateString()}
+            {release.releaseDate.toDateString()}
           </span>
         </div>
       </div>
     </Accordion.Header>
     <Accordion.Body>
       <div className="release-description mb-3">
-        <p>{release.releaseDescription}</p>
+        <p>{release.description}</p>
+        {release.about && <p>{release.about}</p>}
+        {release.credits && <p>{release.credits}</p>}
         <Button className="me-2">Buy Album</Button>
         <Button>Add to Wishlist</Button>
       </div>
       <ListGroup>
-        {release.audioPreviewUrls.map((url) => (
+        {release.tracks.map((track) => (
           <ListGroup.Item
             key={uuidv4()}
             className="py-0"
           >
             <div className="d-flex align-items-center">
               <audio
-                src={url}
+                src={track.mp3Url}
                 controls
                 controlsList="nodownload"
                 className="w-100 me-3"

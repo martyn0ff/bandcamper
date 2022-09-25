@@ -1,13 +1,13 @@
 import IRelease from "../models/ui/release";
 
-export const getUniqueReleasedBy = (releases: IRelease[]) => {
-  const uniqueReleasedBy: string[] = [];
+export const getUniqueBandName = (releases: IRelease[]) => {
+  const uniqueBandName: string[] = [];
 
   releases.forEach((release) => {
-    if (!uniqueReleasedBy.includes(release.releasedBy)) {
-      uniqueReleasedBy.push(release.releasedBy);
+    if (!uniqueBandName.includes(release.bandName)) {
+      uniqueBandName.push(release.bandName);
     }
   });
 
-  return uniqueReleasedBy;
+  return uniqueBandName;
 };

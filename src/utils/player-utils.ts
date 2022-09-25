@@ -5,3 +5,26 @@ export const secToTimestamp = (secs: number) => {
   }
   return date.toISOString().substring(14, 19);
 };
+
+// export const releasesToPlaylist = (releases: IRelease[]) => {
+//   let playlist = [];
+//   releases.forEach((release) => {
+//     const track: ITrack[] = {
+//       id: release.id,
+//       artist: release.artist,
+//       title:
+//     };
+//   });
+// };
+
+// export default interface ITrack {
+//   id: number;
+//   artist: string;
+//   title: string;
+//   coverArt: string;
+//   audioPreviewUrl: string;
+//   releasedAt: Date;
+//   releaseUrl: string;
+//   releasedBy: string; // bandcamp account username
+//   duration: number; // seconds
+// }

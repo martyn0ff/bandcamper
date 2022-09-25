@@ -10,6 +10,8 @@ export const getRelease = async (id: number) => {
   return release ?? null;
 };
 
+const replaceNullArtists = (releases: {}[]) => {};
+
 export const getReleases = async (query?: string) => {
   await fakeNetwork(`releases:${query}`);
   if (query) {
@@ -23,6 +25,15 @@ export const getReleases = async (query?: string) => {
       releaseDate: new Date(release.releaseDate),
     };
     releases.push(releaseObj);
+  });
+
+  releases.forEach((release) => {
+    release.tracks.forEach((track) => {
+      if (track.artist === null) {
+        const trk = track;
+        trk.artist = release.artist;
+      }
+    });
   });
   // return sorted releases instead
   return releases;

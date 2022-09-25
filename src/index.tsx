@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/index.scss";
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/error";
-import Root, { loader as rootLoader } from "./pages/root";
+import Root, { loader as rootLoader, usePlaylist } from "./pages/root";
 import Watch, { loader as watchLoader } from "./pages/watch";
 import Inbox, { loader as inboxLoader } from "./pages/inbox";
 import Profile from "./pages/profile";
@@ -17,6 +17,7 @@ import SignUpSuccess from "./pages/signup-success";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
+
 const router = createBrowserRouter([
   {
     path: "/",

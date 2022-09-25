@@ -24,7 +24,6 @@
   // transform-origin: top left;
 }
 
-
 /* Seekbar&Volumebar/Background - general */
 .player-seekbar {
   --seekbar-progress: 0;
@@ -79,7 +78,7 @@
 /* Seekbar&Volumebar/Visible Progress - Chrome & Safari */
 .player-seekbar::before,
 .player-volume-bar::before {
-  content: '';
+  content: "";
   height: 6px;
   width: var(--seekbar-progress);
   background-color: $sf-primary-color;
@@ -93,7 +92,7 @@
 }
 
 .player-volume-bar::before {
-  content: '';
+  content: "";
   height: 6px;
   width: var(--volume);
   background-color: $sf-primary-color;
@@ -177,4 +176,10 @@
 .player-seekbar:hover::-webkit-slider-thumb,
 .player-volume-bar:hover::-webkit-slider-thumb {
   opacity: 1; // only sidplay handle on hover
+}
+
+.player-track-info {
+  width: 300px;
+  white-space: nowrap;
+  overflow-x: hidden;
 }

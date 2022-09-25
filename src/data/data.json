@@ -15,52 +15,58 @@
     "description": "Debut release by Confluencia, 4 tracks on vinyl and 2 digital bonus tracks. Generic black sleeve. All orders include digital downloads if the EP + 3 Mord stickers.",
     "tracks": [
       {
-        "track_num": 1,
+        "trackNum": 1,
         "id": 10001,
         "mp3Url": "https://t4.bcbits.com/stream/dd690ad866b2d9fe55ac282d995922d8/mp3-128/2982169720?p=0&amp;ts=1664184636&amp;t=1e9025afc222d4d68f0ec396f5e2cb998c0f1389&amp;token=1664184636_cabcf128ebac3651ddf495a7a45b4e596b9f044a",
         "artist": null,
         "title": "Resiliencia",
-        "duration": 371.805
+        "duration": 371.805,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
       },
       {
-        "track_num": 2,
+        "trackNum": 2,
         "id": 10002,
         "mp3Url": "https://t4.bcbits.com/stream/baf84f53385cbe7616cfc671ace19ff6/mp3-128/1842547316?p=0&amp;ts=1664184636&amp;t=a471188ccd396f361b69185dbdda6637ec291a0c&amp;token=1664184636_83f877f18e32899fd91a3f32ff24644f6e0c4fdb",
         "artist": null,
         "title": "Consciencia",
-        "duration": 425.962
+        "duration": 425.962,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
       },
       {
-        "track_num": 3,
+        "trackNum": 3,
         "id": 10003,
         "mp3Url": "https://t4.bcbits.com/stream/85f6b149e17bb2ea958dcf65fa2c7b28/mp3-128/2957265293?p=0&amp;ts=1664184636&amp;t=1f030e8cd51ce9941b9ac4f0124141f745528004&amp;token=1664184636_cc3d578f9680daba3fcba99a76a0b6516cbabfab",
         "artist": null,
         "title": "Perplejo",
-        "duration": 507.358
+        "duration": 507.358,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
       },
       {
-        "track_num": 4,
+        "trackNum": 4,
         "id": 10004,
         "mp3Url": "https://t4.bcbits.com/stream/8a2c3cc68824d7296d2392bb15806c73/mp3-128/1692234362?p=0&amp;ts=1664184636&amp;t=827a214df2399c4695586559287e350348b273b3&amp;token=1664184636_76ff28355b5f8c2090d6009b7d31aeba18997807",
         "artist": null,
         "title": "Impasible",
-        "duration": 311.848
+        "duration": 311.848,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
       },
       {
-        "track_num": 5,
+        "trackNum": 5,
         "id": 10005,
         "mp3Url": "https://t4.bcbits.com/stream/48aaaeec605ff0d98386501d34bfe0a4/mp3-128/3120211859?p=0&amp;ts=1664184636&amp;t=24cdf2dfa419271bea9bb2b57fd30cf9d02fddc7&amp;token=1664184636_e0484b1242334fb62a66090bdd6ae56c3017cb06",
         "artist": null,
         "title": "Vehemente [digi only]",
-        "duration": 280.869
+        "duration": 280.869,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
       },
       {
-        "track_num": 6,
+        "trackNum": 6,
         "id": 10006,
         "mp3Url": "https://t4.bcbits.com/stream/71df21734895f9872889c9a0daa5eddc/mp3-128/1561524061?p=0&amp;ts=1664184636&amp;t=29f2b99e3a764820a51eb1c6975e31d46d51dc3f&amp;token=1664184636_41c9b2c74efe78dee999de0601cb4ba638c1c8a7",
         "artist": null,
         "title": "Mefistofélico [digi only]",
-        "duration": 345.315
+        "duration": 345.315,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
       }
     ]
   },
@@ -80,20 +86,22 @@
     "description": null,
     "tracks": [
       {
-        "track_num": 1,
+        "trackNum": 1,
         "id": 20001,
         "mp3Url": "https://t4.bcbits.com/stream/4deaa5c3b10b12d12ae3acb18d02d612/mp3-128/3238395998?p=0&amp;ts=1664185726&amp;t=152d4c7f2d145cead8d6fd3a9ce2dbf4816ea3bd&amp;token=1664185726_c30d4bb60dd0812b975946a25b4460966d751ee1",
         "artist": null,
         "title": "Candlelight Dans La Discotheque",
-        "duration": 478.517
+        "duration": 478.517,
+        "coverArt": "https://f4.bcbits.com/img/a2960032181_10.jpg"
       },
       {
-        "track_num": 2,
+        "trackNum": 2,
         "id": 20002,
         "mp3Url": "https://t4.bcbits.com/stream/90aac21607d0a525d73534ea02983874/mp3-128/3784999201?p=0&amp;ts=1664185726&amp;t=32cb7eef59ecbfc13c8a7f10f4e34f38dda99612&amp;token=1664185726_bc4650d708e24a3a622626ec210467a7e405f86a",
         "artist": null,
         "title": "Distance",
-        "duration": 435.263
+        "duration": 435.263,
+        "coverArt": "https://f4.bcbits.com/img/a2960032181_10.jpg"
       }
     ]
   }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useOutletContext } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "../widgets/navbar";
 import Sidebar from "../widgets/sidebar";
@@ -14,6 +14,13 @@ export const loader = async () => {
   return releases;
 };
 
+type PlaylistCtx = {
+  playlist: ITrack[] | null;
+  currentTrackNum: number;
+  setPlaylist: React.Dispatch<React.SetStateAction<ITrack[]>>;
+  setCurrentTrackNum: React.Dispatch<React.SetStateAction<number>>;
+};
+
 const Root: React.FC = () => {
   useEffect(() => {
     resetLocalForage();
@@ -21,6 +28,7 @@ const Root: React.FC = () => {
 
   const loadedReleases = useLoaderData() as IRelease[];
   const [playlist, setPlaylist] = useState<ITrack[]>([]);
+  const [currentTrackNum, setCurrentTrackNum] = useState(0);
 
   return (
     <>
@@ -40,9 +48,12 @@ const Root: React.FC = () => {
               fluid
               className="p-3 h-auto"
             >
-              <Outlet />
+              <Outlet context={{ playlist, setPlaylist, setCurrentTrackNum }} />
             </Container>
-            <BottomPlayer playlist={playlist} />
+            <BottomPlayer
+              playlist={playlist}
+              currentTrackNum={currentTrackNum}
+            />
           </section>
         </main>
       </Container>
@@ -50,4 +61,5 @@ const Root: React.FC = () => {
   );
 };
 
+export const usePlaylist = () => useOutletContext<PlaylistCtx>();
 export default Root;

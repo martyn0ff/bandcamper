@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "react-bootstrap/Image";
@@ -5,6 +6,8 @@ import Release from "../widgets/release";
 import WatchSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
 import IWatch from "../models/ui/watch";
+import { usePlaylist } from "./root";
+import { getTracks } from "../utils/array-utils";
 
 export const loader = async ({
   params,
@@ -28,6 +31,13 @@ export const loader = async ({
 
 const Watch: React.FC = () => {
   const { releases, bandName } = useLoaderData() as IWatch;
+  const { setPlaylist } = usePlaylist();
+
+  useEffect(() => {
+    setPlaylist(getTracks(releases));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [releases]);
 
   return (
     <>

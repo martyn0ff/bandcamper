@@ -24,8 +24,6 @@ import { BottomPlayerProps } from "../models/ui/bottom-player-props";
 import ITrack from "../models/ui/track";
 
 const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
-  const { playlist } = props;
-
   const audioRef = useRef<HTMLAudioElement>(null);
   const seekbarRef = useRef<HTMLInputElement>(null);
   const volumeBarRef = useRef<HTMLInputElement>(null);
@@ -38,7 +36,7 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
-  const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
+  const { playlist, currentTrackNum } = props;
 
   const togglePlayPause = () => {
     const prev = isPlaying;
@@ -151,6 +149,13 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMuted]);
 
+  useEffect(() => {
+    if (isPlaying && audioRef.current) {
+      audioRef.current.play();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTrackNum]);
+
   window.onbeforeunload = (e) => {
     e.preventDefault();
     storeCurrentTime(currentTime);
@@ -168,9 +173,9 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
         fluid
         className="d-flex align-items-center h-100 justify-content-center px-3"
       >
-        <div className="d-flex">
+        <div className="d-flex player-track-info">
           <Image
-            src="https://f4.bcbits.com/img/0024816791_10.jpg"
+            src={playlist[currentTrackNum - 1]?.coverArt}
             width={56}
             height={56}
             style={{ objectFit: "cover" }}
@@ -181,13 +186,13 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
               className="fw-bold"
               style={{ lineHeight: "1.0", marginBottom: "0.3rem" }}
             >
-              Artist
+              {playlist[currentTrackNum - 1]?.artist}
             </p>
             <p
               className="mb-0"
               style={{ lineHeight: "1.0" }}
             >
-              Track Name Which Is Long
+              {playlist[currentTrackNum - 1]?.title}
             </p>
           </div>
         </div>
@@ -275,13 +280,11 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
               {secToTimestamp(currentTime)}
             </span>
             <audio
-              src={mp3file}
+              src={playlist[currentTrackNum - 1]?.mp3Url}
               preload="metadata"
               ref={audioRef}
               onLoadedMetadata={() => {
-                if (audioRef.current) {
-                  setDuration(audioRef?.current?.duration);
-                }
+                setDuration(playlist[currentTrackNum - 1]?.duration || 0);
               }}
               onEnded={() => setIsPlaying(false)}
               onTimeUpdate={handleSeekbarPlaying}
@@ -291,7 +294,7 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
               value={currentTime}
               className="mx-2 player-seekbar"
               min="0"
-              max={duration}
+              max={playlist[currentTrackNum - 1]?.duration || 0}
               ref={seekbarRef}
               onChange={handleSeekbarSeeking}
               onMouseUp={changeTime}

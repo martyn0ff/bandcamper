@@ -6,8 +6,8 @@ import Release from "../widgets/release";
 import WatchSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
 import IWatch from "../models/ui/watch";
-import { usePlaylist } from "./root";
 import { getTracks } from "../utils/array-utils";
+import { usePlayerContext, PlayerCtx } from "../context/player-context";
 
 export const loader = async ({
   params,
@@ -31,7 +31,7 @@ export const loader = async ({
 
 const Watch: React.FC = () => {
   const { releases, bandName } = useLoaderData() as IWatch;
-  const { setPlaylist } = usePlaylist();
+  const { setPlaylist } = usePlayerContext() as PlayerCtx;
 
   useEffect(() => {
     setPlaylist(getTracks(releases));

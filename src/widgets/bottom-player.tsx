@@ -20,8 +20,9 @@ import {
 } from "../utils/localforage-utils";
 import { secToTimestamp } from "../utils/player-utils";
 import { BottomPlayerProps } from "../models/ui/bottom-player-props";
+import { PlayerCtx, usePlayerContext } from "../context/player-context";
 
-const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
+const BottomPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const seekbarRef = useRef<HTMLInputElement>(null);
   const volumeBarRef = useRef<HTMLInputElement>(null);
@@ -33,7 +34,8 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
-  const { playlist, currentTrackId, isPlaying, setIsPlaying } = props;
+  const { playlist, currentTrackId, isPlaying, setIsPlaying } =
+    usePlayerContext() as PlayerCtx;
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -177,7 +179,7 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
         <div className="d-flex player-track-info">
           <Image
             src={
-              playlist.find((track) => track.id === currentTrackId)?.coverArt
+              playlist?.find((track) => track.id === currentTrackId)?.coverArt
             }
             width={56}
             height={56}
@@ -189,13 +191,13 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
               className="fw-bold"
               style={{ lineHeight: "1.0", marginBottom: "0.3rem" }}
             >
-              {playlist.find((track) => track.id === currentTrackId)?.artist}
+              {playlist?.find((track) => track.id === currentTrackId)?.artist}
             </p>
             <p
               className="mb-0"
               style={{ lineHeight: "1.0" }}
             >
-              {playlist.find((track) => track.id === currentTrackId)?.title}
+              {playlist?.find((track) => track.id === currentTrackId)?.title}
             </p>
           </div>
         </div>
@@ -284,13 +286,13 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
             </span>
             <audio
               src={
-                playlist.find((track) => track.id === currentTrackId)?.mp3Url
+                playlist?.find((track) => track.id === currentTrackId)?.mp3Url
               }
               preload="metadata"
               ref={audioRef}
               onLoadedMetadata={() => {
                 setDuration(
-                  playlist.find((track) => track.id === currentTrackId)
+                  playlist?.find((track) => track.id === currentTrackId)
                     ?.duration || 0,
                 );
               }}
@@ -303,7 +305,7 @@ const BottomPlayer: React.FC<BottomPlayerProps> = (props) => {
               className="mx-2 player-seekbar"
               min="0"
               max={
-                playlist.find((track) => track.id === currentTrackId)
+                playlist?.find((track) => track.id === currentTrackId)
                   ?.duration || 0
               }
               ref={seekbarRef}

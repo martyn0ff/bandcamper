@@ -7,10 +7,11 @@ import { v4 as uuidv4 } from "uuid";
 import { BsFillPlayFill } from "react-icons/bs";
 import { ReleaseProps } from "../models/ui/release-props";
 import { secToTimestamp } from "../utils/player-utils";
-import { usePlaylist } from "../pages/root";
+import { PlayerCtx, usePlayerContext } from "../context/player-context";
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
-  const { setCurrentTrackId, isPlaying, setIsPlaying } = usePlaylist();
+  const { setCurrentTrackId, isPlaying, setIsPlaying } =
+    usePlayerContext() as PlayerCtx;
 
   return (
     <Accordion.Item eventKey={release.id.toString()}>

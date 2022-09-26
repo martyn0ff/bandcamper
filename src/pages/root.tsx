@@ -16,9 +16,11 @@ export const loader = async () => {
 
 type PlaylistCtx = {
   playlist: ITrack[] | null;
-  currentTrackNum: number;
+  currentTrackId: number;
+  isPlaying: boolean;
   setPlaylist: React.Dispatch<React.SetStateAction<ITrack[]>>;
-  setCurrentTrackNum: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentTrackId: React.Dispatch<React.SetStateAction<number>>;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Root: React.FC = () => {
@@ -28,7 +30,8 @@ const Root: React.FC = () => {
 
   const loadedReleases = useLoaderData() as IRelease[];
   const [playlist, setPlaylist] = useState<ITrack[]>([]);
-  const [currentTrackNum, setCurrentTrackNum] = useState(0);
+  const [currentTrackId, setCurrentTrackId] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <>
@@ -48,11 +51,20 @@ const Root: React.FC = () => {
               fluid
               className="p-3 h-auto"
             >
-              <Outlet context={{ playlist, setPlaylist, setCurrentTrackNum }} />
+              <Outlet
+                context={{
+                  playlist,
+                  setPlaylist,
+                  setCurrentTrackId,
+                  setIsPlaying,
+                }}
+              />
             </Container>
             <BottomPlayer
               playlist={playlist}
-              currentTrackNum={currentTrackNum}
+              currentTrackId={currentTrackId}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
             />
           </section>
         </main>

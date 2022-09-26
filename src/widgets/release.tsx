@@ -10,7 +10,7 @@ import { secToTimestamp } from "../utils/player-utils";
 import { usePlaylist } from "../pages/root";
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
-  const { setCurrentTrackNum } = usePlaylist();
+  const { setCurrentTrackId, isPlaying, setIsPlaying } = usePlaylist();
 
   return (
     <Accordion.Item eventKey={release.id.toString()}>
@@ -64,7 +64,10 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
                   <BsFillPlayFill
                     size="1.2rem"
                     onClick={() => {
-                      setCurrentTrackNum(track.trackNum);
+                      setCurrentTrackId(track.id);
+                      if (!isPlaying) {
+                        setIsPlaying(true);
+                      }
                     }}
                     style={{ cursor: "pointer" }}
                   />

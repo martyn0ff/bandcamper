@@ -39,7 +39,7 @@ const Profile = () => (
         </Form.Text>
       </Form.Group>
 
-      <hr className="my-4" />
+      <hr className="my-3" />
 
       <Form.Group
         className="mb-3"
@@ -60,7 +60,7 @@ const Profile = () => (
         </Form.Text>
       </Form.Group>
 
-      <hr className="my-4" />
+      <hr className="my-3" />
 
       <Form.Group
         className="mb-3"

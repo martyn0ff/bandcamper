@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
@@ -15,8 +15,14 @@ import VolumeIcon from "../components/VolumeIcon";
 import {
   retrieveCurrentTime,
   retrieveVolume,
+  retrieveCurrentTrack,
+  retrievePlaylist,
+  retrieveDuration,
   storeCurrentTime,
   storeVolume,
+  storeCurrentTrack,
+  storePlaylist,
+  storeDuration,
 } from "../utils/localforage-utils";
 import { secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
@@ -36,11 +42,8 @@ const BottomPlayer: React.FC = () => {
   const [currentTrackIdx, setCurrentTrackIdx] = useState(-1);
   const {
     playlistRef,
-    // playlist,
     currentTrack,
     setCurrentTrack,
-    // setCurrentTrackId,
-    // currentTrackId,
     isPlaying,
     setIsPlaying,
   } = usePlayerContext() as PlayerCtx;
@@ -53,8 +56,6 @@ const BottomPlayer: React.FC = () => {
 
   const toPrevTrack = () => {
     if (playlist && currentTrackIdx > 0) {
-      // const prevTrackId = playlist[currentTrackIdx - 1].id;
-      // setCurrentTrackId(prevTrackId);
       const prevTrack = playlist[currentTrackIdx - 1];
       setCurrentTrack(prevTrack);
     }
@@ -62,8 +63,6 @@ const BottomPlayer: React.FC = () => {
 
   const toNextTrack = () => {
     if (playlist && currentTrackIdx < playlist.length - 1) {
-      // const nextTrackId = playlist[currentTrackIdx + 1].id;
-      // setCurrentTrackId(nextTrackId);
       const nextTrack = playlist[currentTrackIdx + 1];
       setCurrentTrack(nextTrack);
     }
@@ -136,28 +135,71 @@ const BottomPlayer: React.FC = () => {
   }, []);
 
   // load & restore playback progress
-  // useEffect(() => {
-  //   retrieveCurrentTime()
-  //     .then((time) => {
-  //       if (time) {
-  //         setCurrentTime(time);
-  //         if (
-  //           audioRef.current &&
-  //           seekbarRef.current &&
-  //           currentTime &&
-  //           duration
-  //         ) {
-  //           audioRef.current.currentTime = currentTime;
-  //           seekbarRef.current.style.setProperty(
-  //             "--seekbar-progress",
-  //             `${(Number(seekbarRef.current.value) / duration) * 100}%`,
-  //           );
-  //         }
-  //       }
-  //     })
-  //     .catch((e) => console.error(e));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useLayoutEffect(() => {
+    retrieveCurrentTime()
+      .then((time) => {
+        if (time) {
+          setCurrentTime(time);
+          console.log(`CurrentTime: ${currentTime}`);
+          console.log(`Duration: ${duration}`);
+          console.log(`AudioRef: ${audioRef.current}`);
+          console.log(`SeekbarRef: ${seekbarRef.current}`);
+          if (
+            audioRef.current // &&
+            // seekbarRef.current &&
+            // currentTime &&
+            // duration
+          ) {
+            audioRef.current.currentTime = currentTime;
+            // seekbarRef.current.style.setProperty(
+            //   "--seekbar-progress",
+            //   `${(Number(seekbarRef.current.value) / duration) * 100}%`,
+            // );
+            // console.log(
+            //   `${(Number(seekbarRef.current.value) / duration) * 100}%`,
+            // );
+          }
+        }
+      })
+      .catch((e) => console.error(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // load & restore playlist
+  useEffect(() => {
+    retrievePlaylist().then((playlist_) => {
+      if (playlist_) {
+        playlistRef.current = playlist_;
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // load & restore current track
+  useEffect(() => {
+    retrieveCurrentTrack().then((track) => {
+      if (track) {
+        setCurrentTrack(track);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // load & restore duration
+  useEffect(() => {
+    retrieveDuration().then((duration_) => {
+      if (duration_) {
+        setDuration(duration);
+        if (seekbarRef.current) {
+          seekbarRef.current.style.setProperty(
+            "--seekbar-progress",
+            `${(Number(seekbarRef.current.value) / duration) * 100}%`,
+          );
+        }
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Mute/unmute
   useEffect(() => {
@@ -196,10 +238,24 @@ const BottomPlayer: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrack]);
 
+  useEffect(() => {
+    if (seekbarRef.current) {
+      seekbarRef.current.style.setProperty(
+        "--seekbar-progress",
+        `${(Number(seekbarRef.current.value) / duration) * 100}%`,
+      );
+    }
+  }, [currentTime, duration]);
+
   window.onbeforeunload = (e) => {
     e.preventDefault();
     storeCurrentTime(currentTime);
     storeVolume(volume);
+    if (currentTrack) {
+      storeCurrentTrack(currentTrack);
+    }
+    storePlaylist(playlistRef.current);
+    storeDuration(duration);
   };
 
   const displayVolume = showVolume ? "d-block" : "d-none";
@@ -218,10 +274,7 @@ const BottomPlayer: React.FC = () => {
       >
         <div className="d-flex player-track-info">
           <Image
-            src={
-              // playlist?.find((track) => track.id === currentTrackId)?.coverArt
-              currentTrack?.coverArt
-            }
+            src={currentTrack?.coverArt}
             width={56}
             height={56}
             style={{ objectFit: "cover" }}
@@ -232,14 +285,12 @@ const BottomPlayer: React.FC = () => {
               className="fw-bold"
               style={{ lineHeight: "1.0", marginBottom: "0.3rem" }}
             >
-              {/* {playlist?.find((track) => track.id === currentTrackId)?.artist} */}
               {currentTrack?.artist}
             </p>
             <p
               className="mb-0"
               style={{ lineHeight: "1.0" }}
             >
-              {/* {playlist?.find((track) => track.id === currentTrackId)?.title} */}
               {currentTrack?.title}
             </p>
           </div>
@@ -252,10 +303,17 @@ const BottomPlayer: React.FC = () => {
             <div className="d-flex">
               <Button
                 variant="link"
-                className="player-control-button p-0 me-3"
+                className="player-control-button p-0 me-3 position-relative"
               >
+                <span
+                  className="py-0 px-1 position-absolute top-0 start-0 fw-bold lh-1"
+                  style={{ fontSize: "9px" }}
+                >
+                  ON
+                </span>
                 <BsShuffle size="1.35rem" />
               </Button>
+
               <Button
                 variant="link"
                 className="player-control-button p-0 me-3"

@@ -13,11 +13,11 @@
 :white_check_mark: Configure index page (set it to be inbox)
 :white_check_mark: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
 :white_large_square: Mock registration successful page (after validation went through)
-:white_large_square: Implement switching between tracks
+:white_check_mark: Implement switching between tracks
 :white_large_square: Implement shuffle/repeat/normal play mode
 :white_check_mark: Listen for arrow left/right key presses to navigate on track (+/- 10 sec back/forth)
 :white_large_square: Add pagination for Inbox/Watches
-:white_large_square: Don't show audio players for each individual track in Inbox/Watch, rather show track/artist name, length, play and buy button/ Play button will play selected track and load it into bottom player.
+:white_check_mark: Don't show audio players for each individual track in Inbox/Watch, rather show track/artist name, length, play and buy button/ Play button will play selected track and load it into bottom player.
 
 ## Backend
 

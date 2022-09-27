@@ -16,10 +16,11 @@ export const loader = async (): Promise<IRelease[]> => {
 
 const Inbox: React.FC = () => {
   const releases = useLoaderData() as IRelease[];
-  const { setPlaylist } = usePlayerContext() as PlayerCtx;
+  const { playlistRef } = usePlayerContext() as PlayerCtx;
 
   useEffect(() => {
-    setPlaylist(getTracks(releases));
+    playlistRef.current = getTracks(releases);
+    // setPlaylist(getTracks(releases));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [releases]);

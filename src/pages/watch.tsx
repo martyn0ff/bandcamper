@@ -31,10 +31,11 @@ export const loader = async ({
 
 const Watch: React.FC = () => {
   const { releases, bandName } = useLoaderData() as IWatch;
-  const { setPlaylist } = usePlayerContext() as PlayerCtx;
+  const { playlistRef } = usePlayerContext() as PlayerCtx;
 
   useEffect(() => {
-    setPlaylist(getTracks(releases));
+    // setPlaylist(getTracks(releases));
+    playlistRef.current = getTracks(releases);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [releases]);

@@ -10,7 +10,7 @@ import { secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
-  const { setCurrentTrackId, isPlaying, setIsPlaying } =
+  const { setCurrentTrack, isPlaying, setIsPlaying } =
     usePlayerContext() as PlayerCtx;
 
   return (
@@ -65,7 +65,7 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
                   <BsFillPlayFill
                     size="1.2rem"
                     onClick={() => {
-                      setCurrentTrackId(track.id);
+                      setCurrentTrack(track);
                       if (!isPlaying) {
                         setIsPlaying(true);
                       }

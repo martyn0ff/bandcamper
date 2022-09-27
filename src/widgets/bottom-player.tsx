@@ -19,7 +19,6 @@ import {
   storeVolume,
 } from "../utils/localforage-utils";
 import { secToTimestamp } from "../utils/player-utils";
-import { BottomPlayerProps } from "../models/ui/bottom-player-props";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
 
 const BottomPlayer: React.FC = () => {
@@ -34,11 +33,40 @@ const BottomPlayer: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
-  const { playlist, currentTrackId, isPlaying, setIsPlaying } =
-    usePlayerContext() as PlayerCtx;
+  const [currentTrackIdx, setCurrentTrackIdx] = useState(-1);
+  const {
+    playlistRef,
+    // playlist,
+    currentTrack,
+    setCurrentTrack,
+    // setCurrentTrackId,
+    // currentTrackId,
+    isPlaying,
+    setIsPlaying,
+  } = usePlayerContext() as PlayerCtx;
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
+  };
+
+  const playlist = playlistRef.current;
+
+  const toPrevTrack = () => {
+    if (playlist && currentTrackIdx > 0) {
+      // const prevTrackId = playlist[currentTrackIdx - 1].id;
+      // setCurrentTrackId(prevTrackId);
+      const prevTrack = playlist[currentTrackIdx - 1];
+      setCurrentTrack(prevTrack);
+    }
+  };
+
+  const toNextTrack = () => {
+    if (playlist && currentTrackIdx < playlist.length - 1) {
+      // const nextTrackId = playlist[currentTrackIdx + 1].id;
+      // setCurrentTrackId(nextTrackId);
+      const nextTrack = playlist[currentTrackIdx + 1];
+      setCurrentTrack(nextTrack);
+    }
   };
 
   const handleSeekbarPlaying = () => {
@@ -108,29 +136,28 @@ const BottomPlayer: React.FC = () => {
   }, []);
 
   // load & restore playback progress
-  // duration sometimes gets populated later than currentTime everything else so we have to depend on it
-  useEffect(() => {
-    retrieveCurrentTime()
-      .then((time) => {
-        if (time) {
-          setCurrentTime(time);
-          if (
-            audioRef.current &&
-            seekbarRef.current &&
-            currentTime &&
-            duration
-          ) {
-            audioRef.current.currentTime = currentTime;
-            seekbarRef.current.style.setProperty(
-              "--seekbar-progress",
-              `${(Number(seekbarRef.current.value) / duration) * 100}%`,
-            );
-          }
-        }
-      })
-      .catch((e) => console.error(e));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   retrieveCurrentTime()
+  //     .then((time) => {
+  //       if (time) {
+  //         setCurrentTime(time);
+  //         if (
+  //           audioRef.current &&
+  //           seekbarRef.current &&
+  //           currentTime &&
+  //           duration
+  //         ) {
+  //           audioRef.current.currentTime = currentTime;
+  //           seekbarRef.current.style.setProperty(
+  //             "--seekbar-progress",
+  //             `${(Number(seekbarRef.current.value) / duration) * 100}%`,
+  //           );
+  //         }
+  //       }
+  //     })
+  //     .catch((e) => console.error(e));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   // Mute/unmute
   useEffect(() => {
@@ -153,11 +180,21 @@ const BottomPlayer: React.FC = () => {
   }, [isMuted]);
 
   useEffect(() => {
-    if (isPlaying && audioRef.current) {
-      audioRef.current.play();
+    if (playlist && currentTrack) {
+      const trackIdx = playlist?.findIndex(
+        // (track) => track.id === currentTrackId,
+        (track) => track === currentTrack,
+      );
+      if (trackIdx !== -1) {
+        setCurrentTrackIdx(currentTrackIdx);
+      }
+      if (isPlaying && audioRef.current) {
+        audioRef.current.play();
+      }
+      setDuration(currentTrack.duration);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentTrackId]);
+  }, [currentTrack]);
 
   window.onbeforeunload = (e) => {
     e.preventDefault();
@@ -166,6 +203,9 @@ const BottomPlayer: React.FC = () => {
   };
 
   const displayVolume = showVolume ? "d-block" : "d-none";
+  const isCurrentTrackIdxLast = (playlist &&
+    currentTrackIdx === playlist.length - 1) as boolean;
+  const isCurrentTrackIdxFirst = (playlist && currentTrackIdx === 0) as boolean;
 
   return (
     <div
@@ -179,7 +219,8 @@ const BottomPlayer: React.FC = () => {
         <div className="d-flex player-track-info">
           <Image
             src={
-              playlist?.find((track) => track.id === currentTrackId)?.coverArt
+              // playlist?.find((track) => track.id === currentTrackId)?.coverArt
+              currentTrack?.coverArt
             }
             width={56}
             height={56}
@@ -191,13 +232,15 @@ const BottomPlayer: React.FC = () => {
               className="fw-bold"
               style={{ lineHeight: "1.0", marginBottom: "0.3rem" }}
             >
-              {playlist?.find((track) => track.id === currentTrackId)?.artist}
+              {/* {playlist?.find((track) => track.id === currentTrackId)?.artist} */}
+              {currentTrack?.artist}
             </p>
             <p
               className="mb-0"
               style={{ lineHeight: "1.0" }}
             >
-              {playlist?.find((track) => track.id === currentTrackId)?.title}
+              {/* {playlist?.find((track) => track.id === currentTrackId)?.title} */}
+              {currentTrack?.title}
             </p>
           </div>
         </div>
@@ -216,6 +259,8 @@ const BottomPlayer: React.FC = () => {
               <Button
                 variant="link"
                 className="player-control-button p-0 me-3"
+                onClick={toPrevTrack}
+                disabled={isCurrentTrackIdxFirst}
               >
                 <BsFillSkipStartFill size="1.8rem" />
               </Button>
@@ -240,6 +285,8 @@ const BottomPlayer: React.FC = () => {
               <Button
                 variant="link"
                 className="player-control-button p-0 me-3"
+                onClick={toNextTrack}
+                disabled={isCurrentTrackIdxLast}
               >
                 <BsFillSkipEndFill size="1.8rem" />
               </Button>
@@ -286,14 +333,16 @@ const BottomPlayer: React.FC = () => {
             </span>
             <audio
               src={
-                playlist?.find((track) => track.id === currentTrackId)?.mp3Url
+                // playlist?.find((track) => track.id === currentTrackId)?.mp3Url
+                currentTrack?.mp3Url
               }
               preload="metadata"
               ref={audioRef}
               onLoadedMetadata={() => {
                 setDuration(
-                  playlist?.find((track) => track.id === currentTrackId)
-                    ?.duration || 0,
+                  // playlist?.find((track) => track.id === currentTrackId)
+                  //   ?.duration || 0,
+                  currentTrack?.duration || 0,
                 );
               }}
               onEnded={() => setIsPlaying(false)}
@@ -305,8 +354,9 @@ const BottomPlayer: React.FC = () => {
               className="mx-2 player-seekbar"
               min="0"
               max={
-                playlist?.find((track) => track.id === currentTrackId)
-                  ?.duration || 0
+                // playlist?.find((track) => track.id === currentTrackId)
+                //   ?.duration || 0
+                currentTrack?.duration || 0
               }
               ref={seekbarRef}
               onChange={handleSeekbarSeeking}

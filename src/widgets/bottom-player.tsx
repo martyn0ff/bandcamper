@@ -63,6 +63,9 @@ const BottomPlayer: React.FC = () => {
 
   const toNextTrack = () => {
     if (playlist && currentTrackIdx < playlist.length - 1) {
+      console.log(`NXT currentTrackIdx: ${currentTrackIdx}`);
+      console.log(`NXT Playlist:`);
+      console.log(playlist);
       const nextTrack = playlist[currentTrackIdx + 1];
       setCurrentTrack(nextTrack);
     }
@@ -76,6 +79,7 @@ const BottomPlayer: React.FC = () => {
         `${(Number(seekbarRef.current.value) / duration) * 100}%`,
       );
       setCurrentTime(audioRef.current.currentTime);
+      storeCurrentTime(currentTime);
     }
   };
 
@@ -90,12 +94,13 @@ const BottomPlayer: React.FC = () => {
     }
   };
 
-  // sync seekbar position and audio position
+  // when user lets go of mouse button, actual time is changing
   const changeTime = () => {
     if (audioRef.current && seekbarRef.current) {
       audioRef.current.currentTime = Number(seekbarRef.current.value);
       setIsSeeking(false);
       setCurrentTime(audioRef.current.currentTime);
+      storeCurrentTime(currentTime);
     }
   };
 
@@ -107,6 +112,7 @@ const BottomPlayer: React.FC = () => {
         `${Number(volumeBarRef.current.value)}%`,
       );
       setVolume(audioRef.current.volume);
+      storeVolume(audioRef.current.volume);
       if (isMuted) {
         setIsMuted(false);
       }
@@ -140,10 +146,10 @@ const BottomPlayer: React.FC = () => {
       .then((time) => {
         if (time) {
           setCurrentTime(time);
-          console.log(`CurrentTime: ${currentTime}`);
-          console.log(`Duration: ${duration}`);
-          console.log(`AudioRef: ${audioRef.current}`);
-          console.log(`SeekbarRef: ${seekbarRef.current}`);
+          // console.log(`CurrentTime: ${currentTime}`);
+          // console.log(`Duration: ${duration}`);
+          // console.log(`AudioRef: ${audioRef.current}`);
+          // console.log(`SeekbarRef: ${seekbarRef.current}`);
           if (
             audioRef.current // &&
             // seekbarRef.current &&
@@ -225,15 +231,18 @@ const BottomPlayer: React.FC = () => {
     if (playlist && currentTrack) {
       const trackIdx = playlist?.findIndex(
         // (track) => track.id === currentTrackId,
-        (track) => track === currentTrack,
+        (track) => JSON.stringify(track) === JSON.stringify(currentTrack),
       );
+      console.log(`TrackIdx: ${trackIdx}`);
       if (trackIdx !== -1) {
-        setCurrentTrackIdx(currentTrackIdx);
+        setCurrentTrackIdx(trackIdx);
       }
       if (isPlaying && audioRef.current) {
         audioRef.current.play();
       }
       setDuration(currentTrack.duration);
+      storeCurrentTrack(currentTrack);
+      storeDuration(duration);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrack]);
@@ -247,16 +256,16 @@ const BottomPlayer: React.FC = () => {
     }
   }, [currentTime, duration]);
 
-  window.onbeforeunload = (e) => {
-    e.preventDefault();
-    storeCurrentTime(currentTime);
-    storeVolume(volume);
-    if (currentTrack) {
-      storeCurrentTrack(currentTrack);
-    }
-    storePlaylist(playlistRef.current);
-    storeDuration(duration);
-  };
+  // window.onbeforeunload = (e) => {
+  //   // e.preventDefault();
+  //   // storeCurrentTime(currentTime);
+  //   // storeVolume(volume);
+  //   // if (currentTrack) {
+  //   //   storeCurrentTrack(currentTrack);
+  //   // }
+  //   // storePlaylist(playlistRef.current);
+  //   // storeDuration(duration);
+  // };
 
   const displayVolume = showVolume ? "d-block" : "d-none";
   const isCurrentTrackIdxLast = (playlist &&

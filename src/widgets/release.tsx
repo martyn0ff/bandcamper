@@ -8,9 +8,10 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { ReleaseProps } from "../models/ui/release-props";
 import { secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
+import { getTracks } from "../utils/array-utils";
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
-  const { setCurrentTrack, isPlaying, setIsPlaying } =
+  const { setCurrentTrack, isPlaying, setIsPlaying, releasesRef, playlistRef } =
     usePlayerContext() as PlayerCtx;
 
   return (
@@ -66,6 +67,7 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
                     size="1.2rem"
                     onClick={() => {
                       setCurrentTrack(track);
+                      playlistRef.current = getTracks(releasesRef.current);
                       if (!isPlaying) {
                         setIsPlaying(true);
                       }

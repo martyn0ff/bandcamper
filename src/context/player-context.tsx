@@ -1,4 +1,5 @@
 import { useState, createContext, useContext, useMemo, useRef } from "react";
+import IRelease from "../models/ui/release";
 import ITrack from "../models/ui/track";
 
 export type PlayerCtx = {
@@ -11,6 +12,7 @@ export type PlayerCtx = {
   // setCurrentTrackId: React.Dispatch<React.SetStateAction<number>>;
   setCurrentTrack: React.Dispatch<React.SetStateAction<ITrack | null>>;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  releasesRef: React.MutableRefObject<IRelease[]>;
 };
 
 export const PlayerContext = createContext<PlayerCtx | null>(null);
@@ -19,6 +21,7 @@ export const PlayerProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const releasesRef = useRef<IRelease[]>([]);
   const playlistRef = useRef<ITrack[]>([]);
 
   const ctx = useMemo(
@@ -32,8 +35,9 @@ export const PlayerProvider = ({ children }: React.PropsWithChildren<{}>) => {
       setCurrentTrack,
       // setCurrentTrackId,
       setIsPlaying,
+      releasesRef,
     }),
-    [isPlaying, currentTrack],
+    [isPlaying, currentTrack, playlistRef, releasesRef],
   );
 
   return (

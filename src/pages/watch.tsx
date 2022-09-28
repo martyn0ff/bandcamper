@@ -8,6 +8,7 @@ import { getReleases } from "../dao/releases";
 import IWatch from "../models/ui/watch";
 import { getTracks } from "../utils/array-utils";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
+import { storePlaylist } from "../utils/localforage-utils";
 
 export const loader = async ({
   params,
@@ -31,11 +32,13 @@ export const loader = async ({
 
 const Watch: React.FC = () => {
   const { releases, bandName } = useLoaderData() as IWatch;
-  const { playlistRef } = usePlayerContext() as PlayerCtx;
+  const { releasesRef } = usePlayerContext() as PlayerCtx;
 
   useEffect(() => {
     // setPlaylist(getTracks(releases));
-    playlistRef.current = getTracks(releases);
+    // playlistRef.current = getTracks(releases);
+    // storePlaylist(playlistRef.current);
+    releasesRef.current = releases;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [releases]);

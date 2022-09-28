@@ -17,7 +17,7 @@
       {
         "trackNum": 1,
         "id": 10001,
-        "mp3Url": "https://t4.bcbits.com/stream/dd690ad866b2d9fe55ac282d995922d8/mp3-128/2982169720?p=0&ts=1664286646&t=61080aabdfc79947e6a981f2f65fded2bebc6f18&token=1664286646_843427ed7e12edb3e31753dd040ae8f2f17ff0b8",
+        "mp3Url": "https://t4.bcbits.com/stream/dd690ad866b2d9fe55ac282d995922d8/mp3-128/2982169720?p=0&amp;ts=1664459006&amp;t=477b1c2f26f23117dc2d0959ddf0c3cf63162a09&amp;token=1664459006_dfbef3d72d2bf974ca7b45f8cb4dc64ab97692b3",
         "artist": null,
         "title": "Resiliencia",
         "duration": 371.805,
@@ -26,7 +26,7 @@
       {
         "trackNum": 2,
         "id": 10002,
-        "mp3Url": "https://t4.bcbits.com/stream/baf84f53385cbe7616cfc671ace19ff6/mp3-128/1842547316?p=0&ts=1664286646&t=cc23fdd0524910b188688a5e8aa8f7ebeb3bf812&token=1664286646_45306dca54699b8623b9e3055fd97835ce388250",
+        "mp3Url": "https://t4.bcbits.com/stream/baf84f53385cbe7616cfc671ace19ff6/mp3-128/1842547316?p=0&amp;ts=1664459006&amp;t=26f03999c5fa3f8068528e033d5d82c52fce9d1f&amp;token=1664459006_1a77b1c16c986942f6cd2e9d31ed843c1d358733",
         "artist": null,
         "title": "Consciencia",
         "duration": 425.962,
@@ -35,7 +35,7 @@
       {
         "trackNum": 3,
         "id": 10003,
-        "mp3Url": "https://t4.bcbits.com/stream/85f6b149e17bb2ea958dcf65fa2c7b28/mp3-128/2957265293?p=0&ts=1664286646&t=b13b13a6a9010fff08adb0844c86adeb7251c3b8&token=1664286646_6ef8340273da5ba0d866eaa4d04c3033e036d83e",
+        "mp3Url": "https://t4.bcbits.com/stream/85f6b149e17bb2ea958dcf65fa2c7b28/mp3-128/2957265293?p=0&amp;ts=1664459006&amp;t=f4e2cc81ae86c291a07b0e5395cb47aa743b4b3d&amp;token=1664459006_2efd9e46adc8d01e1f6f363caff8b1311d9ff663",
         "artist": null,
         "title": "Perplejo",
         "duration": 507.358,
@@ -44,7 +44,7 @@
       {
         "trackNum": 4,
         "id": 10004,
-        "mp3Url": "https://t4.bcbits.com/stream/8a2c3cc68824d7296d2392bb15806c73/mp3-128/1692234362?p=0&ts=1664286646&t=ad5cc511f94f0e85ce6ab4027b404f176bca66cf&token=1664286646_5bf04c3565315cb87d36c5cd7a5063a5e58c8e5b",
+        "mp3Url": "https://t4.bcbits.com/stream/8a2c3cc68824d7296d2392bb15806c73/mp3-128/1692234362?p=0&amp;ts=1664459006&amp;t=f9f649ae434215c2b2cfee85ab574fcfa685f606&amp;token=1664459006_398ac48bb52075abb9bedfbc37bea11be25493c5",
         "artist": null,
         "title": "Impasible",
         "duration": 311.848,
@@ -53,7 +53,7 @@
       {
         "trackNum": 5,
         "id": 10005,
-        "mp3Url": "https://t4.bcbits.com/stream/48aaaeec605ff0d98386501d34bfe0a4/mp3-128/3120211859?p=0&ts=1664286646&t=9edfdf2c4d8bd7a94691a838b54e075c046e1415&token=1664286646_f434de3b0031ca8f47ff0268b04e9b15e06df89a",
+        "mp3Url": "https://t4.bcbits.com/stream/48aaaeec605ff0d98386501d34bfe0a4/mp3-128/3120211859?p=0&amp;ts=1664459006&amp;t=dfe999a6e8b8c84fac0d4153afb226a2d82bfc15&amp;token=1664459006_18d92d58b32833b2d44625c454e62bb905386fef",
         "artist": null,
         "title": "Vehemente [digi only]",
         "duration": 280.869,
@@ -62,7 +62,7 @@
       {
         "trackNum": 6,
         "id": 10006,
-        "mp3Url": "https://t4.bcbits.com/stream/71df21734895f9872889c9a0daa5eddc/mp3-128/1561524061?p=0&ts=1664286646&t=732db7594dca48d5c31253911587aa3653691a57&token=1664286646_851a755b9574661d8b0044e76093dfddcf99f905",
+        "mp3Url": "https://t4.bcbits.com/stream/71df21734895f9872889c9a0daa5eddc/mp3-128/1561524061?p=0&amp;ts=1664459006&amp;t=0318e7e9ec7b43936550a6bf23ec79efee14d00d&amp;token=1664459006_eba2ce7fcbe1823f99e57023cb9f48ae35639bc8",
         "artist": null,
         "title": "Mefistofélico [digi only]",
         "duration": 345.315,

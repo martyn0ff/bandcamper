@@ -1,28 +1,22 @@
 {
   "for the curious": "https://bandcamp.com/help/audio_basics#steal https://bandcamp.com/terms_of_use",
   "current": {
-    // IRelease.totalTracks
     "audit": 6,
-    // IRelease.title
     "title": "Resiliencia EP",
     "new_date": "06 Sep 2022 14:30:38 GMT",
     "mod_date": "07 Sep 2022 13:57:51 GMT",
-    // IRelease.releaseDate
     "publish_date": "07 Sep 2022 13:57:52 GMT",
     "private": null,
     "killed": null,
     "download_pref": 2,
     "require_email": null,
     "is_set_price": null,
-    "set_price": 7,
-    "minimum_price": 8,
-    "minimum_price_nonzero": 8,
+    "set_price": 7.0,
+    "minimum_price": 8.0,
+    "minimum_price_nonzero": 8.0,
     "require_email_0": null,
-    // IRelease.artist
     "artist": "Confluencia",
-    // IRelease.about
     "about": "***\r\nafter this long fight\r\nI have no intention of\r\nquitting short.\r\nor late.\r\nor satisfied.\r\n***",
-    // IRelease.credits
     "credits": "W + P by Confluencia",
     "auto_repriced": null,
     "new_desc_format": 1,
@@ -35,9 +29,7 @@
     "purchase_url": null,
     "purchase_title": null,
     "featured_track_id": 2982169720,
-    // IRelease.id
     "id": 4196962945,
-    // IRelease.type
     "type": "album"
   },
   "preorder_count": null,
@@ -51,7 +43,6 @@
       "type_id": 2,
       "type_name": "Vinyl LP",
       "title": "12\" Vinyl",
-      // IRelease.description
       "description": "Debut release by Confluencia, 4 tracks on vinyl and 2 digital bonus tracks. Generic black sleeve. All orders include digital downloads if the EP + 3 Mord stickers.",
       "desc_pt1": "Debut release by Confluencia, 4 tracks on vinyl and 2 digital bonus tracks. Generic black sleeve. All orders include digital downloads if the EP + 3 Mord stickers.",
       "desc_pt2": null,
@@ -59,7 +50,7 @@
       "grid_index": 1,
       "private": null,
       "subscriber_only": null,
-      "price": 11,
+      "price": 11.0,
       "is_set_price": null,
       "is_live_ticket": null,
       "live_event_over": null,
@@ -71,7 +62,6 @@
       "live_event_replays_enabled": null,
       "sku": "",
       "upc": null,
-      // IRelease.bandId
       "band_id": 2701270179,
       "selling_band_id": 2701270179,
       "label": null,
@@ -141,7 +131,7 @@
       "live_event_type": null
     }
   ],
-  "defaultPrice": 7,
+  "defaultPrice": 7.0,
   "freeDownloadPage": null,
   "FREE": 1,
   "PAID": 2,
@@ -151,10 +141,7 @@
   "last_subscription_item": null,
   "has_discounts": true,
   "is_bonus": null,
-  "play_cap_data": {
-    "streaming_limits_enabled": true,
-    "streaming_limit": 10
-  },
+  "play_cap_data": { "streaming_limits_enabled": true, "streaming_limit": 10 },
   "client_id_sig": "8bMnpLEPaUZR8IMiv7EPswCSXe0=",
   "is_purchased": false,
   "items_purchased": {
@@ -170,23 +157,17 @@
   "tralbum_subscriber_only": false,
   "featured_track_id": 2982169720,
   "initial_track_num": null,
-  // IRelease.isPreorder
   "is_preorder": false,
   "album_is_preorder": false,
   "album_release_date": "07 Sep 2022 13:57:52 GMT",
-  // IRelease.availableTracks = this.length
   "trackinfo": [
     {
-       // ITrack.id
       "id": 2982169720,
       "track_id": 2982169720,
       "file": {
-        // ITrack.mp3Url
-        "mp3-128": "https://t4.bcbits.com/stream/dd690ad866b2d9fe55ac282d995922d8/mp3-128/2982169720?p=0&amp;ts=1664184636&amp;t=1e9025afc222d4d68f0ec396f5e2cb998c0f1389&amp;token=1664184636_cabcf128ebac3651ddf495a7a45b4e596b9f044a"
+        "mp3-128": "https://t4.bcbits.com/stream/dd690ad866b2d9fe55ac282d995922d8/mp3-128/2982169720?p=0&amp;ts=1664459006&amp;t=477b1c2f26f23117dc2d0959ddf0c3cf63162a09&amp;token=1664459006_dfbef3d72d2bf974ca7b45f8cb4dc64ab97692b3"
       },
-      // ITrack.artist (if null, means artist is the same as in IRelease.artist)
       "artist": null,
-      // ITrack.title
       "title": "Resiliencia",
       "encodings_id": 2732141364,
       "license_type": 1,
@@ -201,7 +182,6 @@
       "is_downloadable": true,
       "has_free_download": null,
       "free_album_download": false,
-      // ITrack.duration
       "duration": 371.805,
       "lyrics": null,
       "sizeof_lyrics": 0,
@@ -224,7 +204,7 @@
       "id": 1842547316,
       "track_id": 1842547316,
       "file": {
-        "mp3-128": "https://t4.bcbits.com/stream/baf84f53385cbe7616cfc671ace19ff6/mp3-128/1842547316?p=0&amp;ts=1664184636&amp;t=a471188ccd396f361b69185dbdda6637ec291a0c&amp;token=1664184636_83f877f18e32899fd91a3f32ff24644f6e0c4fdb"
+        "mp3-128": "https://t4.bcbits.com/stream/baf84f53385cbe7616cfc671ace19ff6/mp3-128/1842547316?p=0&amp;ts=1664459006&amp;t=26f03999c5fa3f8068528e033d5d82c52fce9d1f&amp;token=1664459006_1a77b1c16c986942f6cd2e9d31ed843c1d358733"
       },
       "artist": null,
       "title": "Consciencia",
@@ -263,7 +243,7 @@
       "id": 2957265293,
       "track_id": 2957265293,
       "file": {
-        "mp3-128": "https://t4.bcbits.com/stream/85f6b149e17bb2ea958dcf65fa2c7b28/mp3-128/2957265293?p=0&amp;ts=1664184636&amp;t=1f030e8cd51ce9941b9ac4f0124141f745528004&amp;token=1664184636_cc3d578f9680daba3fcba99a76a0b6516cbabfab"
+        "mp3-128": "https://t4.bcbits.com/stream/85f6b149e17bb2ea958dcf65fa2c7b28/mp3-128/2957265293?p=0&amp;ts=1664459006&amp;t=f4e2cc81ae86c291a07b0e5395cb47aa743b4b3d&amp;token=1664459006_2efd9e46adc8d01e1f6f363caff8b1311d9ff663"
       },
       "artist": null,
       "title": "Perplejo",
@@ -302,7 +282,7 @@
       "id": 1692234362,
       "track_id": 1692234362,
       "file": {
-        "mp3-128": "https://t4.bcbits.com/stream/8a2c3cc68824d7296d2392bb15806c73/mp3-128/1692234362?p=0&amp;ts=1664184636&amp;t=827a214df2399c4695586559287e350348b273b3&amp;token=1664184636_76ff28355b5f8c2090d6009b7d31aeba18997807"
+        "mp3-128": "https://t4.bcbits.com/stream/8a2c3cc68824d7296d2392bb15806c73/mp3-128/1692234362?p=0&amp;ts=1664459006&amp;t=f9f649ae434215c2b2cfee85ab574fcfa685f606&amp;token=1664459006_398ac48bb52075abb9bedfbc37bea11be25493c5"
       },
       "artist": null,
       "title": "Impasible",
@@ -341,7 +321,7 @@
       "id": 3120211859,
       "track_id": 3120211859,
       "file": {
-        "mp3-128": "https://t4.bcbits.com/stream/48aaaeec605ff0d98386501d34bfe0a4/mp3-128/3120211859?p=0&amp;ts=1664184636&amp;t=24cdf2dfa419271bea9bb2b57fd30cf9d02fddc7&amp;token=1664184636_e0484b1242334fb62a66090bdd6ae56c3017cb06"
+        "mp3-128": "https://t4.bcbits.com/stream/48aaaeec605ff0d98386501d34bfe0a4/mp3-128/3120211859?p=0&amp;ts=1664459006&amp;t=dfe999a6e8b8c84fac0d4153afb226a2d82bfc15&amp;token=1664459006_18d92d58b32833b2d44625c454e62bb905386fef"
       },
       "artist": null,
       "title": "Vehemente [digi only]",
@@ -380,7 +360,7 @@
       "id": 1561524061,
       "track_id": 1561524061,
       "file": {
-        "mp3-128": "https://t4.bcbits.com/stream/71df21734895f9872889c9a0daa5eddc/mp3-128/1561524061?p=0&amp;ts=1664184636&amp;t=29f2b99e3a764820a51eb1c6975e31d46d51dc3f&amp;token=1664184636_41c9b2c74efe78dee999de0601cb4ba638c1c8a7"
+        "mp3-128": "https://t4.bcbits.com/stream/71df21734895f9872889c9a0daa5eddc/mp3-128/1561524061?p=0&amp;ts=1664459006&amp;t=0318e7e9ec7b43936550a6bf23ec79efee14d00d&amp;token=1664459006_eba2ce7fcbe1823f99e57023cb9f48ae35639bc8"
       },
       "artist": null,
       "title": "Mefistofélico [digi only]",

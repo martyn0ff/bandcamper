@@ -24,8 +24,9 @@ import {
   storePlaylist,
   storeDuration,
 } from "../utils/localforage-utils";
-import { secToTimestamp } from "../utils/player-utils";
+import { repeatModeToString, secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
+import ITrack from "../models/ui/track";
 
 const BottomPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -33,6 +34,8 @@ const BottomPlayer: React.FC = () => {
   const volumeBarRef = useRef<HTMLInputElement>(null);
   const volumeBeforeMute = useRef(0);
 
+  const [shuffleMode, setShuffleMode] = useState(false);
+  const [repeatMode, setRepeatMode] = useState(0);
   const [showVolume, setShowVolume] = useState(false);
   const [isSeeking, setIsSeeking] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -40,6 +43,8 @@ const BottomPlayer: React.FC = () => {
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTrackIdx, setCurrentTrackIdx] = useState(-1);
+  const [shufflePrevTracks, setShufflePrevTracks] = useState<ITrack[]>([]);
+
   const {
     playlistRef,
     currentTrack,
@@ -48,25 +53,75 @@ const BottomPlayer: React.FC = () => {
     setIsPlaying,
   } = usePlayerContext() as PlayerCtx;
 
+  const playlist = playlistRef.current;
+
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const playlist = playlistRef.current;
+  const isCurrentTrackLastInRelease = () => {
+    if (currentTrack && currentTrackIdx < playlist.length - 1) {
+      const nextTrack = playlist[currentTrackIdx + 1];
+      if (currentTrack.trackNum > nextTrack.trackNum) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const toggleShuffleMode = () => {
+    setShuffleMode(!shuffleMode);
+    if (!shuffleMode) {
+      setShufflePrevTracks([]);
+    }
+  };
+
+  const changeRepeatMode = () => {
+    if (repeatMode === 2) {
+      setRepeatMode(0);
+    } else {
+      setRepeatMode(repeatMode + 1);
+    }
+  };
 
   const toPrevTrack = () => {
-    if (playlist && currentTrackIdx > 0) {
-      const prevTrack = playlist[currentTrackIdx - 1];
-      setCurrentTrack(prevTrack);
+    if (playlist && currentTrack && currentTrackIdx > 0) {
+      let prevTrack;
+
+      if (shuffleMode) {
+        prevTrack = shufflePrevTracks.pop();
+      } else {
+        prevTrack = playlist[currentTrackIdx - 1];
+      }
+
+      // during shuffle mode, we can go back as far as when we first
+      // enabled it.
+      // once we reach that first track, prevTrack will be undefined and
+      // thus nothing will happen
+      if (prevTrack) {
+        setCurrentTrack(prevTrack);
+      }
     }
   };
 
   const toNextTrack = () => {
-    if (playlist && currentTrackIdx < playlist.length - 1) {
-      console.log(`NXT currentTrackIdx: ${currentTrackIdx}`);
-      console.log(`NXT Playlist:`);
-      console.log(playlist);
-      const nextTrack = playlist[currentTrackIdx + 1];
+    if (playlist && currentTrack) {
+      let nextTrack;
+
+      if (shuffleMode) {
+        let randomIdx = Math.floor(Math.random() * playlist.length);
+        while (randomIdx === currentTrackIdx) {
+          randomIdx = Math.floor(Math.random() * playlist.length);
+        }
+        nextTrack = playlist[randomIdx];
+        // if it's not a shuffle mode, we can't keep going forward if we reach last track in playlist
+      } else if (currentTrackIdx < playlist.length - 1) {
+        nextTrack = playlist[currentTrackIdx + 1];
+      } else {
+        // in normal mode next track button will be disabled when we reach last track, so there is no next track
+        nextTrack = null;
+      }
+      setShufflePrevTracks([...shufflePrevTracks, currentTrack]);
       setCurrentTrack(nextTrack);
     }
   };
@@ -91,6 +146,33 @@ const BottomPlayer: React.FC = () => {
         `${(Number(seekbarRef.current.value) / duration) * 100}%`,
       );
       setCurrentTime(Number(seekbarRef.current.value));
+    }
+  };
+
+  const handleOnEnded = () => {
+    if (audioRef.current) {
+      // no repeat
+      if (repeatMode === 0) {
+        toNextTrack();
+      }
+
+      // repeat track
+      if (repeatMode === 1) {
+        setCurrentTime(0);
+        // I don't know why, but without this command track won't loop.
+        audioRef.current.play();
+      }
+
+      // repeat release
+      if (repeatMode === 2) {
+        if (currentTrack && isCurrentTrackLastInRelease()) {
+          setCurrentTrack(
+            playlist[currentTrackIdx - (currentTrack.trackNum - 1)],
+          );
+        } else {
+          toNextTrack();
+        }
+      }
     }
   };
 
@@ -121,10 +203,12 @@ const BottomPlayer: React.FC = () => {
 
   // play
   useEffect(() => {
-    if (isPlaying) {
-      audioRef?.current?.play();
-    } else {
-      audioRef?.current?.pause();
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
     }
   }, [isPlaying]);
 
@@ -230,10 +314,8 @@ const BottomPlayer: React.FC = () => {
   useEffect(() => {
     if (playlist && currentTrack) {
       const trackIdx = playlist?.findIndex(
-        // (track) => track.id === currentTrackId,
         (track) => JSON.stringify(track) === JSON.stringify(currentTrack),
       );
-      console.log(`TrackIdx: ${trackIdx}`);
       if (trackIdx !== -1) {
         setCurrentTrackIdx(trackIdx);
       }
@@ -256,15 +338,17 @@ const BottomPlayer: React.FC = () => {
     }
   }, [currentTime, duration]);
 
+  // This approach is not reliable. Not all store methods get executed before unload.
+  //
   // window.onbeforeunload = (e) => {
-  //   // e.preventDefault();
-  //   // storeCurrentTime(currentTime);
-  //   // storeVolume(volume);
-  //   // if (currentTrack) {
-  //   //   storeCurrentTrack(currentTrack);
-  //   // }
-  //   // storePlaylist(playlistRef.current);
-  //   // storeDuration(duration);
+  // e.preventDefault();
+  // storeCurrentTime(currentTime);
+  // storeVolume(volume);
+  // if (currentTrack) {
+  //   storeCurrentTrack(currentTrack);
+  // }
+  // storePlaylist(playlistRef.current);
+  // storeDuration(duration);
   // };
 
   const displayVolume = showVolume ? "d-block" : "d-none";
@@ -313,12 +397,13 @@ const BottomPlayer: React.FC = () => {
               <Button
                 variant="link"
                 className="player-control-button p-0 me-3 position-relative"
+                onClick={toggleShuffleMode}
               >
                 <span
                   className="py-0 px-1 position-absolute top-0 start-0 fw-bold lh-1"
                   style={{ fontSize: "9px" }}
                 >
-                  ON
+                  {shuffleMode ? "ON" : ""}
                 </span>
                 <BsShuffle size="1.35rem" />
               </Button>
@@ -327,7 +412,7 @@ const BottomPlayer: React.FC = () => {
                 variant="link"
                 className="player-control-button p-0 me-3"
                 onClick={toPrevTrack}
-                disabled={isCurrentTrackIdxFirst}
+                disabled={isCurrentTrackIdxFirst && !shuffleMode}
               >
                 <BsFillSkipStartFill size="1.8rem" />
               </Button>
@@ -353,14 +438,21 @@ const BottomPlayer: React.FC = () => {
                 variant="link"
                 className="player-control-button p-0 me-3"
                 onClick={toNextTrack}
-                disabled={isCurrentTrackIdxLast}
+                disabled={isCurrentTrackIdxLast && !shuffleMode}
               >
                 <BsFillSkipEndFill size="1.8rem" />
               </Button>
               <Button
                 variant="link"
-                className="player-control-button p-0"
+                className="player-control-button p-0 position-relative"
+                onClick={changeRepeatMode}
               >
+                <span
+                  className="py-0 px-1 position-absolute top-0 start-0 fw-bold lh-1"
+                  style={{ fontSize: "9px" }}
+                >
+                  {repeatModeToString(repeatMode)}
+                </span>
                 <BsArrowRepeat size="1.45rem" />
               </Button>
             </div>
@@ -399,20 +491,13 @@ const BottomPlayer: React.FC = () => {
               {secToTimestamp(currentTime)}
             </span>
             <audio
-              src={
-                // playlist?.find((track) => track.id === currentTrackId)?.mp3Url
-                currentTrack?.mp3Url
-              }
+              src={currentTrack?.mp3Url}
               preload="metadata"
               ref={audioRef}
               onLoadedMetadata={() => {
-                setDuration(
-                  // playlist?.find((track) => track.id === currentTrackId)
-                  //   ?.duration || 0,
-                  currentTrack?.duration || 0,
-                );
+                setDuration(currentTrack?.duration || 0);
               }}
-              onEnded={() => setIsPlaying(false)}
+              onEnded={handleOnEnded}
               onTimeUpdate={handleSeekbarPlaying}
             />
             <input
@@ -420,11 +505,7 @@ const BottomPlayer: React.FC = () => {
               value={currentTime}
               className="mx-2 player-seekbar"
               min="0"
-              max={
-                // playlist?.find((track) => track.id === currentTrackId)
-                //   ?.duration || 0
-                currentTrack?.duration || 0
-              }
+              max={currentTrack?.duration || 0}
               ref={seekbarRef}
               onChange={handleSeekbarSeeking}
               onMouseUp={changeTime}

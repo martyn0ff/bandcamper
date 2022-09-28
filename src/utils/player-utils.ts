@@ -6,6 +6,16 @@ export const secToTimestamp = (secs: number) => {
   return date.toISOString().substring(14, 19);
 };
 
+export const repeatModeToString = (repeatMode: number) => {
+  if (repeatMode === 0) {
+    return "";
+  }
+  if (repeatMode === 1) {
+    return "TRK";
+  }
+  return "RLS";
+};
+
 // export const releasesToPlaylist = (releases: IRelease[]) => {
 //   let playlist = [];
 //   releases.forEach((release) => {
@@ -16,15 +26,3 @@ export const secToTimestamp = (secs: number) => {
 //     };
 //   });
 // };
-
-// export default interface ITrack {
-//   id: number;
-//   artist: string;
-//   title: string;
-//   coverArt: string;
-//   audioPreviewUrl: string;
-//   releasedAt: Date;
-//   releaseUrl: string;
-//   releasedBy: string; // bandcamp account username
-//   duration: number; // seconds
-// }

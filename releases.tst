@@ -1,0 +1,12 @@
+https://revoltrecords.bandcamp.com/album/inconsciencia-artificial-ep?from=fannewrel
+https://newrhythmic-records.bandcamp.com/album/conscious-reflection-ep?from=fannewrel
+https://hexbarcelona.bandcamp.com/album/hex011-learn-to-breathe?from=fannewrel
+https://monnomblack.bandcamp.com/album/petra-02-dax-j-remix-ep?from=fannewrel
+https://enemyrecords.bandcamp.com/album/pulse-flow?from=fannewrel
+https://flashrec.bandcamp.com/album/d-aiff-queller-ep?from=fannewrel
+https://childrenoftomorrowrecords.bandcamp.com/album/pulse-ep?from=fannewrel
+https://enemyrecords.bandcamp.com/album/pulse-flow?from=fannewrel
+https://enemyrecords.bandcamp.com/album/break-a-fancy-vase
+https://enemyrecords.bandcamp.com/album/jungle-house
+https://enemyrecords.bandcamp.com/album/thought-control
+https://enemyrecords.bandcamp.com/album/ecclesia

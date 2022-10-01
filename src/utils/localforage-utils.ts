@@ -1,8 +1,8 @@
 import localforage from "localforage";
 import fakeNetwork from "./fake-network";
-import IRelease from "../models/ui/release";
+import IRelease from "../models/release";
 import db from "../data/data.json";
-import ITrack from "../models/ui/track";
+import ITrack from "../models/track";
 
 const resetLocalForage = async () => {
   await localforage.setItem("releases", db);
@@ -34,6 +34,12 @@ export const storePlaylist = async (playlist: ITrack[]) => {
   console.log(playlist);
 };
 
+export const storeCurrentRelease = async (release: IRelease) => {
+  await localforage.setItem("currentRelease", release);
+  console.log("Stored Release:");
+  console.log(release);
+};
+
 export const retrieveVolume = async () => {
   const volume: number | null = await localforage.getItem("volume");
   console.log(`Retrieved vol: ${volume}`);
@@ -63,6 +69,13 @@ export const retrievePlaylist = async () => {
   console.log("Retrieved Playlist:");
   console.log(playlist);
   return playlist;
+};
+
+export const retrieveCurrentRelease = async () => {
+  const release: IRelease | null = await localforage.getItem("currentRelease");
+  console.log("Retrieved Release: ");
+  console.log(release);
+  return release;
 };
 
 export default resetLocalForage;

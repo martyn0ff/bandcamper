@@ -1,7 +1,7 @@
 // https://felixgerschau.com/react-hooks-form-validation-typescript/
 
 import React, { useState } from "react";
-import { ValidationError, Validations } from "../models/entities/validation";
+import { ValidationError, Validations } from "../models/validation";
 
 // <T extends Record<keyof T, any> = {}> means that useForm expects an object that has
 // same keys as type T, with any values. If no generic was passed then fall back to empty

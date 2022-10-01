@@ -6,8 +6,7 @@ import Sidebar from "../widgets/sidebar";
 import BottomPlayer from "../widgets/bottom-player";
 import resetLocalForage from "../utils/localforage-utils";
 import { getReleases } from "../dao/releases";
-import IRelease from "../models/ui/release";
-import ITrack from "../models/ui/track";
+import IRelease from "../models/release";
 import { PlayerProvider } from "../context/player-context";
 
 export const loader = async () => {
@@ -15,24 +14,12 @@ export const loader = async () => {
   return releases;
 };
 
-// type PlaylistCtx = {
-//   playlist: ITrack[] | null;
-//   currentTrackId: number;
-//   isPlaying: boolean;
-//   setPlaylist: React.Dispatch<React.SetStateAction<ITrack[]>>;
-//   setCurrentTrackId: React.Dispatch<React.SetStateAction<number>>;
-//   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-// };
-
 const Root: React.FC = () => {
   useEffect(() => {
     resetLocalForage();
   }, []);
 
   const loadedReleases = useLoaderData() as IRelease[];
-  // const [playlist, setPlaylist] = useState<ITrack[]>([]);
-  // const [currentTrackId, setCurrentTrackId] = useState(0);
-  // const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <>

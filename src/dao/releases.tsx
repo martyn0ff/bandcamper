@@ -1,16 +1,16 @@
 import localforage from "localforage";
 import fakeNetwork from "../utils/fake-network";
-import IRelease from "../models/ui/release";
+import IRelease from "../models/release";
 import db from "../data/data.json";
+import IPackage from "../models/package";
+import ITrack from "../models/track";
 
-export const getRelease = async (id: number) => {
+export const getRelease = async (id: BigInt) => {
   await fakeNetwork(`release:${id}`);
   const releases = await localforage.getItem<IRelease[]>("releases");
   const release = releases?.find((release_) => release_.id === id);
   return release ?? null;
 };
-
-const replaceNullArtists = (releases: {}[]) => {};
 
 export const getReleases = async (query?: string) => {
   await fakeNetwork(`releases:${query}`);
@@ -19,22 +19,57 @@ export const getReleases = async (query?: string) => {
   }
   const releases: IRelease[] = [];
   db.forEach((release) => {
-    const releaseObj = {
-      ...release,
-      availableTracks: release.tracks.length,
-      releaseDate: new Date(release.releaseDate),
+    const releaseObj: IRelease = {
+      totalTracks: release.total_tracks,
+      title: release.title,
+      releaseDate: new Date(release.release_date),
+      artist: release.artist,
+      bandName: release.band_name,
+      about: release.about,
+      credits: release.credits,
+      bandId: BigInt(release.band_id),
+      sellingBandId: BigInt(release.selling_band_id),
+      artId: BigInt(release.art_id),
+      type: release.type,
+      packages: [],
+      id: BigInt(release.id),
+      defaultPrice: release.default_price,
+      isPreorder: release.is_preorder,
+      tracks: [],
+      url: release.url,
     };
+
+    release.packages.forEach((pkg) => {
+      const pkgObj: IPackage = {
+        url: pkg.url,
+        typeName: pkg.type_name,
+        typeTitle: pkg.type_title,
+        description: pkg.description,
+        price: pkg.price,
+        currency: pkg.currency,
+        downloadReleaseDate: new Date(pkg.download_release_date),
+        quantityAvailable: pkg.quantity_available,
+      };
+      releaseObj.packages.push(pkgObj);
+    });
+
+    release.tracks.forEach((track) => {
+      const trackObj: ITrack = {
+        mp3Url: track.mp3_url,
+        id: BigInt(track.id),
+        artist: track.artist,
+        title: track.title,
+        trackNum: track.track_num,
+        titleLink: track.title_link,
+        duration: track.duration,
+      };
+
+      releaseObj.tracks.push(trackObj);
+    });
+
     releases.push(releaseObj);
   });
 
-  releases.forEach((release) => {
-    release.tracks.forEach((track) => {
-      if (track.artist === null) {
-        const trk = track;
-        trk.artist = release.artist;
-      }
-    });
-  });
   // return sorted releases instead
   return releases;
 };

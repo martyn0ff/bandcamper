@@ -1,0 +1,206 @@
+[
+  {
+    "id": 1000,
+    "bandId": 10000,
+    "bandName": "mord",
+    "isPreorder": false,
+    "type": "album",
+    "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg",
+    "artist": "Confluencia",
+    "title": "Resiliencia EP",
+    "totalTracks": 6,
+    "releaseDate": "07 Sep 2022 13:57:52 GMT",
+    "about": "***\r\nafter this long fight\r\nI have no intention of\r\nquitting short.\r\nor late.\r\nor satisfied.\r\n***",
+    "credits": "W + P by Confluencia",
+    "description": "Debut release by Confluencia, 4 tracks on vinyl and 2 digital bonus tracks. Generic black sleeve. All orders include digital downloads if the EP + 3 Mord stickers.",
+    "tracks": [
+      {
+        "trackNum": 1,
+        "id": 10001,
+        "mp3Url": "https://t4.bcbits.com/stream/dd690ad866b2d9fe55ac282d995922d8/mp3-128/2982169720?p=0&amp;ts=1664459006&amp;t=477b1c2f26f23117dc2d0959ddf0c3cf63162a09&amp;token=1664459006_dfbef3d72d2bf974ca7b45f8cb4dc64ab97692b3",
+        "artist": null,
+        "title": "Resiliencia",
+        "duration": 371.805,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
+      },
+      {
+        "trackNum": 2,
+        "id": 10002,
+        "mp3Url": "https://t4.bcbits.com/stream/baf84f53385cbe7616cfc671ace19ff6/mp3-128/1842547316?p=0&amp;ts=1664459006&amp;t=26f03999c5fa3f8068528e033d5d82c52fce9d1f&amp;token=1664459006_1a77b1c16c986942f6cd2e9d31ed843c1d358733",
+        "artist": null,
+        "title": "Consciencia",
+        "duration": 425.962,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
+      },
+      {
+        "trackNum": 3,
+        "id": 10003,
+        "mp3Url": "https://t4.bcbits.com/stream/85f6b149e17bb2ea958dcf65fa2c7b28/mp3-128/2957265293?p=0&amp;ts=1664459006&amp;t=f4e2cc81ae86c291a07b0e5395cb47aa743b4b3d&amp;token=1664459006_2efd9e46adc8d01e1f6f363caff8b1311d9ff663",
+        "artist": null,
+        "title": "Perplejo",
+        "duration": 507.358,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
+      },
+      {
+        "trackNum": 4,
+        "id": 10004,
+        "mp3Url": "https://t4.bcbits.com/stream/8a2c3cc68824d7296d2392bb15806c73/mp3-128/1692234362?p=0&amp;ts=1664459006&amp;t=f9f649ae434215c2b2cfee85ab574fcfa685f606&amp;token=1664459006_398ac48bb52075abb9bedfbc37bea11be25493c5",
+        "artist": null,
+        "title": "Impasible",
+        "duration": 311.848,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
+      },
+      {
+        "trackNum": 5,
+        "id": 10005,
+        "mp3Url": "https://t4.bcbits.com/stream/48aaaeec605ff0d98386501d34bfe0a4/mp3-128/3120211859?p=0&amp;ts=1664459006&amp;t=dfe999a6e8b8c84fac0d4153afb226a2d82bfc15&amp;token=1664459006_18d92d58b32833b2d44625c454e62bb905386fef",
+        "artist": null,
+        "title": "Vehemente [digi only]",
+        "duration": 280.869,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
+      },
+      {
+        "trackNum": 6,
+        "id": 10006,
+        "mp3Url": "https://t4.bcbits.com/stream/71df21734895f9872889c9a0daa5eddc/mp3-128/1561524061?p=0&amp;ts=1664459006&amp;t=0318e7e9ec7b43936550a6bf23ec79efee14d00d&amp;token=1664459006_eba2ce7fcbe1823f99e57023cb9f48ae35639bc8",
+        "artist": null,
+        "title": "Mefistofélico [digi only]",
+        "duration": 345.315,
+        "coverArt": "https://f4.bcbits.com/img/a2018247290_16.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1001,
+    "bandId": 10001,
+    "bandName": "dbh-music",
+    "isPreorder": true,
+    "type": "album",
+    "coverArt": "https://f4.bcbits.com/img/a2960032181_10.jpg",
+    "artist": "Shayde & Heli",
+    "title": "H1011",
+    "totalTracks": 5,
+    "releaseDate": "20 Sep 2022 11:50:27 GMT",
+    "about": null,
+    "credits": null,
+    "description": null,
+    "tracks": [
+      {
+        "trackNum": 1,
+        "id": 20001,
+        "mp3Url": "https://t4.bcbits.com/stream/4deaa5c3b10b12d12ae3acb18d02d612/mp3-128/3238395998?p=0&ts=1664185726&t=152d4c7f2d145cead8d6fd3a9ce2dbf4816ea3bd&token=1664185726_c30d4bb60dd0812b975946a25b4460966d751ee1",
+        "artist": null,
+        "title": "Candlelight Dans La Discotheque",
+        "duration": 478.517,
+        "coverArt": "https://f4.bcbits.com/img/a2960032181_10.jpg"
+      },
+      {
+        "trackNum": 2,
+        "id": 20002,
+        "mp3Url": "https://t4.bcbits.com/stream/90aac21607d0a525d73534ea02983874/mp3-128/3784999201?p=0&ts=1664185726&t=32cb7eef59ecbfc13c8a7f10f4e34f38dda99612&token=1664185726_bc4650d708e24a3a622626ec210467a7e405f86a",
+        "artist": null,
+        "title": "Distance",
+        "duration": 435.263,
+        "coverArt": "https://f4.bcbits.com/img/a2960032181_10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "bandId": 10000,
+    "bandName": "mord",
+    "isPreorder": false,
+    "type": "album",
+    "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg",
+    "artist": "Rebecca Delle Piane",
+    "title": "Soltera EP",
+    "totalTracks": 9,
+    "releaseDate": "26 Jul 2022 09:18:22 GMT",
+    "about": "***\r\nI have no words, no tears.\r\nMy heart within me like a stone\r\nIs numbed too much for hopes or fears;\r\nLook right, look left, I dwell alone;\r\n***",
+    "credits": "W + P by Rebecca Delle Piane",
+    "description": "Rebecca Delle Piana delivers 6 tracks on vinyl and 3 digital bonus tunes on her debut EP on Mord. Generic black sleeve, sealed in plastic. All vinyl orders include 3 Mord stickers and digital downloads of the full release.",
+    "tracks": [
+      {
+        "trackNum": 1,
+        "id": 10011,
+        "mp3Url": "https://t4.bcbits.com/stream/27263c68d9a19abab405646162049123/mp3-128/3796499645?p=0&ts=1664287445&t=fbdb65cc126ec0a7af7cbafdfe9922adcc014b0c&token=1664287445_9363235f75e830f21e6816becdacb86ad4a08966",
+        "artist": null,
+        "title": "Tango",
+        "duration": 282.48,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 2,
+        "id": 10012,
+        "mp3Url": "https://t4.bcbits.com/stream/d73ce003dd0ed0632af60bfcfb8e8747/mp3-128/2402402589?p=0&ts=1664287445&t=c791a4a83e2d277c0fd8f2374a35c2795c3c9e22&token=1664287445_a8f0e5eb4f8ef47189a2245cc74a36b280c6a06f",
+        "artist": null,
+        "title": "The Cold In Me [Rough Vision]",
+        "duration": 280.2,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 3,
+        "id": 10013,
+        "mp3Url": "https://t4.bcbits.com/stream/ca6493ec2c64bda87dcb21a8a61e4f3b/mp3-128/1984312916?p=0&ts=1664287445&t=3724e01e089ecd6d5ee78d795913ed15e9260a0a&token=1664287445_99d38b21a67039c8242c523fdc4dff9afa149432",
+        "artist": null,
+        "title": "Tom&#39;s Revenge",
+        "duration": 252.4,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 4,
+        "id": 10014,
+        "mp3Url": "https://t4.bcbits.com/stream/f266ee3fe038559e2b64f25ace62c0d4/mp3-128/2089008447?p=0&ts=1664287445&t=65f3798ba339c1664ce586e2cc9a0c654710fd75&token=1664287445_6319a9abd145151eccbc51c18d3ba28f62915883",
+        "artist": null,
+        "title": "Decanter 5",
+        "duration": 310.133,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 5,
+        "id": 10015,
+        "mp3Url": "https://t4.bcbits.com/stream/01841f73d9b9f44e68e7c619853e92da/mp3-128/1656740332?p=0&ts=1664287445&t=75ef5b92a88533b3a5f56a91d2d85230bf37092d&token=1664287445_5d19fd27942c0c82fe24fb6c78afcabf827f5b05",
+        "artist": null,
+        "title": "That Cost Me Sleep",
+        "duration": 330.921,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 6,
+        "id": 10016,
+        "mp3Url": "https://t4.bcbits.com/stream/23ca96ac79ee5f883b08638c81d47e41/mp3-128/3666877577?p=0&ts=1664287445&t=7b0418269eaf92278585b293c25b4a9a6b3b7811&token=1664287445_88a5f241780d8b6aae04b13dcf9a7bce4dd265c5",
+        "artist": null,
+        "title": "The City Is Burning",
+        "duration": 212.463,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 7,
+        "id": 10017,
+        "mp3Url": "https://t4.bcbits.com/stream/022e4d23e7d4246ff20a89dbabb7ef47/mp3-128/601158433?p=0&ts=1664287445&t=34a5c9787d760ea54186c6dd61ad64f6926a59b4&token=1664287445_992997290b3974ede73573af3a38ea20a9a25a86",
+        "artist": null,
+        "title": "The Church [digi only]",
+        "duration": 287.56,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 8,
+        "id": 10018,
+        "mp3Url": "https://t4.bcbits.com/stream/78983baff85f4835b66a97e570a49f01/mp3-128/1095791400?p=0&ts=1664287445&t=1be4b70d02402354d9769c0a0e41d31f33ce991e&token=1664287445_0d3fd874d8b4787c52f4f8b46cf41792b0ca8ab8",
+        "artist": null,
+        "title": "Close Enough [digi only]",
+        "duration": 191.368,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      },
+      {
+        "trackNum": 9,
+        "id": 10019,
+        "mp3Url": "https://t4.bcbits.com/stream/4aff520e6ba1b96521517a1050a8b08f/mp3-128/4117839843?p=0&ts=1664287445&t=bc58165b872fc292ffaba46a45ff8a3707a15106&token=1664287445_96d7a792fe90975a5666b5a61bcc3d57c7f2b20c",
+        "artist": null,
+        "title": "Rigid Neck [digi only]",
+        "duration": 337.487,
+        "coverArt": "https://f4.bcbits.com/img/a0408179325_10.jpg"
+      }
+    ]
+  }
+]

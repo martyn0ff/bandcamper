@@ -4,7 +4,7 @@ import {
   IoVolumeMedium,
   IoVolumeHigh,
 } from "react-icons/io5";
-import VolumeIconProps from "../models/ui/volumeicon-props";
+import VolumeIconProps from "../models/volumeicon-props";
 
 const VolumeIcon = (props: VolumeIconProps) => {
   const { volume, setShowVolume, muted, setMuted } = props;

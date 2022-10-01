@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
+import shallowequal from "shallowequal";
 import {
   BsArrowRepeat,
   BsFillPauseFill,
@@ -21,12 +22,13 @@ import {
   storeCurrentTime,
   storeVolume,
   storeCurrentTrack,
-  storePlaylist,
   storeDuration,
+  retrieveCurrentRelease,
 } from "../utils/localforage-utils";
 import { repeatModeToString, secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
-import ITrack from "../models/ui/track";
+import ITrack from "../models/track";
+import { getReleaseByTrack } from "../utils/array-utils";
 
 const BottomPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -47,8 +49,11 @@ const BottomPlayer: React.FC = () => {
 
   const {
     playlistRef,
+    releasesRef,
     currentTrack,
     setCurrentTrack,
+    currentRelease,
+    setCurrentRelease,
     isPlaying,
     setIsPlaying,
   } = usePlayerContext() as PlayerCtx;
@@ -59,10 +64,20 @@ const BottomPlayer: React.FC = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const isCurrentTrackLastInRelease = () => {
+  const isNextTrackFromDifferentRelease = () => {
     if (currentTrack && currentTrackIdx < playlist.length - 1) {
       const nextTrack = playlist[currentTrackIdx + 1];
-      if (currentTrack.trackNum > nextTrack.trackNum) {
+      if (currentTrack.trackNum >= nextTrack.trackNum) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const isPrevTrackFromDifferentRelease = () => {
+    if (currentTrack && currentTrackIdx > 0) {
+      const prevTrack = playlist[currentTrackIdx - 1];
+      if (currentTrack.trackNum <= prevTrack.trackNum) {
         return true;
       }
     }
@@ -99,7 +114,14 @@ const BottomPlayer: React.FC = () => {
       // once we reach that first track, prevTrack will be undefined and
       // thus nothing will happen
       if (prevTrack) {
+        const prevTrackRelease = getReleaseByTrack(
+          prevTrack,
+          releasesRef.current,
+        );
         setCurrentTrack(prevTrack);
+        if (prevTrackRelease !== currentRelease) {
+          setCurrentRelease(prevTrackRelease);
+        }
       }
     }
   };
@@ -122,7 +144,16 @@ const BottomPlayer: React.FC = () => {
         nextTrack = null;
       }
       setShufflePrevTracks([...shufflePrevTracks, currentTrack]);
-      setCurrentTrack(nextTrack);
+      if (nextTrack) {
+        setCurrentTrack(nextTrack);
+        const nextTrackRelease = getReleaseByTrack(
+          nextTrack,
+          releasesRef.current,
+        );
+        if (nextTrackRelease !== currentRelease) {
+          setCurrentRelease(nextTrackRelease);
+        }
+      }
     }
   };
 
@@ -165,7 +196,7 @@ const BottomPlayer: React.FC = () => {
 
       // repeat release
       if (repeatMode === 2) {
-        if (currentTrack && isCurrentTrackLastInRelease()) {
+        if (currentTrack && isNextTrackFromDifferentRelease()) {
           setCurrentTrack(
             playlist[currentTrackIdx - (currentTrack.trackNum - 1)],
           );
@@ -225,7 +256,7 @@ const BottomPlayer: React.FC = () => {
   }, []);
 
   // load & restore playback progress
-  useLayoutEffect(() => {
+  useEffect(() => {
     retrieveCurrentTime()
       .then((time) => {
         if (time) {
@@ -240,6 +271,7 @@ const BottomPlayer: React.FC = () => {
             // currentTime &&
             // duration
           ) {
+            console.log(`I will set current time to ${currentTime}`);
             audioRef.current.currentTime = currentTime;
             // seekbarRef.current.style.setProperty(
             //   "--seekbar-progress",
@@ -291,6 +323,16 @@ const BottomPlayer: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // load & restore currentRelease
+  useEffect(() => {
+    retrieveCurrentRelease().then((release) => {
+      if (release) {
+        setCurrentRelease(release);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Mute/unmute
   useEffect(() => {
     if (audioRef.current && volumeBarRef.current && volumeBeforeMute) {
@@ -313,8 +355,8 @@ const BottomPlayer: React.FC = () => {
 
   useEffect(() => {
     if (playlist && currentTrack) {
-      const trackIdx = playlist?.findIndex(
-        (track) => JSON.stringify(track) === JSON.stringify(currentTrack),
+      const trackIdx = playlist?.findIndex((track) =>
+        shallowequal(track, currentTrack),
       );
       if (trackIdx !== -1) {
         setCurrentTrackIdx(trackIdx);
@@ -367,7 +409,7 @@ const BottomPlayer: React.FC = () => {
       >
         <div className="d-flex player-track-info">
           <Image
-            src={currentTrack?.coverArt}
+            src={`https://f4.bcbits.com/img/a${currentRelease?.artId}_16.jpg`}
             width={56}
             height={56}
             style={{ objectFit: "cover" }}

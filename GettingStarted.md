@@ -12,6 +12,7 @@
 - Axios: `<npm command>`
 - Bootstrap: `npm i bootstrap @types/bootstrap`
 - React Bootstrap: `npm i react-bootstrap @types/react-bootstrap`
+- Shallow Equal: `npm i shallowequal @types/shallowequal`
 
 > **Note!** React Bootstrap's styling depends on a particular version of Bootstrap. At the time of writing, latest React Bootstrap wants `5.2.0-beta1` version of Bootstrap CSS for proper styling. Consult [stylesheets section](https://react-bootstrap.github.io/getting-started/introduction/#stylesheets) on React Bootstrap's website for more info.
 

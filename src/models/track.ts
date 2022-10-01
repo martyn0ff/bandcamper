@@ -1,9 +1,9 @@
 export default interface ITrack {
-  id: number;
-  trackNum: number;
   mp3Url: string;
-  artist: string | null;
+  id: BigInt;
+  artist: string;
   title: string;
+  trackNum: number;
+  titleLink: string;
   duration: number;
-  coverArt: string;
 }

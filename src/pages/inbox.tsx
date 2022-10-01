@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Release from "../widgets/release";
 import ReleasesSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
-import IRelease from "../models/ui/release";
+import IRelease from "../models/release";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
 import { getTracks } from "../utils/array-utils";
 
@@ -16,9 +16,10 @@ export const loader = async (): Promise<IRelease[]> => {
 
 const Inbox: React.FC = () => {
   const releases = useLoaderData() as IRelease[];
-  const { playlistRef } = usePlayerContext() as PlayerCtx;
+  const { playlistRef, releasesRef } = usePlayerContext() as PlayerCtx;
 
   useEffect(() => {
+    releasesRef.current = releases;
     playlistRef.current = getTracks(releases);
     // setPlaylist(getTracks(releases));
 

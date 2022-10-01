@@ -1,5 +1,5 @@
-import IRelease from "../models/ui/release";
-import ITrack from "../models/ui/track";
+import IRelease from "../models/release";
+import ITrack from "../models/track";
 
 export const getUniqueBandName = (releases: IRelease[]) => {
   const uniqueBandName: string[] = [];
@@ -21,4 +21,12 @@ export const getTracks = (releases: IRelease[]) => {
     });
   });
   return tracks;
+};
+
+export const getReleaseByTrack = (track: ITrack, releases: IRelease[]) => {
+  const release = releases.find((rel) => rel.tracks.includes(track));
+  if (release) {
+    return release;
+  }
+  return null;
 };

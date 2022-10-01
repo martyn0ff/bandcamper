@@ -5,21 +5,29 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { v4 as uuidv4 } from "uuid";
 import { BsFillPlayFill } from "react-icons/bs";
-import { ReleaseProps } from "../models/ui/release-props";
+import { ReleaseProps } from "../models/release-props";
 import { secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
 import { getTracks } from "../utils/array-utils";
+import { storeCurrentRelease } from "../utils/localforage-utils";
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
-  const { setCurrentTrack, isPlaying, setIsPlaying, releasesRef, playlistRef } =
-    usePlayerContext() as PlayerCtx;
+  const {
+    setCurrentTrack,
+    isPlaying,
+    setIsPlaying,
+    releasesRef,
+    playlistRef,
+    setCurrentRelease,
+    currentRelease,
+  } = usePlayerContext() as PlayerCtx;
 
   return (
     <Accordion.Item eventKey={release.id.toString()}>
       <Accordion.Header>
         <div className="d-flex w-100">
           <Image
-            src={release.coverArt}
+            src={`https://f4.bcbits.com/img/a${release.artId}_16.jpg`}
             width={48}
             className="rounded-2 me-1"
           />
@@ -36,12 +44,15 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
       </Accordion.Header>
       <Accordion.Body>
         <div className="release-description mb-3">
-          <p>{release.description}</p>
           {release.about && <p>{release.about}</p>}
           {release.credits && <p>{release.credits}</p>}
-          <Button className="me-2">Buy Album</Button>
-          <Button>Add to Wishlist</Button>
         </div>
+        <Button
+          className="me-2"
+          href={release.url}
+        >
+          Get Album
+        </Button>
         <Table
           // striped
           // bordered
@@ -68,6 +79,10 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
                     onClick={() => {
                       setCurrentTrack(track);
                       playlistRef.current = getTracks(releasesRef.current);
+                      if (currentRelease !== release) {
+                        setCurrentRelease(release);
+                        storeCurrentRelease(release);
+                      }
                       if (!isPlaying) {
                         setIsPlaying(true);
                       }
@@ -76,7 +91,7 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
                   />
                 </td>
                 <td>{track.trackNum}</td>
-                <td>{track.artist || release.artist}</td>
+                <td>{track.artist}</td>
                 <td>{track.title}</td>
                 <td>{secToTimestamp(track.duration)}</td>
                 <td>

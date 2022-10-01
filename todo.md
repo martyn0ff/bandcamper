@@ -14,14 +14,18 @@
 :white_check_mark: Implement custom validation (required fields are filled & password/repeat password match) (https://felixgerschau.com/react-hooks-form-validation-typescript/)
 :white_large_square: Mock registration successful page (after validation went through)
 :white_check_mark: Implement switching between tracks
-:white_large_square: Implement shuffle/repeat/normal play mode
+:white_check_mark: Implement shuffle/repeat/normal play mode
 :white_check_mark: Listen for arrow left/right key presses to navigate on track (+/- 10 sec back/forth)
 :white_large_square: Add pagination for Inbox/Watches
 :white_check_mark: Don't show audio players for each individual track in Inbox/Watch, rather show track/artist name, length, play and buy button/ Play button will play selected track and load it into bottom player.
+:white_large_square: Set static width for table with release tracks
 
 ## Backend
 
+:white_large_square: Implement bandcamp scraper that will generate data in same format as data.json
 :white_large_square: Implement back end form validation
+:white_large_square: Implement registration
+:white_large_square: Implement profile page first time parser
 :white_large_square: Install and configure postfix (locally) --> https://docs.gitlab.com/ee/administration/reply_by_email_postfix_setup.html
 :white_large_square: Install and configure PostgreSQL (locally)
 :white_large_square: Configure / create virtual users for Postfix

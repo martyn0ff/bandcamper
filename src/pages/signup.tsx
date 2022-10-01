@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { sha256 } from "../utils/hashing";
 import useForm from "../hooks/useForm";
-import { User } from "../models/entities/user";
+import { User } from "../models/user";
 
 const SignUp: React.FC = () => {
   // const [validated, setValidated] = useState(false);

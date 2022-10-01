@@ -4,8 +4,8 @@ import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { FiLogOut, FiInbox, FiUser, FiUserPlus, FiLogIn } from "react-icons/fi";
 import { v4 as uuidv4 } from "uuid";
-import SidebarProps from "../models/ui/sidebar-props";
-import IRelease from "../models/ui/release";
+import SidebarProps from "../models/sidebar-props";
+import IRelease from "../models/release";
 import { getUniqueBandName } from "../utils/array-utils";
 
 const Sidebar: React.FC<SidebarProps> = ({

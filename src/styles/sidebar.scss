@@ -1,5 +1,7 @@
 .sidebar {
   width: $sf-sidebar-width;
+  min-width: $sf-sidebar-width !important;
+  max-width: $sf-sidebar-width !important;
   height: calc(100vh - $sf-navbar-height);
 }
 

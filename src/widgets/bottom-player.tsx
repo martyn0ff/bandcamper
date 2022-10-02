@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
-import shallowequal from "shallowequal";
+import deepEqual from "deep-equal";
 import {
   BsArrowRepeat,
   BsFillPauseFill,
@@ -356,7 +356,7 @@ const BottomPlayer: React.FC = () => {
   useEffect(() => {
     if (playlist && currentTrack) {
       const trackIdx = playlist?.findIndex((track) =>
-        shallowequal(track, currentTrack),
+        deepEqual(track, currentTrack),
       );
       if (trackIdx !== -1) {
         setCurrentTrackIdx(trackIdx);

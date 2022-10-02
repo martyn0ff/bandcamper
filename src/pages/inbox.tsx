@@ -36,7 +36,7 @@ const Inbox: React.FC = () => {
       <Accordion
         alwaysOpen
         className="overflow-auto"
-        style={{ height: "580px" }}
+        style={{ height: "586px" }}
       >
         {releases.map((release) => (
           <Release

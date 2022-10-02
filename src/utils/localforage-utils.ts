@@ -40,6 +40,8 @@ export const storeCurrentRelease = async (release: IRelease) => {
   console.log(release);
 };
 
+// TODO add retrieveReleases/storeReleases
+
 export const retrieveVolume = async () => {
   const volume: number | null = await localforage.getItem("volume");
   console.log(`Retrieved vol: ${volume}`);

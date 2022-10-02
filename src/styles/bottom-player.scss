@@ -1,5 +1,7 @@
 .bottom-player {
   height: $sf-bottom-player-height;
+  min-height: $sf-bottom-player-height !important;
+  max-height: $sf-bottom-player-height !important;
 }
 
 // .player-seekbar {

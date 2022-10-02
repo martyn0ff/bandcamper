@@ -10,6 +10,7 @@ export default interface IRelease {
   about: string | null;
   credits: string | null;
   bandId: BigInt;
+  bandPhoto: string | null;
   sellingBandId: BigInt;
   artId: BigInt;
   type: string;

@@ -8,6 +8,7 @@ import { getReleases } from "../dao/releases";
 import IWatch from "../models/watch";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
 import { storePlaylist } from "../utils/localforage-utils";
+import bandPhotoPlaceholder from "../assets/band_photo_placeholder.svg";
 
 export const loader = async ({
   params,
@@ -23,14 +24,19 @@ export const loader = async ({
       statusText: "Not Found",
     });
   }
+  const { bandPhoto } = filteredReleases[0];
+  // TODO from filteredReleases if its length > 0, we shall obtain
+  // band_photo property, add it to return statement, destructure it from
+  // useLoaderData() and use it to render band photo on Watch's page.
   return {
     releases: filteredReleases,
     bandName: params.watchId as string,
+    bandPhoto: bandPhoto || bandPhotoPlaceholder,
   };
 };
 
 const Watch: React.FC = () => {
-  const { releases, bandName } = useLoaderData() as IWatch;
+  const { releases, bandName, bandPhoto } = useLoaderData() as IWatch;
   const { releasesRef, playlistRef } = usePlayerContext() as PlayerCtx;
 
   useEffect(() => {
@@ -46,9 +52,8 @@ const Watch: React.FC = () => {
     <>
       <div className="d-flex">
         <Image
-          src="https://f4.bcbits.com/img/0024816791_10.jpg"
-          width={100}
-          className="rounded-circle me-3 mb-3"
+          src={bandPhoto}
+          className="rounded-circle band-photo me-3 mb-3"
         />
         <div className="watch-info">
           <h1 className="mb-0">{bandName}</h1>
@@ -61,7 +66,7 @@ const Watch: React.FC = () => {
       <Accordion
         alwaysOpen
         className="overflow-auto"
-        style={{ height: "555px" }}
+        style={{ height: "565px" }}
       >
         {releases.map((release) => (
           <Release release={release} />

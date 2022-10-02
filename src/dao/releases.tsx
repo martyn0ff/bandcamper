@@ -17,6 +17,23 @@ export const getReleases = async (query?: string) => {
   if (query) {
     // sort releases by date
   }
+
+  // We want to:
+  // 0. Check if releases are stored in localforage
+  // 1. If they are, then iterate through db
+  //    1a. See if retrievedReleases has release with same id as db.release.
+  //        id
+  //    1b. If it does, check if they are are deep equal, EXCEPT their seen
+  //        and .track.url values
+  //    1c. If releases are not deep equal with said rules, db's release
+  //        overwrites localforage entry of this release
+  //    1d. If releases are deep equal with said rules, do nothing
+  // 2. If they are not, simply push whole db to localforage's releases
+  //    property
+
+  // const { seen: seenDb, tracks: tracksDb, ...restDb } = db;
+  // const { seen: seenRet, tracks: tracksRet, ...restRet } = retrievedReleases;
+
   const releases: IRelease[] = [];
   db.forEach((release) => {
     const releaseObj: IRelease = {
@@ -37,6 +54,7 @@ export const getReleases = async (query?: string) => {
       isPreorder: release.is_preorder,
       tracks: [],
       url: release.url,
+      bandPhoto: release.band_photo,
     };
 
     release.packages.forEach((pkg) => {

@@ -12,6 +12,7 @@
     "art_id": 235209834,
     "type": "album",
     "url": "https://revoltrecords.bandcamp.com/album/inconsciencia-artificial-ep",
+    "band_photo": "https://f4.bcbits.com/img/0011889791_10.jpg",
     "packages": [],
     "has_audio": true,
     "id": 3389045904,
@@ -20,7 +21,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/61ced7027fa156550b58e8e67383f513/mp3-128/3966550896?p=0&ts=1664720081&t=b9ed9f38a2ae20ee6f3e3220552fd6eeb15f5e79&token=1664720081_d261b1927d0ef49f9acf8b9b667b5dbab2fed327",
+        "mp3_url": "https://t4.bcbits.com/stream/61ced7027fa156550b58e8e67383f513/mp3-128/3966550896?p=0&ts=1664789912&t=e35a9c86e4332a0b359ba141eb25afea2bc96c6b&token=1664789912_456f9b2a662c76cf3877156f8908173a0b8223a5",
         "id": 3966550896,
         "artist": "Jonas Kopp",
         "title": "Onda Intermitente",
@@ -30,7 +31,7 @@
         "duration": 385.25
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/32c54172a590e517abf6973c60a82f87/mp3-128/623580574?p=0&ts=1664720081&t=ea609c09d146d9ea2ce1aa5a94797c825e3dea3c&token=1664720081_550239456ef3261f5306bf66698b07ace7354b2a",
+        "mp3_url": "https://t4.bcbits.com/stream/32c54172a590e517abf6973c60a82f87/mp3-128/623580574?p=0&ts=1664789912&t=1bf69c6f2fd771483f0e806b0be4f941a72e3ea0&token=1664789912_c4cc2d12b15725311d03d26075bda4f735dbcb56",
         "id": 623580574,
         "artist": "Jonas Kopp",
         "title": "Inconsistencia Sostenida",
@@ -40,7 +41,7 @@
         "duration": 425.25
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/3e0cb66d566855d976e46efc50ed3e05/mp3-128/2988309420?p=0&ts=1664720081&t=83401700f5dcd32155241eaba0ba44dbdb8bb346&token=1664720081_9faf029c1613805f1cc207f1f62cb6823f52a6f1",
+        "mp3_url": "https://t4.bcbits.com/stream/3e0cb66d566855d976e46efc50ed3e05/mp3-128/2988309420?p=0&ts=1664789912&t=a7336f9eb1433ea5095033adddccd61ef18774e3&token=1664789912_cb17bce398b54a27131578b829b2fb70dcf2511d",
         "id": 2988309420,
         "artist": "Jonas Kopp",
         "title": "Vacilación Frecuente",
@@ -64,6 +65,7 @@
     "art_id": 3758584603,
     "type": "album",
     "url": "https://newrhythmic-records.bandcamp.com/album/conscious-reflection-ep",
+    "band_photo": null,
     "packages": [],
     "has_audio": true,
     "id": 3545768649,
@@ -96,6 +98,7 @@
     "art_id": 1155271765,
     "type": "album",
     "url": "https://hexbarcelona.bandcamp.com/album/hex011-learn-to-breathe",
+    "band_photo": "https://f4.bcbits.com/img/0023279504_10.jpg",
     "packages": [
       {
         "url": "https://hexbarcelona.bandcamp.com/album/hex011-learn-to-breathe",
@@ -105,7 +108,7 @@
         "price": 19.0,
         "currency": "EUR",
         "download_release_date": "Oct 1, 2022, 4:00:00 AM",
-        "quantity_available": 191
+        "quantity_available": 189
       }
     ],
     "has_audio": true,
@@ -115,7 +118,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/7ee08dd09c46ba97dd9606f4c81f1b89/mp3-128/1105636940?p=0&ts=1664720085&t=5805056fbf98f60137250e2442582ad2fa4c642e&token=1664720085_258886ded36093ffcdb0095f7ef318e347ea32f5",
+        "mp3_url": "https://t4.bcbits.com/stream/7ee08dd09c46ba97dd9606f4c81f1b89/mp3-128/1105636940?p=0&ts=1664789915&t=9d94a564e3e988b2c0ef07546887614e83db53b6&token=1664789915_5b0cde52aadeab44a2b047c0395be3f0d7f027d5",
         "id": 1105636940,
         "artist": "Tim Tama, Paolo Ferrara, Lorenzo Raganzini",
         "title": "No One Will Help You",
@@ -125,7 +128,7 @@
         "duration": 373.839
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/c0eab347d4e7ce680f8767ba90a4d3cb/mp3-128/2739714033?p=0&ts=1664720085&t=c4fa1913dcb62a75444616304912b02d8a851f27&token=1664720085_da50b4785738c2aba065c1ee2fc47d8161864fe6",
+        "mp3_url": "https://t4.bcbits.com/stream/c0eab347d4e7ce680f8767ba90a4d3cb/mp3-128/2739714033?p=0&ts=1664789915&t=1b4db9dbfac2ce6e430dfc5f9f74c7285c2ddea4&token=1664789915_3a651fe24a16eb7479e1f4ce4c669a3fd0df42d1",
         "id": 2739714033,
         "artist": "Tim Tama, Paolo Ferrara, Lorenzo Raganzini",
         "title": "Learn To Breathe",
@@ -135,7 +138,7 @@
         "duration": 349.58
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/2f2265a33b1c6a115128f60904a8aeaf/mp3-128/3226746594?p=0&ts=1664720085&t=25b80170eb1bab178f7e4251f420b5e304b05f0d&token=1664720085_a2a0f108f8df431a6ebc6e55a3aa3d1df635f887",
+        "mp3_url": "https://t4.bcbits.com/stream/2f2265a33b1c6a115128f60904a8aeaf/mp3-128/3226746594?p=0&ts=1664789915&t=225f96468fef0ffc2e0036d9acfb381898167919&token=1664789915_a00da16bf1a7a236505274e354ad82ed34fb603b",
         "id": 3226746594,
         "artist": "Tim Tama, Paolo Ferrara, Lorenzo Raganzini",
         "title": "Monomer",
@@ -145,7 +148,7 @@
         "duration": 400.137
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/db904b55b139c7ac77f5b56dd2f26a24/mp3-128/1247018796?p=0&ts=1664720085&t=b8ffff4f1bc45c7984a92eb3cc2f648738a0bde1&token=1664720085_39c602253b27c74c2ae6cfb01c82a3e83042d7f6",
+        "mp3_url": "https://t4.bcbits.com/stream/db904b55b139c7ac77f5b56dd2f26a24/mp3-128/1247018796?p=0&ts=1664789915&t=87c85ae3cad2378c53d8e649d0cf34aab76bfb2b&token=1664789915_7f7eaef40c7ab7e5e2e8f11144cdb26d65d4c9cb",
         "id": 1247018796,
         "artist": "Tim Tama, Paolo Ferrara, Lorenzo Raganzini",
         "title": "Angst",
@@ -155,7 +158,7 @@
         "duration": 414.8
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/503ce44b83aaa7b4ecf982b10bfddff9/mp3-128/1887659534?p=0&ts=1664720085&t=feda2154423a55bfb56c32d5c02a0803fc26ac08&token=1664720085_a7458071a87c93bb819af7cf20a665e2d68fc281",
+        "mp3_url": "https://t4.bcbits.com/stream/503ce44b83aaa7b4ecf982b10bfddff9/mp3-128/1887659534?p=0&ts=1664789915&t=661a07b214c28dde63fb0676ae489e4eb55ec193&token=1664789915_eb4d26536a36d86cce6fe29aad3861810ca0d803",
         "id": 1887659534,
         "artist": "Tim Tama, Paolo Ferrara, Lorenzo Raganzini",
         "title": "Learn To Breathe (Paolo Ferrara & Lorenzo Raganzini remix)",
@@ -179,6 +182,7 @@
     "art_id": 777985068,
     "type": "album",
     "url": "https://enemyrecords.bandcamp.com/album/pulse-flow",
+    "band_photo": "https://f4.bcbits.com/img/0000808198_10.jpg",
     "packages": [],
     "has_audio": true,
     "id": 4102526017,
@@ -187,7 +191,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/da3e979704fd104d8bca4e1c9b86cce2/mp3-128/537296767?p=0&ts=1664720093&t=6f4658422d6bfa9588abe767f54020c641b7c091&token=1664720093_4ad9934d2dc789dd4397c2896a98076f53737ec1",
+        "mp3_url": "https://t4.bcbits.com/stream/da3e979704fd104d8bca4e1c9b86cce2/mp3-128/537296767?p=0&ts=1664789923&t=350189e29f8cb7d356fea39266eddd456a838787&token=1664789923_3b0612007a833d5182dea1cf07fe0fc1a85a43ce",
         "id": 537296767,
         "artist": "Kai van Dongen",
         "title": "PseudoRhythm",
@@ -197,7 +201,7 @@
         "duration": 428.387
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/1a7cdd0669080c18c2fac4b3d5576fa4/mp3-128/3785436027?p=0&ts=1664720093&t=759a1693ea0e4baa90c568e22ec7f25de1c97eb6&token=1664720093_968e42e6e47ace20074387eaaaf2b7c9e1b3e362",
+        "mp3_url": "https://t4.bcbits.com/stream/1a7cdd0669080c18c2fac4b3d5576fa4/mp3-128/3785436027?p=0&ts=1664789923&t=61195199eb86a7df1abeb5dfaa5496b1b138e716&token=1664789923_83d121dfed1f050dff3e8004a69e948ea55e3fa8",
         "id": 3785436027,
         "artist": "Kai van Dongen",
         "title": "13:16",
@@ -207,7 +211,7 @@
         "duration": 501.16
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/75793bda373cca0ebec05bbe73bdd45b/mp3-128/1576320630?p=0&ts=1664720093&t=06cbc048c8a46ba16ad36c09cbd39eb1ea7a52f6&token=1664720093_4ce8d91fc98185a959680ac91ce525d9dcbf5c1f",
+        "mp3_url": "https://t4.bcbits.com/stream/75793bda373cca0ebec05bbe73bdd45b/mp3-128/1576320630?p=0&ts=1664789923&t=9c82a650dbfa49342216f59911d9096755b98f1b&token=1664789923_11785dc5cea4e454431934bdfb5f74ab47158c91",
         "id": 1576320630,
         "artist": "Kai van Dongen",
         "title": "Down the Middle",
@@ -217,7 +221,7 @@
         "duration": 520.813
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/e49e3ae87a5fb045cbe4fd001c704a41/mp3-128/2229579430?p=0&ts=1664720093&t=da9ffe19cb4c2a12930d026716f12f6c8d2e3faf&token=1664720093_afb40b44734720fbc5fa0050f37fda3ae17524b7",
+        "mp3_url": "https://t4.bcbits.com/stream/e49e3ae87a5fb045cbe4fd001c704a41/mp3-128/2229579430?p=0&ts=1664789923&t=a62639401354d0c5befe00c8fce5e11956dd1b36&token=1664789923_0cbd0d88aa7e364c4b88f75113272e35f3cab3cf",
         "id": 2229579430,
         "artist": "Kai van Dongen",
         "title": "Beachside Flow",
@@ -241,6 +245,7 @@
     "art_id": 638687004,
     "type": "album",
     "url": "https://childrenoftomorrowrecords.bandcamp.com/album/pulse-ep",
+    "band_photo": "https://f4.bcbits.com/img/0010329910_10.jpg",
     "packages": [],
     "has_audio": true,
     "id": 2000441059,
@@ -249,7 +254,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/a523f595f72ec7666002ae786567783d/mp3-128/3666944448?p=0&ts=1664720091&t=88a4a3d7426ec749115a6bd6488ca71264dd96ae&token=1664720091_f45856fb3c30339cea6f166c32fc4b3b69d31aa8",
+        "mp3_url": "https://t4.bcbits.com/stream/a523f595f72ec7666002ae786567783d/mp3-128/3666944448?p=0&ts=1664789922&t=337bca1aeb74492e642acbf301efa2ee624218a3&token=1664789922_609e1b5083ce570328ba9e0985b6f71232923bab",
         "id": 3666944448,
         "artist": "Arnaud Le Texier",
         "title": "Pulse",
@@ -259,7 +264,7 @@
         "duration": 336.0
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/3165be7d66e07f211a3327aece8bc507/mp3-128/3676317647?p=0&ts=1664720091&t=71fa4ac396a17ce0627309647eadc0bbf20d0406&token=1664720091_56f447dc962b275bd7327ae070eca63da4b53f7b",
+        "mp3_url": "https://t4.bcbits.com/stream/3165be7d66e07f211a3327aece8bc507/mp3-128/3676317647?p=0&ts=1664789922&t=71fe940c88ba6c648d33a25a5270d1127039ed69&token=1664789922_ca413a42abd110cfe2a39dc2c754e8bccb5ac019",
         "id": 3676317647,
         "artist": "Arnaud Le Texier",
         "title": "Trapez",
@@ -269,7 +274,7 @@
         "duration": 269.589
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/b0dd63fe334a9ca9ab60eba351047546/mp3-128/3747095627?p=0&ts=1664720091&t=e84880b66a6ac9e9ed591bc0cad50ff893827ff0&token=1664720091_f2cd9eaad336d27cd8b93cfa0aa44ecf1699f1cb",
+        "mp3_url": "https://t4.bcbits.com/stream/b0dd63fe334a9ca9ab60eba351047546/mp3-128/3747095627?p=0&ts=1664789922&t=3a5fd58450d69e69ef1a1155e5bf7c13e7f26097&token=1664789922_383af76acf32a561a398e922c77ff2a9ad462cc1",
         "id": 3747095627,
         "artist": "Arnaud Le Texier",
         "title": "Solid",
@@ -293,6 +298,7 @@
     "art_id": 2992388615,
     "type": "album",
     "url": "https://enemyrecords.bandcamp.com/album/break-a-fancy-vase",
+    "band_photo": "https://f4.bcbits.com/img/0000808198_10.jpg",
     "packages": [],
     "has_audio": true,
     "id": 1358619898,
@@ -301,7 +307,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/65face047092aa13cd27da00524207c7/mp3-128/2135068769?p=0&ts=1664720094&t=ec131c53da0b0c7d87337231b952f3b05458de3c&token=1664720094_466c09a9e3f4281e4281b4a1b4e90f5342061614",
+        "mp3_url": "https://t4.bcbits.com/stream/65face047092aa13cd27da00524207c7/mp3-128/2135068769?p=0&ts=1664789925&t=18a5ea857f526b6834afd524a42724580a48ad3e&token=1664789925_ed67ab5bc17be15f37e25da72211be847e0bb167",
         "id": 2135068769,
         "artist": "Marcal",
         "title": "Marcal - Never Wrote This",
@@ -311,7 +317,7 @@
         "duration": 307.972
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/cd4f85d98c92d079de7f04a959708f2c/mp3-128/3241980813?p=0&ts=1664720094&t=ed2e1773f1e78fe11117c7886d063c128655b0fa&token=1664720094_587dfdc232b65deda80af36500ef6ceb0091d307",
+        "mp3_url": "https://t4.bcbits.com/stream/cd4f85d98c92d079de7f04a959708f2c/mp3-128/3241980813?p=0&ts=1664789925&t=0111be00238e71eef2316b9968e0516dc89a9c8c&token=1664789925_299adbb211681ee5844619456544dc55008aaca2",
         "id": 3241980813,
         "artist": "VIL",
         "title": "VIL - Miles",
@@ -321,7 +327,7 @@
         "duration": 318.759
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/fc4aa5b19c95399cb29bf5097e9942f0/mp3-128/4122801471?p=0&ts=1664720094&t=9c871cef23b6236624cbdf413c37adb8bca06670&token=1664720094_f3426a7f8edd9c22dde05325fd831f68655dc339",
+        "mp3_url": "https://t4.bcbits.com/stream/fc4aa5b19c95399cb29bf5097e9942f0/mp3-128/4122801471?p=0&ts=1664789925&t=1631548ace6a8f8302c44779386779f97a9fc03f&token=1664789925_b0b9a37a71bb397c91f4ab5314e4b98da75e2657",
         "id": 4122801471,
         "artist": "Bidoben",
         "title": "Bidoben - L'Ère du Fragment",
@@ -331,7 +337,7 @@
         "duration": 336.581
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/644ef7a6ba248c7577576305db43aadb/mp3-128/1738710113?p=0&ts=1664720094&t=95149b07a70e98ae50728028bfe1752b939479c6&token=1664720094_0bf03036685fdba6bccf71162f6662d2924a3f32",
+        "mp3_url": "https://t4.bcbits.com/stream/644ef7a6ba248c7577576305db43aadb/mp3-128/1738710113?p=0&ts=1664789925&t=b67a4fe3fe2716e36812ce082c69ac6d39fc4d81&token=1664789925_d29981a8ca914a240c32eb6e5f4bccc519d6a989",
         "id": 1738710113,
         "artist": "Nastia Reigel",
         "title": "Nastia Reigel - Not Int",
@@ -355,6 +361,7 @@
     "art_id": 3585162030,
     "type": "album",
     "url": "https://enemyrecords.bandcamp.com/album/jungle-house",
+    "band_photo": "https://f4.bcbits.com/img/0000808198_10.jpg",
     "packages": [
       {
         "url": "https://enemyrecords.bandcamp.com/album/jungle-house",
@@ -374,7 +381,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/30781feb05e1b43c650bbbecabb213b3/mp3-128/3643408641?p=0&ts=1664720096&t=3777bffa8fd4fd369941820a334b869df8e8ee2c&token=1664720096_2de20ac426ceea2503f222c4f28c24d27848635b",
+        "mp3_url": "https://t4.bcbits.com/stream/30781feb05e1b43c650bbbecabb213b3/mp3-128/3643408641?p=0&ts=1664789927&t=99dd3d76652cb9088c60cf06f180df6c7c768bc6&token=1664789927_cb2fad7925d8ba0df1160115cdaadbf7147c155c",
         "id": 3643408641,
         "artist": "Rene Wise",
         "title": "Screeching",
@@ -384,7 +391,7 @@
         "duration": 333.987
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/4501a7dca794e20cc04ef96a8be587c1/mp3-128/1787042968?p=0&ts=1664720096&t=4ce3ca4e1cf3a92c58ea0f0d7c3b08b6c21a8a8a&token=1664720096_474547ff27bbb0079e36089b92c3463f29f992c0",
+        "mp3_url": "https://t4.bcbits.com/stream/4501a7dca794e20cc04ef96a8be587c1/mp3-128/1787042968?p=0&ts=1664789927&t=5cc41264e1053e8289297340c1b829b2f0adb22a&token=1664789927_2fa06f73c7aa132a9a11ed8f8c824aebeb212f46",
         "id": 1787042968,
         "artist": "Rene Wise",
         "title": "Jungle House",
@@ -394,7 +401,7 @@
         "duration": 318.308
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/057964c891d6e8a5bb1877c55ccaa7ef/mp3-128/1866592126?p=0&ts=1664720096&t=142cf45a6015eca950989d67743db621ca65b9be&token=1664720096_f2909d6f6690dba3f9e593da1f0e81c29dc00a0f",
+        "mp3_url": "https://t4.bcbits.com/stream/057964c891d6e8a5bb1877c55ccaa7ef/mp3-128/1866592126?p=0&ts=1664789927&t=c497801aa03c949b34c95581419e43c6d953beea&token=1664789927_f84fad76d2a04780c3f80631a214be2d6ff3e007",
         "id": 1866592126,
         "artist": "Rene Wise",
         "title": "Cosmo",
@@ -404,7 +411,7 @@
         "duration": 356.76
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/383f039176d8a775d9dd9e2917072727/mp3-128/3535819296?p=0&ts=1664720096&t=13b0d1906787b8c9e0a797203faf5c683df91532&token=1664720096_9d57a9df89ff90f36ae99c27a71a452ad6b9023f",
+        "mp3_url": "https://t4.bcbits.com/stream/383f039176d8a775d9dd9e2917072727/mp3-128/3535819296?p=0&ts=1664789927&t=64a81e3fbfd016111f600a69b2fcf04f3e789258&token=1664789927_322ee7251a3c0824bd177b36137e1d9b9a39f77d",
         "id": 3535819296,
         "artist": "Rene Wise",
         "title": "Gummy",
@@ -414,7 +421,7 @@
         "duration": 414.16
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/f11a4cb0831f04752637ab8fffed2df5/mp3-128/3342051685?p=0&ts=1664720096&t=bf28706b867e886bf7c3a7e3b797922ec52dca69&token=1664720096_ce33fbf5e26159fa6c8847d0ddef721aae8c1a04",
+        "mp3_url": "https://t4.bcbits.com/stream/f11a4cb0831f04752637ab8fffed2df5/mp3-128/3342051685?p=0&ts=1664789927&t=c1020fd5f22865dfa5bc04fe245a7ba76c1ba7e0&token=1664789927_7e021bd21da6634968101bd422895e9aeacd36b1",
         "id": 3342051685,
         "artist": "Rene Wise",
         "title": "Dogs",
@@ -438,6 +445,7 @@
     "art_id": 1302925069,
     "type": "album",
     "url": "https://enemyrecords.bandcamp.com/album/thought-control",
+    "band_photo": "https://f4.bcbits.com/img/0000808198_10.jpg",
     "packages": [],
     "has_audio": true,
     "id": 3692520297,
@@ -446,7 +454,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/c4f01e1e0a2c64d92e644d78b508c46a/mp3-128/758247438?p=0&ts=1664720098&t=f646d679ff12440e6e804234959eed0d3064eebd&token=1664720098_0507ae2462e86a528c469fa88f26aa9724e9e5b9",
+        "mp3_url": "https://t4.bcbits.com/stream/c4f01e1e0a2c64d92e644d78b508c46a/mp3-128/758247438?p=0&ts=1664789929&t=c548b4f93f555113d969dec83bf735070b97a156&token=1664789929_5f392f7cc68629a01a54a4051acc162a640a82b9",
         "id": 758247438,
         "artist": "Marcal",
         "title": "Manta Ray",
@@ -456,7 +464,7 @@
         "duration": 297.276
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/dad605c7cd3fa40b11ec2c9cd124c8d4/mp3-128/2094680597?p=0&ts=1664720098&t=9845123d065bd4e07d584b932c8c2c56dfa57798&token=1664720098_475c0c044558f4eeefed6cd91e221cad2c555fc1",
+        "mp3_url": "https://t4.bcbits.com/stream/dad605c7cd3fa40b11ec2c9cd124c8d4/mp3-128/2094680597?p=0&ts=1664789929&t=e606a46b3faf51ff0a4cd507013e5a75289152dc&token=1664789929_c945230996937fc2d0e2ac84d032e9ecd3f07692",
         "id": 2094680597,
         "artist": "Marcal",
         "title": "Nevoa",
@@ -466,7 +474,7 @@
         "duration": 410.173
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/1c7d664c75538078facc02475bd7ba94/mp3-128/1901468160?p=0&ts=1664720098&t=13ce9e35825344ffa4bffbcb84d69f586ba088bc&token=1664720098_a3eb1bb6631ef3527c457b1c584078c4c7409acd",
+        "mp3_url": "https://t4.bcbits.com/stream/1c7d664c75538078facc02475bd7ba94/mp3-128/1901468160?p=0&ts=1664789929&t=d87a6b23f9b6944642fc950d92ed5e3f293bc8e4&token=1664789929_8e651864f13ea3af15ff519e952ba5c0b8c7a349",
         "id": 1901468160,
         "artist": "Marcal",
         "title": "Robotic Thinking",
@@ -476,7 +484,7 @@
         "duration": 383.013
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/5bd5f9ed8575ce3af1a9136b99b9078e/mp3-128/358355193?p=0&ts=1664720098&t=0946244ddcadda1ad8285bcf2602a5fd72e64cb2&token=1664720098_1650adc21b83d25d418fb5fa57693da6b274e057",
+        "mp3_url": "https://t4.bcbits.com/stream/5bd5f9ed8575ce3af1a9136b99b9078e/mp3-128/358355193?p=0&ts=1664789929&t=ce8a3520d6ccbde19be6f54c5eacedafed966b1a&token=1664789929_8c1516291e91a35a23e6761c718bde8a429bd7c8",
         "id": 358355193,
         "artist": "Marcal",
         "title": "Seroto",
@@ -500,6 +508,7 @@
     "art_id": 110663940,
     "type": "album",
     "url": "https://enemyrecords.bandcamp.com/album/ecclesia",
+    "band_photo": "https://f4.bcbits.com/img/0000808198_10.jpg",
     "packages": [],
     "has_audio": true,
     "id": 1677838599,
@@ -508,7 +517,7 @@
     "is_preorder": false,
     "tracks": [
       {
-        "mp3_url": "https://t4.bcbits.com/stream/4fb26abef150a128f23a368d95226169/mp3-128/1868933941?p=0&ts=1664720100&t=1f70e0500788efa0d15a8deba250bbb612699f41&token=1664720100_b287c1432a5189f6a5edd35331b56597054f6fd4",
+        "mp3_url": "https://t4.bcbits.com/stream/4fb26abef150a128f23a368d95226169/mp3-128/1868933941?p=0&ts=1664789932&t=3922c5ef3d13d7c0afce16c15192e28eef1680df&token=1664789932_e7a6fcb517625625ad9edbf56bf19c65a1e0fa59",
         "id": 1868933941,
         "artist": "HISS",
         "title": "Inquisition",
@@ -518,7 +527,7 @@
         "duration": 334.367
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/2e0449fb83bcccd518198513a6f928bb/mp3-128/1969680050?p=0&ts=1664720100&t=cb03fc2a7e4140a3e20d5dae6cd116619f31dc87&token=1664720100_cc8ac3d6e15b546a8351c796216e6d1bb763a494",
+        "mp3_url": "https://t4.bcbits.com/stream/2e0449fb83bcccd518198513a6f928bb/mp3-128/1969680050?p=0&ts=1664789932&t=3fc480551ea03caf19de3d043e66133079226f19&token=1664789932_492431218f60527ed721d646b94edc9dba71ac38",
         "id": 1969680050,
         "artist": "HISS",
         "title": "Church",
@@ -528,7 +537,7 @@
         "duration": 388.342
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/f861b0ebaa1fcec1617a38a03d4df799/mp3-128/2266228359?p=0&ts=1664720100&t=cf215fa611299aef0708b36cdcecef71f05f3e84&token=1664720100_5854f79d8bc9920eac93e4102496063ea94cb9bf",
+        "mp3_url": "https://t4.bcbits.com/stream/f861b0ebaa1fcec1617a38a03d4df799/mp3-128/2266228359?p=0&ts=1664789932&t=45cde5531f3776037d1004c19742470778e2709b&token=1664789932_3f79edda6ff85f43038e29926d86981b8f6c372d",
         "id": 2266228359,
         "artist": "HISS",
         "title": "Stained Glass",
@@ -538,7 +547,7 @@
         "duration": 393.361
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/c107d6dd48f60f872dae3d0321fee23b/mp3-128/3546115432?p=0&ts=1664720100&t=d7417ed42d29eee43621d39614709ebded3b2af6&token=1664720100_1006fa00374fedf9abc88f4ec32b1fc1bd618757",
+        "mp3_url": "https://t4.bcbits.com/stream/c107d6dd48f60f872dae3d0321fee23b/mp3-128/3546115432?p=0&ts=1664789932&t=5d43480b1d115063b5072ae1fafe1b35ee2edccf&token=1664789932_384ec5b8c0ee1c7f8d07443d9a45d59131a46b6d",
         "id": 3546115432,
         "artist": "HISS",
         "title": "Confess",
@@ -548,7 +557,7 @@
         "duration": 374.271
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/10a740af14a216c4aaab9941ed9a1144/mp3-128/577540105?p=0&ts=1664720100&t=ea2395bcf3254127a3c5ea02b540aba0b1f23e53&token=1664720100_c519a38d861b6334e298e0c581799b8da671b6ac",
+        "mp3_url": "https://t4.bcbits.com/stream/10a740af14a216c4aaab9941ed9a1144/mp3-128/577540105?p=0&ts=1664789932&t=fa17cf15621d0a2a44312722d3c9027b58988752&token=1664789932_cc33ce7c584e9231557500bbb0d7302153ff3170",
         "id": 577540105,
         "artist": "HISS",
         "title": "Hostie",
@@ -558,7 +567,7 @@
         "duration": 394.894
       },
       {
-        "mp3_url": "https://t4.bcbits.com/stream/cb1671aff03a9775f16796150aee4421/mp3-128/1861253657?p=0&ts=1664720100&t=ba419cf0342286095fabebedced7389a83c71542&token=1664720100_9a4c6b55c26c1dbbea23695d3e7057af5e34e4eb",
+        "mp3_url": "https://t4.bcbits.com/stream/cb1671aff03a9775f16796150aee4421/mp3-128/1861253657?p=0&ts=1664789932&t=79dd3e6b7ba62d6eb4638e859dc34fd54240016c&token=1664789932_a9738e20068035f5d75ca35b8cbda9fb1fa242d5",
         "id": 1861253657,
         "artist": "HISS",
         "title": "Vaults",
@@ -566,6 +575,70 @@
         "unreleased_track": null,
         "title_link": "/track/vaults",
         "duration": 307.0
+      }
+    ]
+  },
+  {
+    "total_tracks": 2,
+    "title": "Petra 02 (Dax J Remix) EP",
+    "release_date": "Sep 30, 2022, 11:59:16 AM",
+    "artist": "Christopher Just",
+    "band_name": "monnomblack",
+    "about": "Electronic pioneer, Christopher Just’s initial music came out in 1993 under his own name and various pseudonyms, like “DJ One finger” and “ilsa Gold”. The “Petra” project was originally released in 1996 showcasing the ferocious sound of 90’s analog hardware. Over 25 years later Dax J presents his colossal remix of the relativity unknown and now unearthed gem that went under the radar for so many years. The B - side of the record comes with a signature Dax J deep percussive groove, “The Train”",
+    "credits": null,
+    "band_id": 196052061,
+    "selling_band_id": 196052061,
+    "art_id": 1082716305,
+    "type": "album",
+    "url": "https://monnomblack.bandcamp.com/album/petra-02-dax-j-remix-ep",
+    "band_photo": "https://f4.bcbits.com/img/0028053409_10.jpg",
+    "packages": [
+      {
+        "url": "https://monnomblack.bandcamp.com/album/petra-02-dax-j-remix-ep",
+        "type_name": "Vinyl LP",
+        "type_title": "PRE-ORDER [February Shipping] - Petra 02 (Dax J Remix) 12\" Vinyl",
+        "description": "***PRE-ORDER [February Shipping]***\n\n12\" vinyl + A5 photo card insert + protective plastic sleeve.\n\n-------- PLEASE NOTE ---------\nTo ensure the fastest and safest delivery we use recorded delivery with UPS. They require a phone number, so please leave a contact phone number that we will pass on to UPS and they will give you an exact delivery time slot. If we don't see a phone number we will try to contact you for one, if we don't manage to get in touch with you after a few days we will ship out via normal delivery. Thank you.",
+        "price": 10.0,
+        "currency": "EUR",
+        "download_release_date": "Sep 30, 2022, 4:00:00 AM",
+        "quantity_available": null
+      },
+      {
+        "url": "https://monnomblack.bandcamp.com/album/petra-02-dax-j-remix-ep",
+        "type_name": "Vinyl LP",
+        "type_title": "RARE Limited Edition Test Press Vinyl with 30x30 Art Poster - Vinyl EP MONNOM TP032",
+        "description": "Test Press Vinyl + 30cm x 30cm Artwork Poster\n\nExtremely rare, hand numbered, limited edition of only 9 copies!\n\nDigital files of album received upon every vinyl purchase.\n\n-------- PLEASE NOTE ---------\nTo ensure the fastest and safest delivery we use recorded delivery with UPS. They require a phone number, so please leave a contact phone number that we will pass on to UPS and they will give you an exact delivery time slot. If we don't see a phone number we will try to contact you for one, if we don't manage to get in touch with you after a few days we will ship out via normal delivery. Thank you.",
+        "price": 15.0,
+        "currency": "EUR",
+        "download_release_date": "Sep 30, 2022, 4:00:00 AM",
+        "quantity_available": 0
+      }
+    ],
+    "has_audio": true,
+    "id": 326555444,
+    "default_price": 7.0,
+    "is_purchased": null,
+    "is_preorder": false,
+    "tracks": [
+      {
+        "mp3_url": "https://t4.bcbits.com/stream/83ede5614ea8fa867cc641dca80fc601/mp3-128/252160016?p=0&ts=1664789916&t=4f3b72d1d341c2b10943edf6a2ab755eca015e87&token=1664789916_f728619d5c8edaa0d4d5c8513c31f8cd1f016679",
+        "id": 252160016,
+        "artist": "Christopher Just",
+        "title": "Christopher Just - Petra 02 (Dax J Remix)",
+        "track_num": 1,
+        "unreleased_track": null,
+        "title_link": "/track/petra-02-dax-j-remix",
+        "duration": 351.568
+      },
+      {
+        "mp3_url": "https://t4.bcbits.com/stream/9a2ab17772b76a251ec7ce90e953af73/mp3-128/798351797?p=0&ts=1664789916&t=0dbfc706f15e9ea2a3c9be47e11d8bc10ee2d585&token=1664789916_702aa5a97cff0f22d4e162b2b2ca0ace6f8d184b",
+        "id": 798351797,
+        "artist": "Dax J",
+        "title": "Dax J - The Train",
+        "track_num": 2,
+        "unreleased_track": null,
+        "title_link": "/track/the-train",
+        "duration": 365.144
       }
     ]
   }

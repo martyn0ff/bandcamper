@@ -6,5 +6,5 @@ export default interface IPackage {
   price: number;
   currency: string; // maybe create a new subset: "EUR" | "USD" | ...
   downloadReleaseDate: Date;
-  quantityAvailable: number;
+  quantityAvailable: number | null; // null is used when its a preorder
 }

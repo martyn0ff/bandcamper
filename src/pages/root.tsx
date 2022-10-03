@@ -11,8 +11,6 @@ import { PlayerProvider } from "../context/player-context";
 
 export const loader = async () => {
   const releases = await getReleases();
-  console.log("I've got those releases:");
-  console.log(releases);
   return releases;
 };
 
@@ -42,21 +40,9 @@ const Root: React.FC = () => {
                 fluid
                 className="p-3 h-auto"
               >
-                <Outlet
-                // context={{
-                //   playlist,
-                //   setPlaylist,
-                //   setCurrentTrackId,
-                //   setIsPlaying,
-                // }}
-                />
+                <Outlet />
               </Container>
-              <BottomPlayer
-              // playlist={playlist}
-              // currentTrackId={currentTrackId}
-              // isPlaying={isPlaying}
-              // setIsPlaying={setIsPlaying}
-              />
+              <BottomPlayer />
             </section>
           </PlayerProvider>
         </main>

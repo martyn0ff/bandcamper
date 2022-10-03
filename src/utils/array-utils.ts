@@ -69,7 +69,7 @@ export const calcWatchTotalAvailableTracks = (watch: IWatch) => {
   watch.releases.forEach((release) => {
     totalAvailableTracks += release.availableTracks;
   });
-  console.log(`Total Tracks for this watch: ${totalAvailableTracks}`);
+  // console.log(`Total Tracks for this watch: ${totalAvailableTracks}`);
   return totalAvailableTracks;
 };
 
@@ -78,6 +78,6 @@ export const calcWatchSeenTracks = (watch: IWatch) => {
   watch.releases.forEach((release) => {
     totalSeenTracks += release.tracksSeen;
   });
-  console.log(`Total Seen Tracks for this watch: ${totalSeenTracks}`);
+  // console.log(`Total Seen Tracks for this watch: ${totalSeenTracks}`);
   return totalSeenTracks;
 };

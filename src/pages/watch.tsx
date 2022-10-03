@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "react-bootstrap/Image";
 import Release from "../widgets/release";
-import WatchSortSearch from "../widgets/releases-sort-search";
+import ReleasesSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
 import IWatch from "../models/watch";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
 import { storePlaylist } from "../utils/localforage-utils";
 import bandPhotoPlaceholder from "../assets/band_photo_placeholder.svg";
+import { getTracks } from "../utils/array-utils";
 
 export const loader = async ({
   params,
@@ -25,9 +26,7 @@ export const loader = async ({
     });
   }
   const { bandPhoto } = filteredReleases[0];
-  // TODO from filteredReleases if its length > 0, we shall obtain
-  // band_photo property, add it to return statement, destructure it from
-  // useLoaderData() and use it to render band photo on Watch's page.
+
   return {
     releases: filteredReleases,
     bandName: params.watchId as string,
@@ -38,10 +37,19 @@ export const loader = async ({
 const Watch: React.FC = () => {
   const { releases, bandName, bandPhoto } = useLoaderData() as IWatch;
   const { releasesRef, playlistRef } = usePlayerContext() as PlayerCtx;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [releasesPerPage] = useState(9);
+
+  const indexOfLastRelease = currentPage * releasesPerPage;
+  const indexOfFirstRelease = indexOfLastRelease - releasesPerPage;
+  const currentReleases = releases.slice(
+    indexOfFirstRelease,
+    indexOfLastRelease,
+  );
 
   useEffect(() => {
     // setPlaylist(getTracks(releases));
-    // playlistRef.current = getTracks(releases);
+    playlistRef.current = getTracks(releases);
     storePlaylist(playlistRef.current);
     releasesRef.current = releases;
 
@@ -62,7 +70,13 @@ const Watch: React.FC = () => {
           </p>
         </div>
       </div>
-      <WatchSortSearch />
+      <ReleasesSortSearch
+        releasesPerPage={releasesPerPage}
+        totalReleasesNum={releases.length}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        currentReleasesNum={currentReleases.length}
+      />
       <Accordion
         alwaysOpen
         className="overflow-auto"

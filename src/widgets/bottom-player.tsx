@@ -24,6 +24,7 @@ import {
   storeCurrentTrack,
   storeDuration,
   retrieveCurrentRelease,
+  storeCurrentRelease,
 } from "../utils/localforage-utils";
 import { repeatModeToString, secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
@@ -119,8 +120,10 @@ const BottomPlayer: React.FC = () => {
           releasesRef.current,
         );
         setCurrentTrack(prevTrack);
-        if (prevTrackRelease !== currentRelease) {
+        storeCurrentTrack(prevTrack);
+        if (prevTrackRelease && prevTrackRelease !== currentRelease) {
           setCurrentRelease(prevTrackRelease);
+          storeCurrentRelease(prevTrackRelease);
         }
       }
     }
@@ -146,12 +149,14 @@ const BottomPlayer: React.FC = () => {
       setShufflePrevTracks([...shufflePrevTracks, currentTrack]);
       if (nextTrack) {
         setCurrentTrack(nextTrack);
+        storeCurrentTrack(nextTrack);
         const nextTrackRelease = getReleaseByTrack(
           nextTrack,
           releasesRef.current,
         );
-        if (nextTrackRelease !== currentRelease) {
+        if (nextTrackRelease && nextTrackRelease !== currentRelease) {
           setCurrentRelease(nextTrackRelease);
+          storeCurrentRelease(nextTrackRelease);
         }
       }
     }

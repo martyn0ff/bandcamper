@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import Accordion from "react-bootstrap/Accordion";
 import { v4 as uuidv4 } from "uuid";
@@ -16,7 +16,16 @@ export const loader = async (): Promise<IRelease[]> => {
 
 const Inbox: React.FC = () => {
   const releases = useLoaderData() as IRelease[];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [releasesPerPage] = useState(9);
   const { playlistRef, releasesRef } = usePlayerContext() as PlayerCtx;
+
+  const indexOfLastRelease = currentPage * releasesPerPage;
+  const indexOfFirstRelease = indexOfLastRelease - releasesPerPage;
+  const currentReleases = releases.slice(
+    indexOfFirstRelease,
+    indexOfLastRelease,
+  );
 
   useEffect(() => {
     releasesRef.current = releases;
@@ -32,13 +41,19 @@ const Inbox: React.FC = () => {
         <h1 className="mb-0">Inbox</h1>
         <p>{releases.length} items, # new</p>
       </div>
-      <ReleasesSortSearch />
+      <ReleasesSortSearch
+        releasesPerPage={releasesPerPage}
+        totalReleasesNum={releases.length}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        currentReleasesNum={currentReleases.length}
+      />
       <Accordion
         alwaysOpen
         className="overflow-auto"
         style={{ height: "586px" }}
       >
-        {releases.map((release) => (
+        {currentReleases.map((release) => (
           <Release
             release={release}
             key={uuidv4()}

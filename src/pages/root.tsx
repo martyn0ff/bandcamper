@@ -11,13 +11,15 @@ import { PlayerProvider } from "../context/player-context";
 
 export const loader = async () => {
   const releases = await getReleases();
+  console.log("I've got those releases:");
+  console.log(releases);
   return releases;
 };
 
 const Root: React.FC = () => {
-  useEffect(() => {
-    resetLocalForage();
-  }, []);
+  // useEffect(() => {
+  //   resetLocalForage();
+  // }, []);
 
   const loadedReleases = useLoaderData() as IRelease[];
 
@@ -31,10 +33,10 @@ const Root: React.FC = () => {
         className="content-wrapper"
       >
         <main className="row">
-          <aside className="sidebar d-none d-lg-block col-2 p-0">
-            <Sidebar releases={loadedReleases} />
-          </aside>
           <PlayerProvider>
+            <aside className="sidebar d-none d-lg-block col-2 p-0">
+              <Sidebar releases={loadedReleases} />
+            </aside>
             <section className="col overflow-auto border-top border-dark border-opacity-25 content-wrapper p-0 h-100 d-flex flex-column justify-content-between">
               <Container
                 fluid

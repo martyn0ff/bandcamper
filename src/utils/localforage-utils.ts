@@ -36,11 +36,22 @@ export const storePlaylist = async (playlist: ITrack[]) => {
 
 export const storeCurrentRelease = async (release: IRelease) => {
   await localforage.setItem("currentRelease", release);
-  console.log("Stored Release:");
+  console.log("Stored Current Release:");
   console.log(release);
 };
 
-// TODO add retrieveReleases/storeReleases
+export const storeReleases = async (releases: IRelease[]) => {
+  await localforage.setItem("releases", releases);
+  console.log("Stored Releases:");
+  console.log(releases);
+};
+
+export const retrieveReleases = async () => {
+  const releases: IRelease[] | null = await localforage.getItem("releases");
+  console.log("Retrieved Releases:");
+  console.log(releases);
+  return releases;
+};
 
 export const retrieveVolume = async () => {
   const volume: number | null = await localforage.getItem("volume");

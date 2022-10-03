@@ -4,6 +4,7 @@ import IRelease from "../models/release";
 import db from "../data/data.json";
 import IPackage from "../models/package";
 import ITrack from "../models/track";
+import { storeReleases } from "../utils/localforage-utils";
 
 export const getRelease = async (id: BigInt) => {
   await fakeNetwork(`release:${id}`);
@@ -18,21 +19,11 @@ export const getReleases = async (query?: string) => {
     // sort releases by date
   }
 
-  // We want to:
-  // 0. Check if releases are stored in localforage
-  // 1. If they are, then iterate through db
-  //    1a. See if retrievedReleases has release with same id as db.release.
-  //        id
-  //    1b. If it does, check if they are are deep equal, EXCEPT their seen
-  //        and .track.url values
-  //    1c. If releases are not deep equal with said rules, db's release
-  //        overwrites localforage entry of this release
-  //    1d. If releases are deep equal with said rules, do nothing
-  // 2. If they are not, simply push whole db to localforage's releases
-  //    property
+  const retrievedReleases = await localforage.getItem<IRelease[]>("releases");
 
-  // const { seen: seenDb, tracks: tracksDb, ...restDb } = db;
-  // const { seen: seenRet, tracks: tracksRet, ...restRet } = retrievedReleases;
+  if (retrievedReleases) {
+    return retrievedReleases;
+  }
 
   const releases: IRelease[] = [];
   db.forEach((release) => {
@@ -55,6 +46,8 @@ export const getReleases = async (query?: string) => {
       tracks: [],
       url: release.url,
       bandPhoto: release.band_photo,
+      tracksSeen: release.tracks_seen,
+      availableTracks: release.available_tracks,
     };
 
     release.packages.forEach((pkg) => {
@@ -80,6 +73,7 @@ export const getReleases = async (query?: string) => {
         trackNum: track.track_num,
         titleLink: track.title_link,
         duration: track.duration,
+        seen: track.seen,
       };
 
       releaseObj.tracks.push(trackObj);
@@ -87,6 +81,8 @@ export const getReleases = async (query?: string) => {
 
     releases.push(releaseObj);
   });
+
+  storeReleases(releases);
 
   // return sorted releases instead
   return releases;

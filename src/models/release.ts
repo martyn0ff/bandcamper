@@ -20,4 +20,6 @@ export default interface IRelease {
   isPreorder: boolean;
   tracks: ITrack[];
   url: string;
+  tracksSeen: number;
+  availableTracks: number;
 }

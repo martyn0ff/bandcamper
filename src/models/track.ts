@@ -6,4 +6,5 @@ export default interface ITrack {
   trackNum: number;
   titleLink: string;
   duration: number;
+  seen: boolean;
 }

@@ -17,6 +17,8 @@ export type PlayerCtx = {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentRelease: React.Dispatch<React.SetStateAction<IRelease | null>>;
   releasesRef: React.MutableRefObject<IRelease[]>;
+  allReleases: IRelease[];
+  setAllReleases: React.Dispatch<React.SetStateAction<IRelease[]>>;
 };
 
 export const PlayerContext = createContext<PlayerCtx | null>(null);
@@ -25,6 +27,7 @@ export const PlayerProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentRelease, setCurrentRelease] = useState<IRelease | null>(null);
+  const [allReleases, setAllReleases] = useState<IRelease[]>([]);
 
   const releasesRef = useRef<IRelease[]>([]);
   const playlistRef = useRef<ITrack[]>([]);
@@ -39,8 +42,17 @@ export const PlayerProvider = ({ children }: React.PropsWithChildren<{}>) => {
       releasesRef,
       currentRelease,
       setCurrentRelease,
+      allReleases,
+      setAllReleases,
     }),
-    [isPlaying, currentTrack, playlistRef, releasesRef, currentRelease],
+    [
+      isPlaying,
+      currentTrack,
+      playlistRef,
+      releasesRef,
+      currentRelease,
+      allReleases,
+    ],
   );
 
   return (

@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({
         className="me-2"
         aria-label="First group"
       >
-        <div className="h-100 d-flex align-items-center me-2">
+        <div className="h-100 d-flex align-items-center me-2 text-nowrap">
           {releasesNums} of {totalReleasesNum}
         </div>
         <Button

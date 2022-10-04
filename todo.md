@@ -52,3 +52,30 @@ Click on release => Load data => Show spinner/loading/whatever => Show decsripti
 6. URL content has necessary information, it is parsed
 7. Parsed information gets constructed into an object (IRelease containing ITrack's)
 8. This object gets added to an array of all releases for this user
+
+# TODO 2022-10-04
+### Parsing
+- If release with an `id` already exists in localforage database, establish the following rules:
+   - If `availableTracks` value of `parsedRelease` is greater than that of `localforageRelease`, 
+:white_check_mark: add missing tracks to `localforageRelease`'s tracks (don't forget to sort)
+:white_check_mark: overwrite `localforageRelease`'s `availableTracks` with `parsedRelease`'s `availableTracks`
+:white_check_mark: bump this release to the top of watches list
+:white_check_mark: bump this release to the top of inbox list
+- If release with an `id` doesn't exist in localforage database
+:white_large_square: add it to localforage database
+:white_large_square: bump it to the top of watches list
+- Make sure that all parsed releases are sorted by release date in descending order, both at Inbox and Watch page
+:white_check_mark: They are sorted like that because new release announcements will come to email in this way.
+
+:white_large_square: Parse band name from data-band attribute of the same `<script>` tag that we use to parse data-tralbum attirbute value.
+### Playback
+:white_large_square: If track's `src` returns an error, use that track's `url` and update every track's `mp3Url`
+
+### Visuals
+:white_large_square: If release is a preorder, mark it with a pill
+:white_large_square: Correctly show how many new watches are in sidebar
+:white_large_square: Correctly show how many new releases are in Inbox / Watch
+
+### Function
+:white_large_square: Implement search watch (Sidebar)
+:white_large_square: Implement search release (Inbox/Watch)

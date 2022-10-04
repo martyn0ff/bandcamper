@@ -3,3 +3,7 @@
   max-height: 300px;
   overflow-y: auto;
 }
+
+.accordion-item-unseen .accordion-button {
+  background: $sf-color-unseen;
+}

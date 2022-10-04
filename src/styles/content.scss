@@ -2,6 +2,18 @@ main {
   height: calc(100vh - $sf-navbar-height);
 }
 
-.accordion-button-unseen {
-  background: $sf-color-unseen;
+// .accordion-button {
+//   background-color: red !important;
+// }
+
+::-webkit-scrollbar {
+  width: 0.9em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $sf-color-unseen;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $sf-primary-color;
 }

@@ -13,7 +13,8 @@ import {
   calcWatchSeenTracks,
   calcWatchTotalAvailableTracks,
   getWatches,
-} from "../utils/array-utils";
+  truncateString,
+} from "../utils/misc-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -31,6 +32,16 @@ const Sidebar: React.FC<SidebarProps> = ({
     setWatches(getWatches(allReleases));
     console.log(`All Releases Triggered`);
   }, [allReleases]);
+
+  const newWatches = () => {
+    let count = 0;
+    watches.forEach((watch) => {
+      if (calcWatchSeenTracks(watch) === 0) {
+        count += 1;
+      }
+    });
+    return count;
+  };
 
   return (
     <div className="text-bg-light border-end h-100 border-dark border-opacity-10 shadow shadow-sm">
@@ -127,12 +138,12 @@ const Sidebar: React.FC<SidebarProps> = ({
             <Form.Control
               type="search"
               placeholder="Search watch..."
-              aria-label="Search"
+              aria-label="Search watch"
             />
           </Form>
           <div className="text-muted small mx-3 d-flex flex-row align-items-center">
             <span className="text-nowrap">
-              {watches.length} watches, 18 new
+              {watches.length} watches, {newWatches()} new
             </span>
             <div
               style={{ width: "100%", height: "1px" }}
@@ -146,7 +157,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                 key={uuidv4()}
               >
                 <Nav.Link
-                  className="mb-2 py-0 d-flex align-items-center"
+                  className={`py-2 d-flex align-items-center ${
+                    calcWatchSeenTracks(watch) === 0 ? "bg-unseen" : ""
+                  }`}
                   eventKey={`${watch.bandName}`}
                 >
                   {calcWatchTotalAvailableTracks(watch) -
@@ -154,11 +167,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                     0 && (
                     <BsCircleFill
                       color="red"
-                      size="0.25rem"
+                      size="0.4rem"
                       className="me-2"
                     />
                   )}
-                  {watch.bandName}
+                  {truncateString(watch.bandName, 22)}
                 </Nav.Link>
               </LinkContainer>
             ))}

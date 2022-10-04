@@ -29,7 +29,11 @@ import {
 import { repeatModeToString, secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
 import ITrack from "../models/track";
-import { getReleaseByTrack } from "../utils/array-utils";
+import { getReleaseByTrack, isElementOverflowingX } from "../utils/misc-utils";
+
+// TODO Find out how to store data onbeforeunload that is guaranteed to be stored (beacon)
+// https://levelup.gitconnected.com/how-to-send-an-asynchronous-request-at-the-end-of-a-page-session-90bf7229448c
+// https://css-tricks.com/send-an-http-request-on-page-exit/
 
 const BottomPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -63,6 +67,22 @@ const BottomPlayer: React.FC = () => {
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
+  };
+
+  const overflowMarquee = () => {
+    const trackArtist = document.querySelector<HTMLElement>(".track-artist");
+    const trackTitle = document.querySelector<HTMLElement>(".track-title");
+
+    if (trackArtist && isElementOverflowingX(trackArtist)) {
+      trackArtist.classList.add("marquee");
+    } else {
+      trackArtist?.classList.remove("marquee");
+    }
+    if (trackTitle && isElementOverflowingX(trackTitle)) {
+      trackTitle.classList.add("marquee");
+    } else {
+      trackTitle?.classList.remove("marquee");
+    }
   };
 
   const isNextTrackFromDifferentRelease = () => {
@@ -266,25 +286,8 @@ const BottomPlayer: React.FC = () => {
       .then((time) => {
         if (time) {
           setCurrentTime(time);
-          // console.log(`CurrentTime: ${currentTime}`);
-          // console.log(`Duration: ${duration}`);
-          // console.log(`AudioRef: ${audioRef.current}`);
-          // console.log(`SeekbarRef: ${seekbarRef.current}`);
-          if (
-            audioRef.current // &&
-            // seekbarRef.current &&
-            // currentTime &&
-            // duration
-          ) {
-            console.log(`I will set current time to ${currentTime}`);
+          if (audioRef.current) {
             audioRef.current.currentTime = currentTime;
-            // seekbarRef.current.style.setProperty(
-            //   "--seekbar-progress",
-            //   `${(Number(seekbarRef.current.value) / duration) * 100}%`,
-            // );
-            // console.log(
-            //   `${(Number(seekbarRef.current.value) / duration) * 100}%`,
-            // );
           }
         }
       })
@@ -360,7 +363,7 @@ const BottomPlayer: React.FC = () => {
 
   useEffect(() => {
     if (playlist && currentTrack) {
-      const trackIdx = playlist?.findIndex((track) =>
+      const trackIdx = playlist.findIndex((track) =>
         deepEqual(track, currentTrack),
       );
       if (trackIdx !== -1) {
@@ -373,6 +376,7 @@ const BottomPlayer: React.FC = () => {
       storeCurrentTrack(currentTrack);
       storeDuration(duration);
     }
+    overflowMarquee();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrack]);
 
@@ -420,16 +424,22 @@ const BottomPlayer: React.FC = () => {
             style={{ objectFit: "cover" }}
             className="player-album rounded-3 shadow shadow-sm me-2"
           />
-          <div className="d-flex flex-column">
+          <div
+            className="d-flex flex-column"
+            style={{ overflowX: "hidden" }}
+          >
             <p
-              className="fw-bold"
-              style={{ lineHeight: "1.0", marginBottom: "0.3rem" }}
+              className="fw-bold track-artist"
+              style={{
+                lineHeight: "1.0",
+                marginBottom: "0.3rem",
+              }}
             >
               {currentTrack?.artist}
             </p>
             <p
-              className="mb-0"
-              style={{ lineHeight: "1.0" }}
+              className="mb-0 track-title"
+              style={{ lineHeight: "1.2" }}
             >
               {currentTrack?.title}
             </p>
@@ -571,6 +581,8 @@ const BottomPlayer: React.FC = () => {
           <Button
             size="sm"
             variant="outline-primary"
+            target="_blank"
+            href={currentRelease?.url}
           >
             Get on Bandcamp
           </Button>

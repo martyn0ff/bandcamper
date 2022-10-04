@@ -73,6 +73,7 @@ Click on release => Load data => Show spinner/loading/whatever => Show decsripti
 
 ### Visuals
 :white_large_square: If release is a preorder, mark it with a pill
+:white_check_mark: If release is new (tracksSeen = 0), mark it with different background
 :white_large_square: Correctly show how many new watches are in sidebar
 :white_large_square: Correctly show how many new releases are in Inbox / Watch
 

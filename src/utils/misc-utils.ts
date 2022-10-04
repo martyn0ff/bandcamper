@@ -81,3 +81,27 @@ export const calcWatchSeenTracks = (watch: IWatch) => {
   // console.log(`Total Seen Tracks for this watch: ${totalSeenTracks}`);
   return totalSeenTracks;
 };
+
+export const truncateString = (string: string, maxLength: number) => {
+  if (string.length <= maxLength) {
+    return string;
+  }
+  return `${string.substring(0, maxLength + 1)}...`;
+};
+
+export const newReleasesNum = (releases: IRelease[]) => {
+  let num = 0;
+  releases.forEach((release) => {
+    if (release.tracksSeen === 0) {
+      num += 1;
+    }
+  });
+  return num;
+};
+
+export const isElementOverflowingX = (element: HTMLElement) => {
+  const overflowX = element.offsetWidth < element.scrollWidth;
+  // const overflowY = element.offsetHeight < element.scrollHeight;
+
+  return overflowX;
+};

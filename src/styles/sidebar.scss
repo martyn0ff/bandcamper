@@ -7,9 +7,14 @@
 
 .watches {
   height: 621px;
+  // max-width: $sf-sidebar-width;
 }
 
 a.active {
   color: $sf-primary-color;
   font-weight: 600 !important;
+}
+
+.bg-unseen {
+  background-color: $sf-color-unseen;
 }

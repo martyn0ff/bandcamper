@@ -7,7 +7,7 @@ import ReleasesSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
 import IRelease from "../models/release";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
-import { getTracks } from "../utils/array-utils";
+import { getTracks, newReleasesNum } from "../utils/misc-utils";
 
 export const loader = async (): Promise<IRelease[]> => {
   const releases = await getReleases();
@@ -39,7 +39,11 @@ const Inbox: React.FC = () => {
     <>
       <div>
         <h1 className="mb-0">Inbox</h1>
-        <p>{releases.length} items, # new</p>
+        <p>
+          {releases.length} {releases.length === 1 ? "release" : "releases"}
+          <span className="mx-2">&middot;</span>
+          {newReleasesNum(releases)} new
+        </p>
       </div>
       <ReleasesSortSearch
         releasesPerPage={releasesPerPage}

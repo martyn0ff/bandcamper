@@ -9,7 +9,7 @@ import IWatch from "../models/watch";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
 import { storePlaylist } from "../utils/localforage-utils";
 import bandPhotoPlaceholder from "../assets/band_photo_placeholder.svg";
-import { getTracks } from "../utils/array-utils";
+import { getTracks, newReleasesNum } from "../utils/misc-utils";
 
 export const loader = async ({
   params,
@@ -66,7 +66,9 @@ const Watch: React.FC = () => {
         <div className="watch-info">
           <h1 className="mb-0">{bandName}</h1>
           <p className="m-0">
-            {releases.length} {releases.length === 1 ? "item" : "items"}, # new
+            {releases.length} {releases.length === 1 ? "release" : "releases"}
+            <span className="mx-2">&middot;</span>
+            {newReleasesNum(releases)} new
           </p>
         </div>
       </div>

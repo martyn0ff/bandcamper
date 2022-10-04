@@ -27,7 +27,8 @@ const Pagination: React.FC<PaginationProps> = ({
         aria-label="First group"
       >
         <div className="h-100 d-flex align-items-center me-2 text-nowrap">
-          {releasesNums} of {totalReleasesNum}
+          {`${(currentPage - 1) * releasesPerPage + 1} - ${releasesNums} of
+          ${totalReleasesNum} releases`}
         </div>
         <Button
           variant="outline-primary"

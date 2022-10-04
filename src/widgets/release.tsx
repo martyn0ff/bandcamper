@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Image from "react-bootstrap/Image";
-import ListGroup from "react-bootstrap/ListGroup";
+import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { v4 as uuidv4 } from "uuid";
@@ -9,7 +9,7 @@ import { BsFillPlayFill, BsCircleFill } from "react-icons/bs";
 import { ReleaseProps } from "../models/release-props";
 import { secToTimestamp } from "../utils/player-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
-import { getTracks } from "../utils/array-utils";
+import { getTracks } from "../utils/misc-utils";
 import { storeCurrentRelease, storeReleases } from "../utils/localforage-utils";
 
 const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
@@ -30,7 +30,10 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
   // }, [release, allReleasesRef]);
 
   return (
-    <Accordion.Item eventKey={release.id.toString()}>
+    <Accordion.Item
+      eventKey={release.id.toString()}
+      className={release.tracksSeen === 0 ? "accordion-item-unseen" : ""}
+    >
       <Accordion.Header>
         <div className="d-flex w-100">
           <Image
@@ -41,17 +44,32 @@ const Release: React.FC<ReleaseProps> = ({ release }: ReleaseProps) => {
           <div className="d-flex flex-row w-100 justify-content-between ps-2">
             <div>
               <p className="fw-bold mb-1">{release.artist}</p>
-              <div>{release.title}</div>
+              <div className="d-flex align-items-center">
+                <span className="me-1">{release.title}</span>
+                {release.isPreorder && (
+                  <Badge
+                    bg="danger"
+                    className="me-2"
+                    style={{ fontSize: "9px" }}
+                  >
+                    PREORDER
+                  </Badge>
+                )}
+              </div>
             </div>
-            <div>
+            <div className="d-flex flex-column align-items-end">
+              <div>
+                <span className="text-muted">
+                  {release.releaseDate.toDateString()}
+                </span>
+              </div>
               {release.availableTracks - release.tracksSeen > 0 && (
-                <span className="text-danger me-1">
-                  {`(${release.availableTracks - release.tracksSeen})`}
+                <span className="text-muted small">
+                  {`(${
+                    release.availableTracks - release.tracksSeen
+                  } unlistened)`}
                 </span>
               )}
-              <span className="text-muted">
-                {release.releaseDate.toDateString()}
-              </span>
             </div>
           </div>
         </div>

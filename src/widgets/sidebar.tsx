@@ -52,7 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     if (searchQuery) {
       setWatches(searchWatches(allWatches, keysWatch, searchQuery));
     } else {
-      setWatches(getWatches(allReleases));
+      setWatches(allWatches);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);

@@ -65,7 +65,7 @@ const Watch: React.FC = () => {
       releasesRef.current.slice(indexOfFirstRelease, indexOfLastRelease),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [searchQuery, bandName]);
 
   useEffect(() => {
     // setPlaylist(getTracks(releases));

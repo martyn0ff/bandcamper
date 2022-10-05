@@ -105,3 +105,40 @@ export const isElementOverflowingX = (element: HTMLElement) => {
 
   return overflowX;
 };
+
+export const searchReleases = (
+  releases: IRelease[],
+  keysRelease: (keyof IRelease)[],
+  keysTrack: (keyof ITrack)[],
+  searchQuery: string,
+) =>
+  releases.filter((rel) => {
+    const releaseKeysMatch = keysRelease.some((key) =>
+      (rel[key] as string).toLowerCase().includes(searchQuery),
+    );
+    if (releaseKeysMatch) {
+      return true;
+    }
+
+    const trackKeysMatch = keysTrack.some((key) =>
+      rel.tracks.some((track) =>
+        (track[key] as string).toLowerCase().includes(searchQuery),
+      ),
+    );
+    if (trackKeysMatch) {
+      return true;
+    }
+
+    return false;
+  });
+
+export const searchWatches = (
+  watches: IWatch[],
+  keysWatch: (keyof IWatch)[],
+  searchQuery: string,
+) =>
+  watches.filter((watch) =>
+    keysWatch.some((key) =>
+      (watch[key] as string).toLowerCase().includes(searchQuery),
+    ),
+  );

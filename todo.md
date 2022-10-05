@@ -34,11 +34,11 @@
 1. Create new user in users database
 2. Create new virtual user in emails database
 3. Expose API for:
-   a. Get all new releases
-   b. Get all new unseen releases
-   c. Get all entities I follow
-
-:white_large_square: Implement short-lived caching for 128k previews (30min after user have clicked listen)
+   a. Get all new releases (/me/new)
+   b. Get all new unseen releases (/me/unseen)
+   c. Get all watches (/me/watches)
+   d. Get watch (/me/watch/:watchId)
+   d. Get new mp3_url links for given release (/mp3_urls/`<BANDCAMP URL>`)
 
 # Flows
 
@@ -62,8 +62,8 @@ Click on release => Load data => Show spinner/loading/whatever => Show decsripti
 :white_check_mark: bump this release to the top of watches list
 :white_check_mark: bump this release to the top of inbox list
 - If release with an `id` doesn't exist in localforage database
-:white_large_square: add it to localforage database
-:white_large_square: bump it to the top of watches list
+:white_check_mark: add it to localforage database
+:white_check_mark: bump it to the top of watches list
 - Make sure that all parsed releases are sorted by release date in descending order, both at Inbox and Watch page
 :white_check_mark: They are sorted like that because new release announcements will come to email in this way.
 
@@ -72,10 +72,10 @@ Click on release => Load data => Show spinner/loading/whatever => Show decsripti
 :white_large_square: If track's `src` returns an error, use that track's `url` and update every track's `mp3Url`
 
 ### Visuals
-:white_large_square: If release is a preorder, mark it with a pill
+:white_check_mark:  If release is a preorder, mark it with a pill
 :white_check_mark: If release is new (tracksSeen = 0), mark it with different background
-:white_large_square: Correctly show how many new watches are in sidebar
-:white_large_square: Correctly show how many new releases are in Inbox / Watch
+:white_check_mark:  Correctly show how many new watches are in sidebar
+:white_check_mark:  Correctly show how many new releases are in Inbox / Watch
 
 ### Function
 :white_large_square: Implement search watch (Sidebar)

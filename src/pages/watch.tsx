@@ -6,10 +6,12 @@ import Release from "../widgets/release";
 import ReleasesSortSearch from "../widgets/releases-sort-search";
 import { getReleases } from "../dao/releases";
 import IWatch from "../models/watch";
+import IRelease from "../models/release";
+import ITrack from "../models/track";
 import { usePlayerContext, PlayerCtx } from "../context/player-context";
 import { storePlaylist } from "../utils/localforage-utils";
 import bandPhotoPlaceholder from "../assets/band_photo_placeholder.svg";
-import { getTracks, newReleasesNum } from "../utils/misc-utils";
+import { getTracks, newReleasesNum, searchReleases } from "../utils/misc-utils";
 
 export const loader = async ({
   params,
@@ -39,13 +41,31 @@ const Watch: React.FC = () => {
   const { releasesRef, playlistRef } = usePlayerContext() as PlayerCtx;
   const [currentPage, setCurrentPage] = useState(1);
   const [releasesPerPage] = useState(9);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const indexOfLastRelease = currentPage * releasesPerPage;
   const indexOfFirstRelease = indexOfLastRelease - releasesPerPage;
-  const currentReleases = releases.slice(
-    indexOfFirstRelease,
-    indexOfLastRelease,
-  );
+  const [currentReleases, setCurrentReleases] = useState<IRelease[]>([]);
+
+  const keysRelease: (keyof IRelease)[] = ["title", "artist", "bandName"];
+  const keysTrack: (keyof ITrack)[] = ["artist", "title"];
+
+  useEffect(() => {
+    if (searchQuery) {
+      releasesRef.current = searchReleases(
+        releases,
+        keysRelease,
+        keysTrack,
+        searchQuery,
+      );
+    } else {
+      releasesRef.current = releases;
+    }
+    setCurrentReleases(
+      releasesRef.current.slice(indexOfFirstRelease, indexOfLastRelease),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
 
   useEffect(() => {
     // setPlaylist(getTracks(releases));
@@ -66,16 +86,18 @@ const Watch: React.FC = () => {
         <div className="watch-info">
           <h1 className="mb-0">{bandName}</h1>
           <p className="m-0">
-            {releases.length} {releases.length === 1 ? "release" : "releases"}
+            {releasesRef.current.length}{" "}
+            {releasesRef.current.length === 1 ? "release" : "releases"}
             <span className="mx-2">&middot;</span>
-            {newReleasesNum(releases)} new
+            {newReleasesNum(releasesRef.current)} new
           </p>
         </div>
       </div>
       <ReleasesSortSearch
         releasesPerPage={releasesPerPage}
-        totalReleasesNum={releases.length}
+        totalReleasesNum={releasesRef.current.length}
         setCurrentPage={setCurrentPage}
+        setSearchQuery={setSearchQuery}
         currentPage={currentPage}
         currentReleasesNum={currentReleases.length}
       />
@@ -84,7 +106,7 @@ const Watch: React.FC = () => {
         className="overflow-auto"
         style={{ height: "565px" }}
       >
-        {releases.map((release) => (
+        {currentReleases.map((release) => (
           <Release release={release} />
         ))}
       </Accordion>

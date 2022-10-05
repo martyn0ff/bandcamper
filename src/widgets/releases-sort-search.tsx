@@ -11,13 +11,15 @@ const ReleasesSortSearch: React.FC<ReleaseSortSearchProps> = ({
   setCurrentPage,
   currentPage,
   currentReleasesNum,
+  setSearchQuery,
 }: ReleaseSortSearchProps) => (
   <div className="d-flex justify-content-between align-items-end search-sort-wrapper mb-3">
     <Form className="d-flex me-3 w-50 flex-grow-0">
       <Form.Control
         type="search"
-        placeholder="What release are you looking for?"
+        placeholder="Search for release title, artist, track name..."
         aria-label="Search"
+        onChange={(e) => setSearchQuery(e.currentTarget.value.toLowerCase())}
       />
     </Form>
     <Form className="d-flex align-items-end">

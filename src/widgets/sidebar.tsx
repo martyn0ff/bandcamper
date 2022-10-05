@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -13,6 +13,7 @@ import {
   calcWatchSeenTracks,
   calcWatchTotalAvailableTracks,
   getWatches,
+  searchWatches,
   truncateString,
 } from "../utils/misc-utils";
 import { PlayerCtx, usePlayerContext } from "../context/player-context";
@@ -22,6 +23,9 @@ const Sidebar: React.FC<SidebarProps> = ({
 }: SidebarProps) => {
   const { setAllReleases, allReleases } = usePlayerContext() as PlayerCtx;
   const [watches, setWatches] = useState<IWatch[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const keysWatch: (keyof IWatch)[] = ["bandName"];
 
   useLayoutEffect(() => {
     setAllReleases(releases);
@@ -42,6 +46,16 @@ const Sidebar: React.FC<SidebarProps> = ({
     });
     return count;
   };
+
+  useEffect(() => {
+    const allWatches = getWatches(allReleases);
+    if (searchQuery) {
+      setWatches(searchWatches(allWatches, keysWatch, searchQuery));
+    } else {
+      setWatches(getWatches(allReleases));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
 
   return (
     <div className="text-bg-light border-end h-100 border-dark border-opacity-10 shadow shadow-sm">
@@ -139,6 +153,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               type="search"
               placeholder="Search watch..."
               aria-label="Search watch"
+              onChange={(e) => setSearchQuery(e.currentTarget.value)}
             />
           </Form>
           <div className="text-muted small mx-3 d-flex flex-row align-items-center">
